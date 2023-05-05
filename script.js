@@ -1,3 +1,5 @@
+var level = parseInt(localStorage.getItem("level")) || 1;
+var experience = parseInt(localStorage.getItem("experience")) || 0;
 var money = parseInt(localStorage.getItem("money")) || 0;
 var respect = parseInt(localStorage.getItem("respect")) || 0;
 var moneyWithCommas = money.toLocaleString("en-US");
@@ -17,6 +19,8 @@ var stocks = JSON.parse(localStorage.getItem("stocks")) || [
 updateInventoryList();
 updateStockPricesList();
 
+document.getElementById("level").innerHTML = level;
+document.getElementById("experience").innerHTML = experience;
 document.getElementById("money").innerHTML = moneyWithCommas;
 document.getElementById("respect").innerHTML = respectWithCommas;
 
@@ -57,7 +61,8 @@ document.getElementById("rob-button").addEventListener("click", function() {
             timeLeft -= intervalTime;
             let percentage = ((totalTime - timeLeft) / totalTime) * 100;
             robProgressBar.style.width = percentage + "%";
-            if (timeLeft <= 0) {clearInterval(robCountdownTimer);
+            if (timeLeft <= 0) {
+                clearInterval(robCountdownTimer);
                 canClickRob = true; // reset canClickRob to true
             }
         }, intervalTime);
@@ -68,16 +73,37 @@ document.getElementById("rob-button").addEventListener("click", function() {
             money += moneyGained;
             moneyWithCommas = money.toLocaleString("en-US");
             moneySpan.innerHTML = moneyWithCommas;
-            gameLog.innerHTML += "<p>You successfully robbed a store and gained $" + moneyGained + ".</p>";
+
+            // Increment experience by a random amount
+            var experienceGained = Math.floor(Math.random() * 10) + 1;
+            experience += experienceGained;
+
+            // Update game log
+            gameLog.innerHTML += "<p>You successfully robbed a store and gained $" + moneyGained + " and " + experienceGained + " experience.</p>";
             gameLog.scrollTop = gameLog.scrollHeight;
+
+            // Check if player has leveled up
+            if (experience >= 100) {
+                level += 1;
+                experience = 0;
+
+                // Update game log
+                var newLogEntry = document.createElement("li");
+                newLogEntry.textContent = "You leveled up! You are now level " + level + ".";
+                gameLog.appendChild(newLogEntry);
+            }
+
+            // Update HTML elements
+            document.getElementById("level").innerHTML = level;
+            document.getElementById("experience").innerHTML = experience;
         } else {
             var moneyLost = Math.floor(Math.random() * 50);
             if (moneyLost <= money) {
                 money -= moneyLost;
-                gameLog.innerHTML += "<p>You failed to rob a store and lost $" + moneyLost + ".</p>";
+                gameLog.innerHTML += "<p>You failed to rob a store and lost $" + moneyLost + ". You didn't gain any experience.</p>";
             } else {
                 money = 0;
-                gameLog.innerHTML += "<p>You failed to rob a store and lost all your remaining money.</p>";
+                gameLog.innerHTML += "<p>You failed to rob a store and lost all your remaining money. You didn't gain any experience.</p>";
             }
             moneyWithCommas = money.toLocaleString("en-US");
             moneySpan.innerHTML = moneyWithCommas;

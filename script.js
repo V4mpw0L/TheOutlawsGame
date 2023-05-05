@@ -78,6 +78,10 @@ document.getElementById("rob-button").addEventListener("click", function() {
             var experienceGained = Math.floor(Math.random() * 10) + 1;
             experience += experienceGained;
 
+// Update local storage
+    localStorage.setItem('level', level);
+    localStorage.setItem('experience', experience);
+
             // Update game log
             gameLog.innerHTML += "<p>You successfully robbed a store and gained $" + moneyGained + " and " + experienceGained + " experience.</p>";
             gameLog.scrollTop = gameLog.scrollHeight;
@@ -394,6 +398,8 @@ document.getElementById("reset-button").addEventListener("click", function() {
 
 // Save game state to local storage
 function saveGame() {
+    localStorage.setItem("level", level);
+    localStorage.setItem("experience", experience);
     localStorage.setItem("money", money);
     localStorage.setItem("respect", respect);
     localStorage.setItem("inventory", JSON.stringify(inventory));
@@ -403,26 +409,31 @@ function saveGame() {
 
 // Load game state from local storage
 function loadGame() {
+    level = parseInt(localStorage.getItem("level")) || 1;
+    experience = parseInt(localStorage.getItem("experience")) || 0;
     money = parseInt(localStorage.getItem("money")) || 0;
     respect = parseInt(localStorage.getItem("respect")) || 0;
     inventory = JSON.parse(localStorage.getItem("inventory")) || [];
-    stocks = JSON.parse(localStorage.getItem("stocks")) || [ // Load the stocks array from localStorage
+    stocks = JSON.parse(localStorage.getItem("stocks")) || [
         { name: "Dogecoin", price: 100, originalPrice: 100 },
         { name: "Ethereum", price: 500, originalPrice: 500 },
         { name: "Bitcoin", price: 1000, originalPrice: 1000 }
     ];
+    document.getElementById("level").innerHTML = level;
+    document.getElementById("experience").innerHTML = experience;
     moneySpan.innerHTML = money;
     respectSpan.innerHTML = respect;
     updateInventoryList();
 }
 
-
 // Reset game state
 function resetGame() {
+    level = 1;
+    experience = 0;
     money = 0;
     respect = 0;
     inventory = [];
-    stocks = [ // Reset the stocks array to its original values
+    stocks = [
         { name: "Dogecoin", price: 100, originalPrice: 100 },
         { name: "Ethereum", price: 500, originalPrice: 500 },
         { name: "Bitcoin", price: 1000, originalPrice: 1000 }

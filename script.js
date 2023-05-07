@@ -24,6 +24,28 @@ document.getElementById("experience").innerHTML = experience;
 document.getElementById("money").innerHTML = moneyWithCommas;
 document.getElementById("respect").innerHTML = respectWithCommas;
 
+function updateInventoryList() {
+  console.log(inventoryList);
+    // Clear the current contents of the inventory list
+    inventoryList.innerHTML = '';
+    
+    // Group the inventory items by name and sum their quantities
+    var groupedInventory = {};
+    for (var i=0; i<inventory.length; i++) {
+        var item = inventory[i];
+        if (groupedInventory[item.name]) {
+            groupedInventory[item.name] += item.quantity;
+        } else {
+            groupedInventory[item.name] = item.quantity;
+        }
+    }
+    // Add each item in the grouped inventory to the list
+    for (var itemName in groupedInventory) {
+        var item = document.createElement('li');
+        item.textContent = itemName + ' (' + groupedInventory[itemName] + ')';
+        inventoryList.appendChild(item);
+    }
+}
 
 
 function updateStocksOwnedList() {
@@ -49,10 +71,14 @@ setInterval(updateStocksOwnedList, 1000);
 
 let canClickRob = true;
 let robCountdownTimer;
+let lastMessageTime; // variable to keep track of the time of the last message
+let messageDelay = 2000; // delay between messages in milliseconds
+
 document.getElementById("rob-button").addEventListener("click", function() {
     if (canClickRob) {
         canClickRob = false;
-        let timeLeft = Math.floor(Math.random() * (3000 - 1000) + 1000);
+        lastMessageTime = new Date().getTime(); // set the initial value of lastMessageTime to the current time
+        let timeLeft = Math.floor(Math.random() * (6000 - 1000) + 1000);
         let robProgressBar = document.getElementById("rob-progress-bar");
         robProgressBar.style.width = "0%";
         let totalTime = timeLeft;
@@ -78,24 +104,25 @@ document.getElementById("rob-button").addEventListener("click", function() {
             var experienceGained = Math.floor(Math.random() * 10) + 1;
             experience += experienceGained;
 
-// Update local storage
-    localStorage.setItem('level', level);
-    localStorage.setItem('experience', experience);
+           // Update local storage
+           localStorage.setItem('level', level);
+           localStorage.setItem('experience', experience);
 
-            // Update game log
-            gameLog.innerHTML += "<p>You successfully robbed a store and gained $" + moneyGained + " and " + experienceGained + " experience.</p>";
-            gameLog.scrollTop = gameLog.scrollHeight;
+// Update game log
+    gameLog.innerHTML += "<p>You <span style='color: green; font-weight: bold;'>successfully</span> robbed a store and gained <span style='color:#00A300; font-weight:bold;'>$" + moneyGained + "</span> and <span style='color:#008DB9; font-weight:bold;'>" + experienceGained + " experience</span>.</p>";
+    gameLog.scrollTop = gameLog.scrollHeight;
 
             // Check if player has leveled up
-            if (experience >= 100) {
-                level += 1;
-                experience = 0;
-
-                // Update game log
-                var newLogEntry = document.createElement("li");
-                newLogEntry.textContent = "You leveled up! You are now level " + level + ".";
-                gameLog.appendChild(newLogEntry);
-            }
+            let experienceNeeded = 50 * level;
+            if (experience >= experienceNeeded) {
+            level += 1;
+            experience -= experienceNeeded;
+            
+// Update game log
+        var newLogEntry = document.createElement("li");
+        newLogEntry.innerHTML = "You leveled up! You are now level <span style='color:#FF69B4; font-weight:bold;'>" + level + "</span>.";
+        gameLog.appendChild(newLogEntry);
+    }
 
             // Update HTML elements
             document.getElementById("level").innerHTML = level;
@@ -104,19 +131,36 @@ document.getElementById("rob-button").addEventListener("click", function() {
             var moneyLost = Math.floor(Math.random() * 50);
             if (moneyLost <= money) {
                 money -= moneyLost;
-                gameLog.innerHTML += "<p>You failed to rob a store and lost $" + moneyLost + ". You didn't gain any experience.</p>";
+                gameLog.innerHTML += "<p>You <span style='color: red; font-weight: bold;'>failed</span> to rob a store and <span style='color: red; font-weight: bold;'>lost</span> $<span style='color: red; font-weight:bold;'>" + moneyLost + "</span>. You didn't gain any experience.</p>";
             } else {
                 money = 0;
-                gameLog.innerHTML += "<p>You failed to rob a store and lost all your remaining money. You didn't gain any experience.</p>";
+                gameLog.innerHTML += "<p>You <span style='color: red; font-weight: bold;'>failed</span> to rob a store and <span style='color: red; font-weight: bold;'>lost</span> all your remaining <span style='color: #00A300; font-weight: bold;'>Money</span>. You didn't gain any <span style='color: #008DB9; font-weight: bold;'>Experience</span>.</p>";
             }
             moneyWithCommas = money.toLocaleString("en-US");
             moneySpan.innerHTML = moneyWithCommas;
             gameLog.scrollTop = gameLog.scrollHeight;
         }
-        saveGame();
+    } else { // player clicked too fast
+        let currentTime = new Date().getTime(); // get the current time
+        if (currentTime - lastMessageTime >= messageDelay) { // check if enough time has passed since the last message
+            let messages = [
+                "Whoa there, speedy fingers! Slow down a bit.",
+                "Easy tiger, give the button a break!",
+                "Hold your horses, no need to rush!",
+                "Patience is a virtue, slow down on the clicking.",
+                "Slow and steady wins the race, take it easy on the clicks."
+            ];
+            let message = messages[Math.floor(Math.random() * messages.length)];
+            let messageElement = document.createElement("p");
+            messageElement.innerHTML = message;
+            messageElement.style.color = "red"; // set the color of the message to red
+            gameLog.appendChild(messageElement); // add random colored message to game log
+            gameLog.scrollTop = gameLog.scrollHeight; // scroll to bottom of game log
+            lastMessageTime = currentTime; // update the time of the last message
+        }
     }
+    saveGame(); // save game after adding message to game log
 });
-
 
 
 document.getElementById("sell-drugs-button").addEventListener("click", function() {
@@ -133,7 +177,7 @@ document.getElementById("sell-drugs-button").addEventListener("click", function(
         money += moneyGained;
         moneyWithCommas = money.toLocaleString("en-US");
         moneySpan.innerHTML = moneyWithCommas;
-        gameLog.innerHTML += "<p>You sold " + drugsToSell + " drugs and gained $" + moneyGained + ".</p>";
+        gameLog.innerHTML += "<p>You sold <span style='color: #008DB9; font-weight: bold;'>" + drugsToSell + "</span> drugs and gained <span style='color: #00A300; font-weight: bold;'>$" + moneyGained + "</span>.</p>";
         gameLog.scrollTop = gameLog.scrollHeight;
         
         // Remove the sold drugs from the inventory
@@ -162,7 +206,7 @@ document.getElementById("buy-drugs-button").addEventListener("click", function()
             money -= moneyLost;
             moneyWithCommas = money.toLocaleString("en-US");
             moneySpan.innerHTML = moneyWithCommas;
-            gameLog.innerHTML += "<p>You bought " + drugsToBuy + " drugs and lost $" + moneyLost + ".</p>";
+            gameLog.innerHTML += "<p>You bought <span style='color: #008DB9; font-weight: bold;'>" + drugsToBuy + "</span> drugs and lost <span style='color: red; font-weight: bold;'>$" + moneyLost + "</span>.</p>";
             gameLog.scrollTop = gameLog.scrollHeight;
             
             // Add the bought drugs to the inventory
@@ -186,9 +230,11 @@ document.getElementById("buy-drugs-button").addEventListener("click", function()
 
 let canClickGym = true;
 let gymCountdownTimer;
+
 document.getElementById("gym-button").addEventListener("click", function() {
     if (canClickGym) {
         canClickGym = false;
+        lastMessageTime = new Date().getTime(); // set the initial value of lastMessageTime to the current time
         let timeLeft = Math.floor(Math.random() * (4000 - 1000) + 1000);
         let gymProgressBar = document.getElementById("gym-progress-bar");
         gymProgressBar.style.width = "0%";
@@ -208,10 +254,28 @@ document.getElementById("gym-button").addEventListener("click", function() {
         respect += respectGained;
         respectWithCommas = respect.toLocaleString("en-US");
         respectSpan.innerHTML = respectWithCommas;
-        gameLog.innerHTML += "<p>You went to the gym and gained " + respectGained + " respect.</p>";
+        gameLog.innerHTML += "<p>You went to the gym and gained <span style='color: yellow;; font-weight:bold;'>" + respectGained + "</span> respect.</p>";
         gameLog.scrollTop = gameLog.scrollHeight;
-        saveGame();
+    } else { // player clicked too fast
+        let currentTime = new Date().getTime(); // get the current time
+        if (currentTime - lastMessageTime >= messageDelay) { // check if enough time has passed since the last message
+            let messages = [
+                "Whoa there, speedy fingers! Slow down a bit.",
+                "Easy tiger, give the button a break!",
+                "Hold your horses, no need to rush!",
+                "Patience is a virtue, slow down on the clicking.",
+                "Slow and steady wins the race, take it easy on the clicks."
+            ];
+            let message = messages[Math.floor(Math.random() * messages.length)];
+            let messageElement = document.createElement("p");
+            messageElement.innerHTML = message;
+            messageElement.style.color = "red"; // set the color of the message to red
+            gameLog.appendChild(messageElement); // add random colored message to game log
+            gameLog.scrollTop = gameLog.scrollHeight; // scroll to bottom of game log
+            lastMessageTime = currentTime; // update the time of the last message
+        }
     }
+    saveGame(); // save game after adding message to game log
 });
 
 
@@ -219,7 +283,7 @@ document.getElementById("gamble-button").addEventListener("click", function() {
     this.disabled = true;
     setTimeout(() => {
         this.disabled = false;
-    }, Math.random() * (5000 - 1000) + 1000);
+    }, Math.random() * (6000 - 1000) + 1000);
     var betAmount = parseInt(prompt("How much money would you like to bet?", "0"));
     if (betAmount > 0 && betAmount <= money) {
         var winChance = Math.random();
@@ -228,13 +292,13 @@ document.getElementById("gamble-button").addEventListener("click", function() {
             money += moneyGained;
             moneyWithCommas = money.toLocaleString("en-US");
             moneySpan.innerHTML = moneyWithCommas;
-            gameLog.innerHTML += "<p>You won $" + moneyGained + " from gambling.</p>";
+            gameLog.innerHTML += "<p>You won <span style='color: #00A300; font-weight: bold;'>$" + moneyGained + "</span> from gambling.</p>";
             gameLog.scrollTop = gameLog.scrollHeight;
         } else {
             money -= betAmount;
             moneyWithCommas = money.toLocaleString("en-US");
             moneySpan.innerHTML = moneyWithCommas;
-            gameLog.innerHTML += "<p>You lost $" + betAmount + " from gambling.</p>";
+            gameLog.innerHTML += "<p>You lost <span style='color: red; font-weight: bold;'>$" + betAmount + "</span> from gambling.</p>";
             gameLog.scrollTop = gameLog.scrollHeight;
         }
         saveGame();
@@ -242,7 +306,6 @@ document.getElementById("gamble-button").addEventListener("click", function() {
         alert("Invalid bet amount.");
     }
 });
-
 
 
 function updateStockPrices() {
@@ -269,7 +332,7 @@ function buyStock(stockName, quantity) {
             money -= cost;
             moneyWithCommas = money.toLocaleString("en-US");
             moneySpan.innerHTML = moneyWithCommas;
-            gameLog.innerHTML += "<p>You bought " + quantity + " shares of " + stockName + " for $" + cost + ".</p>";
+            gameLog.innerHTML += "<p>You bought <span style='color: #008DB9; font-weight: bold;'>" + quantity + "</span> shares of <span style='color: yellow; font-weight: bold;'>" + stockName + "</span> for <span style='color: red; font-weight: bold;'>$" + cost + "</span>.</p>";
             gameLog.scrollTop = gameLog.scrollHeight;
             var stockInInventory = inventory.find(function(item) {
                 return item.name === stockName;
@@ -303,7 +366,7 @@ function sellStock(stockName, quantity) {
             money += revenue;
             moneyWithCommas = money.toLocaleString("en-US");
             moneySpan.innerHTML = moneyWithCommas;
-            gameLog.innerHTML += "<p>You sold " + quantity + " shares of " + stockName + " for $" + revenue + ".</p>";
+            gameLog.innerHTML += "<p>You sold <span style='color: #008DB9; font-weight: bold;'>" + quantity + "</span> shares of <span style='color: yellow; font-weight: bold;'>" + stockName + "</span> for $<span style='color: green; font-weight: bold;'>" + revenue + "</span>.</p>";
             gameLog.scrollTop = gameLog.scrollHeight;
             stockInInventory.quantity -= quantity;
             if (stockInInventory.quantity === 0) {
@@ -353,29 +416,6 @@ function updateStockPricesList() {
 }
 setInterval(updateStockPricesList, 1000);
 setInterval(updateStockPrices, 5000);
-
-
-function updateInventoryList() {
-    // Clear the current contents of the inventory list
-    inventoryList.innerHTML = '';
-    
-    // Group the inventory items by name and sum their quantities
-    var groupedInventory = {};
-    for (var i=0; i<inventory.length; i++) {
-        var item = inventory[i];
-        if (groupedInventory[item.name]) {
-            groupedInventory[item.name] += item.quantity;
-        } else {
-            groupedInventory[item.name] = item.quantity;
-        }
-    }
-    // Add each item in the grouped inventory to the list
-    for (var itemName in groupedInventory) {
-        var item = document.createElement('li');
-        item.textContent = itemName + ' (' + groupedInventory[itemName] + ')';
-        inventoryList.appendChild(item);
-    }
-}
 
 
 document.getElementById("toggle-buttons").addEventListener("click", function() {
@@ -440,5 +480,13 @@ function resetGame() {
     ];
     saveGame();
     loadGame();
-}
+// clear the logs
+    gameLog.innerHTML = "";
 
+ // set the welcome message
+  let messageElement = document.createElement('p');
+  messageElement.innerHTML = "Welcome to The Outlaws!";
+  messageElement.style.color = "white";
+  messageElement.style.fontWeight = "bold";
+  gameLog.appendChild(messageElement);
+}

@@ -3,8 +3,9 @@ body {
 	padding: 0;
 	background-color: #2A2B2B;
 	color: #beb7b7;
-	font-family: "Lucida Console", "Courier New", monospace;
-      padding-top: 20px;
+    font-family: Consolas, monospace;
+    padding-top: 20px;
+	
 
 }
 
@@ -14,8 +15,6 @@ body {
 	padding: 15px;
 	text-align: center;
 	
-	
-	
 }
 
 h1 {
@@ -23,16 +22,23 @@ h1 {
     background-image: linear-gradient(to bottom, #FFD700, white, black);
     border-radius: 10px;
     -webkit-background-clip: text;
-    background-clip: text; /* Add this line */
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     background-color: #222;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-    padding: 10px;
+    padding: 10px;  
 	
-    
 }
 
+#player-stats p{
+    margin: 4px 0;
+	box-shadow: 0px 2px 5px rgba(0,0,0,0.5); /* Add shadow */
+    text-align: center;
+	padding: 1px;
+	  text-shadow: 1px 1px 2px #000; /* Add shadow to the text */
 
+
+}
 #player-stats {
 	margin: 0 auto;
 	text-align: center;
@@ -41,18 +47,27 @@ h1 {
 	border: 1px solid #000;
 	box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
 	padding: 10px;
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.5); /* Add shadow */
+
 }
 
 #money {
    color: #00FF00;
+		  text-shadow: 1px 1px 2px #000; /* Add shadow to the text */
+
+	
 }
 
 #respect {
    color: #ffff00;
+		  text-shadow: 1px 1px 2px #000; /* Add shadow to the text */
+
 }
 
 #inventory {
     margin-bottom: 20px;
+	
+	
 }
 
 #inventory h2 {
@@ -84,6 +99,8 @@ h1 {
     display: inline-block;
     margin-right: 10px;
   	background-color: #222;
+	  text-shadow: 1px 1px 2px #000; /* Add shadow to the text */
+  font-weight: bold;
 
     
 }
@@ -96,6 +113,7 @@ h1 {
     right: 0;
     display: flex;
     justify-content: center;
+	
     
 }
 
@@ -110,17 +128,23 @@ h1 {
     margin: 4px 8px;
     cursor: pointer;
     border-radius: 10px;
-    padding: 4px 4px;    
+    padding: 4px 4px;  
+	
 }
+
+
 
 #game-log {
 	background-color: #222;
 	padding: 20px;
 	overflow-y: scroll;
 	height: 300px;
-  border-radius: 10px;
-  margin-top: 15px;
-  font-size: 14px; 
+    border-radius: 10px;
+    margin-top: 15px;
+    font-size: 14px;
+	box-shadow: 0px 2px 5px rgba(0,0,0,0.5); /* Add shadow */
+  text-shadow: 1px 1px 2px #000; /* Add shadow to the text */
+
 
 }
 
@@ -135,7 +159,7 @@ h1 {
 
 #save-load-reset-menu button {
     margin: 10px;
-    font-family: "Lucida Console", "Courier New", monospace;
+  font-family: Consolas, monospace;
      font-weight: bold;
 }
 
@@ -150,11 +174,15 @@ h1 {
     margin: 4px 4px;
     cursor: pointer;
     border-radius: 10px;
+	    box-shadow: 0px 2px 5px rgba(0,0,0,0.5); /* Add shadow */
+
 }
 
 #save-button {
     background-color: #00A300;
         display: none;
+		  text-shadow: 1px 1px 2px #000; /* Add shadow to the text */
+
 }
 
 #save-button:hover {
@@ -164,6 +192,8 @@ h1 {
 #load-button {
     background-color: #0000A3;
         display: none;
+		  text-shadow: 1px 1px 2px #000; /* Add shadow to the text */
+
 }
 
 #load-button:hover {
@@ -173,6 +203,8 @@ h1 {
 #reset-button {
     background-color: #A30000;
         display: none;
+		  text-shadow: 1px 1px 2px #000; /* Add shadow to the text */
+
 }
 
 #reset-button:hover {
@@ -187,6 +219,8 @@ h1 {
 
 #toggle-buttons {
     background-color: #008DB9;
+	  text-shadow: 1px 1px 2px #000; /* Add shadow to the text */
+
 }
 
 #toggle-buttons:hover {
@@ -195,7 +229,9 @@ h1 {
 
 #rob-button {
     background-color: #008DB9;
-font-family: "Lucida Console", "Courier New", monospace;
+  font-family: Consolas, monospace;
+	  text-shadow: 1px 1px 2px #000; /* Add shadow to the text */
+
 }
 
 #rob-button:hover {
@@ -204,8 +240,10 @@ font-family: "Lucida Console", "Courier New", monospace;
 
 #buy-drugs-button {
     background-color: #00A300;
-    font-family: "Lucida Console", "Courier New", monospace;
+  font-family: Consolas, monospace;
     font-weight: bold;
+	  text-shadow: 1px 1px 2px #000; /* Add shadow to the text */
+
 }
 
 #buy-drugs-button:hover {
@@ -214,8 +252,10 @@ font-family: "Lucida Console", "Courier New", monospace;
 
 #sell-drugs-button {
     background-color: #8F0404;
-    font-family: "Lucida Console", "Courier New", monospace;
+  font-family: Consolas, monospace;
     font-weight: bold;
+	  text-shadow: 1px 1px 2px #000; /* Add shadow to the text */
+
 }
 
 #sell-drugs-button:hover {
@@ -224,7 +264,9 @@ font-family: "Lucida Console", "Courier New", monospace;
 
 #gym-button {
     background-color: #B29600;
-font-family: "Lucida Console", "Courier New", monospace;
+  font-family: Consolas, monospace;
+	  text-shadow: 1px 1px 2px #000; /* Add shadow to the text */
+
 }
 
 #gym-button:hover {
@@ -233,8 +275,10 @@ font-family: "Lucida Console", "Courier New", monospace;
 
 #gamble-button {
     background-color: #A300A3;
-    font-family: "Lucida Console", "Courier New", monospace;
+  font-family: Consolas, monospace;
     font-weight: bold;
+	  text-shadow: 1px 1px 2px #000; /* Add shadow to the text */
+
 }
 
 #gamble-button:hover {
@@ -267,21 +311,27 @@ font-family: "Lucida Console", "Courier New", monospace;
 	border: 1px solid #000;
 	box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
 	padding: 10px;
-	
+    text-shadow: 1px 1px 2px #000; /* Add shadow to the text */
+
 }
 
 #stock-prices-list li {
-    display: inline-block;
-    margin-right: 40px;
-	
+   margin: 2px 0;
+	box-shadow: 0px 2px 5px rgba(0,0,0,0.5); /* Add shadow */
+    text-align: center;
+	padding: 1px;
+
 	
 }
 
 
 #buy-stock-button {
     background-color: #00A300;
-    font-family: "Lucida Console", "Courier New", monospace;
+  font-family: Consolas, monospace;
       font-weight: bold;
+	  text-shadow: 1px 1px 2px #000; /* Add shadow to the text */
+
+	
 }
 
 #buy-stock-button:hover {
@@ -290,8 +340,10 @@ font-family: "Lucida Console", "Courier New", monospace;
 
 #sell-stock-button {
     background-color: #8F0404;
-    font-family: "Lucida Console", "Courier New", monospace;
+  font-family: Consolas, monospace;
   font-weight: bold;
+	  text-shadow: 1px 1px 2px #000; /* Add shadow to the text */
+
 }
 
 #sell-stock-button:hover {
@@ -299,18 +351,28 @@ font-family: "Lucida Console", "Courier New", monospace;
 }
 footer {
     text-align: center;
+	box-shadow: 0px 2px 5px rgba(0,0,0,0.5); /* Add shadow */
+
 }
 
 footer ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: inline-block;
+   background-image: linear-gradient(to bottom, #FFD700, white, black);
+    border-radius: 10px;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-color: #222;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    padding: 10px;    ; /* Add shadow */
+
+	
 }
 
 footer li {
     display: inline-block;
     margin: 0 10px;
+	box-shadow: 0px 2px 5px rgba(0,0,0,0.5); /* Add shadow */
+
 }
 
 #rob-progress-bar-container,
@@ -322,6 +384,8 @@ footer li {
     margin: 0 auto;
     overflow: hidden;
     margin-bottom: 10px;
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.5); /* Add shadow */
+
 }
 
 #rob-progress-bar {
@@ -334,6 +398,7 @@ footer li {
     width: 0%;
     height: 100%;
     background-color: #B29600;
+	
 }
 
 #rob-container,
@@ -341,10 +406,12 @@ footer li {
   display: flex;
   flex-direction: column; /* Change this line */
   align-items: center; /* Change this line */
-	flex-wrap: wrap;
-	margin-bottom: 20px;
- margin-top: 20px;
- justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  justify-content: center;
+	    box-shadow: 0px 2px 5px rgba(0,0,0,0.5); /* Add shadow */
+
 }
 
 #rob-button,
@@ -356,12 +423,14 @@ footer li {
 	text-decoration: none;
 	display: inline-block;
 	font-size: 14px;
-	margin: 5px 8px;
+	margin: 6px 18px;
 	cursor: pointer;
 	border-radius: 10px;
 	margin-top: 5px;
-  z-index: 1;
-  font-weight: bold;
+    z-index: 1;
+    font-weight: bold;
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.5); /* Add shadow */
+
 }
 
 #menu-bar {
@@ -373,8 +442,11 @@ footer li {
     display: flex;
     justify-content: center;
     padding: 5px;
-    width: 100%;
+    width: 80%; /* Adjust the width */
+    margin: 0 auto; /* Center the menu bar */
     z-index: 9999;
+    border-radius: 10px; /* Add rounded corners */
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.5); /* Add shadow */
 }
   
 #menu-bar button {
@@ -384,10 +456,12 @@ footer li {
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 11px;
+    font-size: 12px;
     margin: 4px 10px;
     cursor: pointer;
-    border-radius: 10px;
+    border-radius: 10px; /* Add rounded corners to buttons */
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.5); /* Add shadow */
+
 }
   
   /* Dropdown Button */
@@ -435,17 +509,21 @@ footer li {
   #button-1 {
     background-color: #955a0e;
     font-weight: bold;
+  text-shadow: 1px 1px 2px #000; /* Add shadow to the text */
 
   }
   
   #button-2 {
     background-color: #955a0e;
     font-weight: bold;
+  text-shadow: 1px 1px 2px #000; /* Add shadow to the text */
 
   }
   
   #button-3 {
     background-color: #955a0e;
     font-weight: bold;
+  text-shadow: 1px 1px 2px #000; /* Add shadow to the text */
 
   }
+

@@ -24,6 +24,36 @@ document.getElementById("experience").innerHTML = experience;
 document.getElementById("money").innerHTML = moneyWithCommas;
 document.getElementById("respect").innerHTML = respectWithCommas;
 
+document.querySelector('#button-1').addEventListener('click', function() {
+    var dropdownContent = document.querySelector('#button-1 + .dropdown-content');
+    if (dropdownContent.style.display === 'block') {
+      dropdownContent.style.display = 'none';
+    } else {
+      dropdownContent.style.display = 'block';
+    }
+  });
+
+  document.querySelector('#button-2').addEventListener('click', function() {
+    var dropdownContent = document.querySelector('#button-2 + .dropdown-content');
+    if (dropdownContent.style.display === 'block') {
+      dropdownContent.style.display = 'none';
+    } else {
+      dropdownContent.style.display = 'block';
+    }
+  });
+
+
+  document.querySelector('#button-3').addEventListener('click', function() {
+    var dropdownContent = document.querySelector('#button-3 + .dropdown-content');
+    if (dropdownContent.style.display === 'block') {
+      dropdownContent.style.display = 'none';
+    } else {
+      dropdownContent.style.display = 'block';
+    }
+  });
+
+  
+
 function updateInventoryList() {
   console.log(inventoryList);
     // Clear the current contents of the inventory list

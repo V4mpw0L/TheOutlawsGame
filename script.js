@@ -109,7 +109,7 @@ document.getElementById("rob-button").addEventListener("click", function() {
            localStorage.setItem('experience', experience);
 
 // Update game log
-    gameLog.innerHTML += "<p>You <span style='color: green; font-weight: bold;'>successfully</span> robbed a store and gained <span style='color:#00A300; font-weight:bold;'>$" + moneyGained + "</span> and <span style='color:#008DB9; font-weight:bold;'>" + experienceGained + " experience</span>.</p>";
+    gameLog.innerHTML += "<p>You <span style='color: #00A300; font-weight: bold;'>successfully</span> robbed a store and gained <span style='color:#00A300; font-weight:bold;'>$" + moneyGained + "</span> and <span style='color:#008DB9; font-weight:bold;'>" + experienceGained + " experience</span>.</p>";
     gameLog.scrollTop = gameLog.scrollHeight;
 
             // Check if player has leveled up

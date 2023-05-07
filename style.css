@@ -2,7 +2,7 @@ body {
 	margin: 0;
 	padding: 0;
 	background-color: #2A2B2B;
-	color: #fff;
+	color: #beb7b7;
 	font-family: "Lucida Console", "Courier New", monospace;
 }
 
@@ -13,6 +13,7 @@ body {
 	text-align: center;
 	
 	
+	
 }
 
 h1 {
@@ -20,11 +21,12 @@ h1 {
     background-image: linear-gradient(to bottom, #FFD700, white, black);
     border-radius: 10px;
     -webkit-background-clip: text;
-    background-clip: text;
+    background-clip: text; /* Add this line */
     -webkit-text-fill-color: transparent;
     background-color: #222;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
     padding: 10px;
+	
     
 }
 
@@ -56,7 +58,7 @@ h1 {
     background-image: linear-gradient(to bottom, #FFD700, white, black);
     border-radius: 10px;
     -webkit-background-clip: text;
-    background-clip: text;
+    background-clip: text; /* Add this line */
     -webkit-text-fill-color: transparent;
     background-color: #222;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
@@ -96,19 +98,19 @@ h1 {
 }
 
 #game-menu button {
-  border: none;
-    color: white;
+    border: none;
+    color: #beb7b7;
     padding: 10px 10px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
-    margin: 4px 5px;
+    font-size: 13px;
+    margin: 4px 8px;
     cursor: pointer;
     border-radius: 10px;
-    
-    
+    padding: 4px 4px;    
 }
+
 
 
 #game-log {
@@ -116,8 +118,9 @@ h1 {
 	padding: 20px;
 	overflow-y: scroll;
 	height: 300px;
-  border-radius: 10px;
-  margin-top: 15px;
+    border-radius: 10px;
+    margin-top: 15px;
+    font-size: 13px; /* Change this value as needed */
 
 }
 
@@ -137,13 +140,13 @@ font-family: "Lucida Console", "Courier New", monospace;
 
 #save-load-reset-menu button {
     border: none;
-    color: white;
-    padding: 5px 10px;
+    color: #beb7b7;
+    padding: 4px 4px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
-    margin: 4px 15px;
+    font-size: 12px;
+    margin: 4px 4px;
     cursor: pointer;
     border-radius: 10px;
 }
@@ -243,11 +246,12 @@ font-family: "Lucida Console", "Courier New", monospace;
     background-image: linear-gradient(to bottom, #FFD700, white, black);
     border-radius: 10px;
     -webkit-background-clip: text;
-    background-clip: text;
+    background-clip: text; /* Add this line */
     -webkit-text-fill-color: transparent;
     background-color: #222;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
     padding: 4px;
+	
 }
 
 #stock-prices-list {
@@ -259,12 +263,16 @@ font-family: "Lucida Console", "Courier New", monospace;
 	border: 1px solid #000;
 	box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
 	padding: 10px;
+	
 }
 
 #stock-prices-list li {
     display: inline-block;
-    margin-right: 10px;
+    margin-right: 40px;
+	
+	
 }
+
 
 #buy-stock-button {
     background-color: #00A300;
@@ -299,32 +307,21 @@ footer li {
     margin: 0 10px;
 }
 
-#rob-progress-bar-container {
-    width: 400px;
+#rob-progress-bar-container,
+#gym-progress-bar-container {
+    width: 300px; /* Change this value as needed */
     height: 10px;
     background-color: #555;
     border-radius: 10px;
     margin: 0 auto;
     overflow: hidden;
     margin-bottom: 10px;
-    margin-left: 20px;
 }
 
 #rob-progress-bar {
     width: 0%;
     height: 100%;
     background-color: #008DB9;
-}
-
-#gym-progress-bar-container {
-    width: 400px;
-    height: 10px;
-    background-color: #555;
-    border-radius: 10px;
-    margin: 0 auto;
-    overflow: hidden;
-    margin-bottom: 10px;
-    margin-left: 20px;
 }
 
 #gym-progress-bar {
@@ -336,7 +333,8 @@ footer li {
 #rob-container,
 #gym-container {
   display: flex;
-  align-items: center;
+  flex-direction: column; /* Change this line */
+  align-items: center; /* Change this line */
 	flex-wrap: wrap;
 	margin-bottom: 20px;
  margin-top: 20px;
@@ -346,14 +344,15 @@ footer li {
 #rob-button,
 #gym-button {
   border: none;
-	color: white;
-	padding: 7px 40px;
+	color: #e7dcdc;
+	padding: 4px 10px;
 	text-align: center;
 	text-decoration: none;
 	display: inline-block;
-	font-size: 16px;
+	font-size: 14px;
 	margin: 5px 8px;
 	cursor: pointer;
 	border-radius: 10px;
 	margin-top: 5px;
+    z-index: 1;
 }

@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="eng">
+<html lang="en">
 <head>
 	<title>The Outlaws</title>
 	  <meta charset="UTF-8">
 	  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	  <link rel="stylesheet" type="text/css" href="style.css">
 	  <link rel="apple-touch-icon" sizes="180x180" href="./img/apple-touch-icon.png">
-          <link rel="icon" type="image/png" sizes="32x32" href="./img/favicon-32x32.png">
-          <link rel="icon" type="image/png" sizes="16x16" href="./img/ favicon-16x16.png">
-	  <link rel="manifest" href="./img/site.webmanifest">
+    <link rel="icon" type="image/png" sizes="32x32" href="./img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./img/ favicon-16x16.png">
+    <link rel="manifest" href="./img/site.webmanifest">
 </head>
 
 <body>
@@ -54,11 +54,6 @@
         
         
   <div id="game-menu">
-	  <button id="buy-drugs-button">Buy Drugs</button>
-	  <button id="sell-drugs-button">Sell Drugs</button>
-    <button id="gamble-button">Gamble</button>
-    <button id="sell-stock-button">Sell Stock</button>
-		<button id="buy-stock-button">Buy Stock</button>
   </div>
 		
   <div id="game-log">
@@ -66,12 +61,36 @@
 	</div>
   </div>
 
-  <div id="save-load-reset-menu">
-        <button id="save-button">Save Game</button>
-        <button id="load-button">Load Game</button>
-        <button id="reset-button">Reset Game</button>
-        <button id="toggle-buttons">Hide/Show</button>
-  </div> 
+  <div id="menu-bar">
+    <div class="dropdown">
+      <button id="button-1" class="dropbtn">Drug Store</button>
+      <div class="dropdown-content">
+        <button id="buy-drugs-button">Buy Drugs</button>
+        <button id="sell-drugs-button">Sell Drugs</button>
+      </div>
+    </div>
+    <div class="dropdown">
+      <button id="button-2" class="dropbtn">Cassino</button>
+      <div class="dropdown-content">
+        <button id="gamble-button">Gamble</button>
+      </div>
+    </div>
+    <div class="dropdown">
+      <button id="button-3" class="dropbtn">Stock Market</button>
+      <div class="dropdown-content">
+        <button id="buy-stock-button">Buy Stock</button>
+        <button id="sell-stock-button">Sell Stock</button>
+      </div>
+    </div>
+  </div>
+  
+
+<div id="save-load-reset-menu" class="buttons-hidden">
+    <button id="save-button">Save Game</button>
+    <button id="load-button">Load Game</button>
+    <button id="reset-button">Reset Game</button>
+    <button id="toggle-buttons">Hide/Show</button>
+</div>
   </div>
   
 	<script src="script.js"></script>

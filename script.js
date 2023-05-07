@@ -1,20 +1,24 @@
+// Get values from local storage or set default values
 var level = parseInt(localStorage.getItem("level")) || 1;
 var experience = parseInt(localStorage.getItem("experience")) || 0;
 var money = parseInt(localStorage.getItem("money")) || 0;
 var respect = parseInt(localStorage.getItem("respect")) || 0;
-var moneyWithCommas = money.toLocaleString("en-US");
-var respectWithCommas = respect.toLocaleString("en-US");
 var inventory = JSON.parse(localStorage.getItem("inventory")) || [];
-var moneySpan = document.getElementById("money");
-var respectSpan = document.getElementById("respect");
-var gameLog = document.getElementById("game-log");
-var inventoryList = document.getElementById("inventory-list");
 var stocks = JSON.parse(localStorage.getItem("stocks")) || [
     { name: "Dogecoin", price: 100, originalPrice: 100 },
     { name: "Ethereum", price: 500, originalPrice: 500 },
     { name: "Bitcoin", price: 1000, originalPrice: 1000 }
 ];
 
+// Format money and respect with commas
+var moneyWithCommas = money.toLocaleString("en-US");
+var respectWithCommas = respect.toLocaleString("en-US");
+
+// Get DOM elements
+var moneySpan = document.getElementById("money");
+var respectSpan = document.getElementById("respect");
+var gameLog = document.getElementById("game-log");
+var inventoryList = document.getElementById("inventory-list");
 
 updateInventoryList();
 updateStockPricesList();
@@ -24,44 +28,32 @@ document.getElementById("experience").innerHTML = experience;
 document.getElementById("money").innerHTML = moneyWithCommas;
 document.getElementById("respect").innerHTML = respectWithCommas;
 
-document.querySelector('#button-1').addEventListener('click', function() {
-    var dropdownContent = document.querySelector('#button-1 + .dropdown-content');
-    if (dropdownContent.style.display === 'block') {
-      dropdownContent.style.display = 'none';
-    } else {
-      dropdownContent.style.display = 'block';
-    }
-  });
+// Add event listeners to buttons
+addButtonEventListener(1);
+addButtonEventListener(2);
+addButtonEventListener(3);
 
-  document.querySelector('#button-2').addEventListener('click', function() {
-    var dropdownContent = document.querySelector('#button-2 + .dropdown-content');
-    if (dropdownContent.style.display === 'block') {
-      dropdownContent.style.display = 'none';
-    } else {
-      dropdownContent.style.display = 'block';
-    }
-  });
-
-
-  document.querySelector('#button-3').addEventListener('click', function() {
-    var dropdownContent = document.querySelector('#button-3 + .dropdown-content');
-    if (dropdownContent.style.display === 'block') {
-      dropdownContent.style.display = 'none';
-    } else {
-      dropdownContent.style.display = 'block';
-    }
-  });
+function addButtonEventListener(buttonId) {
+    document.querySelector(`#button-${buttonId}`).addEventListener('click', function() {
+        var dropdownContent = document.querySelector(`#button-${buttonId} + .dropdown-content`);
+        if (dropdownContent.style.display === 'block') {
+            dropdownContent.style.display = 'none';
+        } else {
+            dropdownContent.style.display = 'block';
+        }
+    });
+}
 
   
 
+// Update the inventory list
 function updateInventoryList() {
-  console.log(inventoryList);
     // Clear the current contents of the inventory list
     inventoryList.innerHTML = '';
-    
+
     // Group the inventory items by name and sum their quantities
     var groupedInventory = {};
-    for (var i=0; i<inventory.length; i++) {
+    for (var i = 0; i < inventory.length; i++) {
         var item = inventory[i];
         if (groupedInventory[item.name]) {
             groupedInventory[item.name] += item.quantity;
@@ -69,6 +61,7 @@ function updateInventoryList() {
             groupedInventory[item.name] = item.quantity;
         }
     }
+
     // Add each item in the grouped inventory to the list
     for (var itemName in groupedInventory) {
         var item = document.createElement('li');
@@ -77,28 +70,27 @@ function updateInventoryList() {
     }
 }
 
-
+// Update the list of owned stocks
 function updateStocksOwnedList() {
     var stocksOwnedList = document.getElementById("stocks-owned-list");
     stocksOwnedList.innerHTML = "";
+
     for (var i = 0; i < inventory.length; i++) {
         var item = inventory[i];
         var stock = stocks.find(function(stock) {
             return stock.name === item.name;
         });
+
         if (stock) {
             var stockOwnedItem = document.createElement("li");
             stockOwnedItem.textContent = stock.name + ": " + item.quantity + " shares";
-
             stocksOwnedList.appendChild(stockOwnedItem);
         }
     }
 }
+
 updateStocksOwnedList();
 setInterval(updateStocksOwnedList, 1000);
-
-
-
 let canClickRob = true;
 let robCountdownTimer;
 let lastMessageTime; // variable to keep track of the time of the last message
@@ -378,20 +370,21 @@ function buyStock(stockName, quantity) {
             alert("You don't have enough money to buy that many shares.");
         }
     } else {
-        alert("Invalid stock name.");
+        gameLog.innerHTML += "<p>Invalid stock name.</p>";
+        gameLog.scrollTop = gameLog.scrollHeight;
+      }
     }
-}
 
 
-function sellStock(stockName, quantity) {
-    var stockInInventory = inventory.find(function(item) {
-        return item.name === stockName;
-    });
-    if (stockInInventory && stockInInventory.quantity >= quantity) {
+    function sellStock(stockName, quantity) {
         var stock = stocks.find(function(stock) {
-            return stock.name === stockName;
+          return stock.name === stockName;
         });
         if (stock) {
+          var stockInInventory = inventory.find(function(item) {
+            return item.name === stockName;
+          });
+          if (stockInInventory && stockInInventory.quantity >= quantity) {
             var revenue = stock.price * quantity;
             money += revenue;
             moneyWithCommas = money.toLocaleString("en-US");
@@ -400,17 +393,19 @@ function sellStock(stockName, quantity) {
             gameLog.scrollTop = gameLog.scrollHeight;
             stockInInventory.quantity -= quantity;
             if (stockInInventory.quantity === 0) {
-                inventory.splice(inventory.indexOf(stockInInventory), 1);
+              inventory.splice(inventory.indexOf(stockInInventory), 1);
             }
             updateInventoryList();
             saveGame();
+          } else {
+            gameLog.innerHTML += "<p>You don't have that many shares to sell.</p>";
+            gameLog.scrollTop = gameLog.scrollHeight;
+          }
         } else {
-            alert("Invalid stock name.");
+          gameLog.innerHTML += "<p>Invalid stock name.</p>";
+          gameLog.scrollTop = gameLog.scrollHeight;
         }
-    } else {
-        alert("You don't have that many shares to sell.");
-    }
-}
+      }
 
 
 document.getElementById("buy-stock-button").addEventListener("click", function() {

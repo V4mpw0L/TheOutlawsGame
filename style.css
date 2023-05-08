@@ -285,6 +285,30 @@ h1 {
     background-color: #A300A3;
 }
 
+#stocks-owned {
+    margin: 0 auto;
+	text-align: center;
+	background-color: #222;
+	display: inline-block;
+	border: 1px solid #000;
+	box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+	padding: 5px;
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.5); /* Add shadow */
+
+}
+
+#stocks-owned-list {
+    margin: 4px 0;
+	box-shadow: 0px 2px 5px rgba(0,0,0,0.5); /* Add shadow */
+    text-align: center;
+	padding: 4px;
+	  text-shadow: 1px 1px 2px #000; /* Add shadow to the text */
+list-style-type: none;
+    border-radius: 10px;
+
+        
+}
+
 #stock-prices {
     margin-bottom: 20px;
 }
@@ -319,7 +343,7 @@ h1 {
    margin: 2px 0;
 	box-shadow: 0px 2px 5px rgba(0,0,0,0.5); /* Add shadow */
     text-align: center;
-	padding: 1px;
+	padding: 4px;
 
 	
 }

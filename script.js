@@ -436,7 +436,7 @@ function updateStockPricesList() {
     for (var i = 0; i < stocks.length; i++) {
         var stock = stocks[i];
         var stockPriceItem = document.createElement("li");
-        stockPriceItem.textContent = stock.name + ": $" + stock.price;
+        stockPriceItem.textContent = stock.name + ": $" + stock.price.toLocaleString();
         stockPricesList.appendChild(stockPriceItem);
     }
 }

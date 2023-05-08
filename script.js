@@ -257,7 +257,7 @@ document.getElementById("gym-button").addEventListener("click", function() {
     if (canClickGym) {
         canClickGym = false;
         lastMessageTime = new Date().getTime(); // set the initial value of lastMessageTime to the current time
-        let timeLeft = Math.floor(Math.random() * (4000 - 1000) + 1000);
+        let timeLeft = Math.floor(Math.random() * (6000 - 1000) + 1000);
         let gymProgressBar = document.getElementById("gym-progress-bar");
         gymProgressBar.style.width = "0%";
         let totalTime = timeLeft;
@@ -324,7 +324,7 @@ document.getElementById("gamble-button").addEventListener("click", function() {
             gameLog.scrollTop = gameLog.scrollHeight;
         }
         saveGame();
-      } else {
+  } else {
         gameLog.innerHTML += "<p>Invalid bet amount.</p>";
         gameLog.scrollTop = gameLog.scrollHeight;
     }
@@ -408,24 +408,36 @@ function buyStock(stockName, quantity) {
         }
       }
 
-
 document.getElementById("buy-stock-button").addEventListener("click", function() {
     var stockName = prompt("Which stock would you like to buy?", "");
-    var quantity = parseInt(prompt("How many shares would you like to buy?", "0"));
-    if (quantity > 0) {
-        buyStock(stockName, quantity);
+    if (stockName !== null) {
+        var quantity = parseInt(prompt("How many shares would you like to buy?", "0"));
+        if (quantity > 0) {
+            buyStock(stockName, quantity);
+        } else {
+            gameLog.innerHTML += "<p>Invalid quantity.</p>";
+            gameLog.scrollTop = gameLog.scrollHeight;
+        }
     } else {
-        alert("Invalid quantity.");
+        gameLog.innerHTML += "<p>You didn't buy any stock.</p>";
+        gameLog.scrollTop = gameLog.scrollHeight;
     }
 });
 
+
 document.getElementById("sell-stock-button").addEventListener("click", function() {
     var stockName = prompt("Which stock would you like to sell?", "");
-    var quantity = parseInt(prompt("How many shares would you like to sell?", "0"));
-    if (quantity > 0) {
-        sellStock(stockName, quantity);
+    if (stockName !== null) {
+        var quantity = parseInt(prompt("How many shares would you like to sell?", "0"));
+        if (quantity > 0) {
+            sellStock(stockName, quantity);
+        } else {
+            gameLog.innerHTML += "<p>Invalid quantity.</p>";
+            gameLog.scrollTop = gameLog.scrollHeight;
+        }
     } else {
-        alert("Invalid quantity.");
+        gameLog.innerHTML += "<p>You didn't sell any stock.</p>";
+        gameLog.scrollTop = gameLog.scrollHeight;
     }
 });
 
@@ -451,6 +463,8 @@ document.getElementById("toggle-buttons").addEventListener("click", function() {
 
 document.getElementById("save-button").addEventListener("click", function() {
     saveGame();
+    gameLog.innerHTML += "<p><span style='color: green; font-weight: bold;'>Game saved successfully.</span></p>";
+    gameLog.scrollTop = gameLog.scrollHeight;
 });
 
 document.getElementById("load-button").addEventListener("click", function() {

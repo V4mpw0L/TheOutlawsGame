@@ -17,6 +17,16 @@ body {
 	
 }
 
+#money-sprite {
+    width: 16px;
+    height: 16px;
+}
+
+#respect1 {
+    width: 16px;
+    height: 16px;
+}
+
 h1 {
     text-align: center;
     background-image: linear-gradient(to bottom, #FFD700, white, black);
@@ -311,11 +321,11 @@ h1 {
 
 #stocks-owned-list {
     margin: 4px 0;
-	box-shadow: 0px 2px 5px rgba(0,0,0,0.5); /* Add shadow */
+   	box-shadow: 0px 2px 5px rgba(0,0,0,0.5); /* Add shadow */
     text-align: center;
-	padding: 4px;
+   	padding: 4px;
 	  text-shadow: 1px 1px 2px #000; /* Add shadow to the text */
-list-style-type: none;
+    list-style-type: none;
     border-radius: 10px;
 
         
@@ -446,9 +456,8 @@ footer li {
   margin-bottom: 20px;
   margin-top: 20px;
   justify-content: center;
-	 box-shadow: 0px 2px 5px rgba(0,0,0,0.5); /* Add shadow */
-  border-radius: 10px;
-
+	box-shadow: 0px 2px 5px rgba(0,0,0,0.5); /* Add shadow */
+border-radius: 10px;
 }
 
 #rob-button,

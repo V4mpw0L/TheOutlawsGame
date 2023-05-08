@@ -64,6 +64,19 @@ h1 {
 
 }
 
+#level {
+   color: #FF69B4;
+		  text-shadow: 1px 1px 2px #000; /* Add shadow to the text */
+
+	
+}
+
+#experience {
+   color: #008DB9;
+		  text-shadow: 1px 1px 2px #000; /* Add shadow to the text */
+
+}
+
 #inventory {
     margin-bottom: 20px;
 	

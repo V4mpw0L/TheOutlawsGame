@@ -324,8 +324,9 @@ document.getElementById("gamble-button").addEventListener("click", function() {
             gameLog.scrollTop = gameLog.scrollHeight;
         }
         saveGame();
-    } else {
-        alert("Invalid bet amount.");
+      } else {
+        gameLog.innerHTML += "<p>Invalid bet amount.</p>";
+        gameLog.scrollTop = gameLog.scrollHeight;
     }
 });
 

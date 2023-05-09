@@ -115,7 +115,7 @@ document.getElementById("rob-button").addEventListener("click", function() {
             }
         }, intervalTime);
                 
-        var successChance = Math.random() - (respect * 0.0001); // subtract respect divided by 10 from the success chance
+        var successChance = Math.random() + (respect * 0.0001); // subtract respect divided by 10 from the success chance
         if (successChance < 0.5) {
             var moneyGained = Math.floor(Math.random() * 85);
             money += moneyGained;

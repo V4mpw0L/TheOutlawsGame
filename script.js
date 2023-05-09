@@ -44,8 +44,6 @@ function addButtonEventListener(buttonId) {
     });
 }
 
-  
-
 // Update the inventory list
 function updateInventoryList() {
     // Clear the current contents of the inventory list
@@ -117,7 +115,7 @@ document.getElementById("rob-button").addEventListener("click", function() {
                 
         var successChance = Math.random() + (respect * 0.0001); // subtract respect divided by 10 from the success chance
         if (successChance < 0.5) {
-            var moneyGained = Math.floor(Math.random() * 85);
+            var moneyGained = Math.floor(Math.random() * 85) + 1;
             money += moneyGained;
             moneyWithCommas = money.toLocaleString("en-US");
             moneySpan.innerHTML = moneyWithCommas;
@@ -272,7 +270,7 @@ document.getElementById("gym-button").addEventListener("click", function() {
             }
         }, intervalTime);
 
-        var respectGained = Math.floor(Math.random() * 10);
+        var respectGained = Math.floor(Math.random() * 10) + 1;
         respect += respectGained;
         respectWithCommas = respect.toLocaleString("en-US");
         respectSpan.innerHTML = respectWithCommas;

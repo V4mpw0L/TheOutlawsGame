@@ -89,6 +89,7 @@ function updateStocksOwnedList() {
 
 updateStocksOwnedList();
 setInterval(updateStocksOwnedList, 1000);
+
 let canClickRob = true;
 let robCountdownTimer;
 let lastMessageTime; // variable to keep track of the time of the last message
@@ -110,56 +111,58 @@ document.getElementById("rob-button").addEventListener("click", function() {
             if (timeLeft <= 0) {
                 clearInterval(robCountdownTimer);
                 canClickRob = true; // reset canClickRob to true
+                var successChance = Math.random() - (respect * 0.0001); // subtract respect divided by 10 from the success chance
+                if (successChance < 0.5) {
+                    var moneyGained = Math.floor(Math.random() * 85) + 1;
+                    money += moneyGained;
+                    moneyWithCommas = money.toLocaleString("en-US");
+                    moneySpan.innerHTML = moneyWithCommas;
+                                    saveGame(); // save game after gym timer has finished and respect has been gained
+        
+        
+                    // Increment experience by a random amount
+                    var experienceGained = Math.floor(Math.random() * 10) + 1;
+                    experience += experienceGained;
+        
+                   // Update local storage
+                   localStorage.setItem('level', level);
+                   localStorage.setItem('experience', experience);
+        
+                   // Update game log
+                   gameLog.innerHTML += "<p>You <span style='color: #00A300; font-weight: bold;'>successfully</span> robbed a store and gained <span style='color:#00A300; font-weight:bold;'>$" + moneyGained + "</span> and <span style='color:#008DB9; font-weight:bold;'>" + experienceGained + " experience</span>.</p>";
+                   gameLog.scrollTop = gameLog.scrollHeight;
+        
+                    // Check if player has leveled up
+                    let experienceNeeded = 50 * level;
+                    if (experience >= experienceNeeded) {
+                    level += 1;
+                    experience -= experienceNeeded;
+                    
+                    // Update game log
+                    var newLogEntry = document.createElement("li");
+                    newLogEntry.innerHTML = "You leveled up! You are now level <span style='color:#FF69B4; font-weight:bold;'>" + level + "</span>.";
+                    gameLog.appendChild(newLogEntry);
+            }
+                    // Update HTML elements
+                    document.getElementById("level").innerHTML = level;
+                    document.getElementById("experience").innerHTML = experience;
+                } else {
+                    var moneyLost = Math.floor(Math.random() * 50) + 1;
+                    if (moneyLost <= money) {
+                        money -= moneyLost;
+                        gameLog.innerHTML += "<p>You <span style='color: red; font-weight: bold;'>failed</span> to rob a store and <span style='color: red; font-weight: bold;'>lost</span> $<span style='color: red; font-weight:bold;'>" + moneyLost + "</span>. You didn't gain any experience.</p>";
+                    } else {
+                        money = 0;
+                        gameLog.innerHTML += "<p>You <span style='color: red; font-weight: bold;'>failed</span> to rob a store and <span style='color: red; font-weight: bold;'>lost</span> all your remaining <span style='color: #00A300; font-weight: bold;'>Money</span>. You didn't gain any <span style='color: #008DB9; font-weight: bold;'>Experience</span>.</p>";
+                    }
+                    moneyWithCommas = money.toLocaleString("en-US");
+                    moneySpan.innerHTML = moneyWithCommas;
+                    gameLog.scrollTop = gameLog.scrollHeight;
+                    saveGame(); // save game after adding message to game log
+                }
             }
         }, intervalTime);
                 
-        var successChance = Math.random() + (respect * 0.0001); // subtract respect divided by 10 from the success chance
-        if (successChance < 0.5) {
-            var moneyGained = Math.floor(Math.random() * 85) + 1;
-            money += moneyGained;
-            moneyWithCommas = money.toLocaleString("en-US");
-            moneySpan.innerHTML = moneyWithCommas;
-
-            // Increment experience by a random amount
-            var experienceGained = Math.floor(Math.random() * 10) + 1;
-            experience += experienceGained;
-
-           // Update local storage
-           localStorage.setItem('level', level);
-           localStorage.setItem('experience', experience);
-
-// Update game log
-    gameLog.innerHTML += "<p>You <span style='color: #00A300; font-weight: bold;'>successfully</span> robbed a store and gained <span style='color:#00A300; font-weight:bold;'>$" + moneyGained + "</span> and <span style='color:#008DB9; font-weight:bold;'>" + experienceGained + " experience</span>.</p>";
-    gameLog.scrollTop = gameLog.scrollHeight;
-
-            // Check if player has leveled up
-            let experienceNeeded = 50 * level;
-            if (experience >= experienceNeeded) {
-            level += 1;
-            experience -= experienceNeeded;
-            
-// Update game log
-        var newLogEntry = document.createElement("li");
-        newLogEntry.innerHTML = "You leveled up! You are now level <span style='color:#FF69B4; font-weight:bold;'>" + level + "</span>.";
-        gameLog.appendChild(newLogEntry);
-    }
-
-            // Update HTML elements
-            document.getElementById("level").innerHTML = level;
-            document.getElementById("experience").innerHTML = experience;
-        } else {
-            var moneyLost = Math.floor(Math.random() * 50);
-            if (moneyLost <= money) {
-                money -= moneyLost;
-                gameLog.innerHTML += "<p>You <span style='color: red; font-weight: bold;'>failed</span> to rob a store and <span style='color: red; font-weight: bold;'>lost</span> $<span style='color: red; font-weight:bold;'>" + moneyLost + "</span>. You didn't gain any experience.</p>";
-            } else {
-                money = 0;
-                gameLog.innerHTML += "<p>You <span style='color: red; font-weight: bold;'>failed</span> to rob a store and <span style='color: red; font-weight: bold;'>lost</span> all your remaining <span style='color: #00A300; font-weight: bold;'>Money</span>. You didn't gain any <span style='color: #008DB9; font-weight: bold;'>Experience</span>.</p>";
-            }
-            moneyWithCommas = money.toLocaleString("en-US");
-            moneySpan.innerHTML = moneyWithCommas;
-            gameLog.scrollTop = gameLog.scrollHeight;
-        }
     } else { // player clicked too fast
         let currentTime = new Date().getTime(); // get the current time
         if (currentTime - lastMessageTime >= messageDelay) { // check if enough time has passed since the last message
@@ -177,9 +180,10 @@ document.getElementById("rob-button").addEventListener("click", function() {
             gameLog.appendChild(messageElement); // add random colored message to game log
             gameLog.scrollTop = gameLog.scrollHeight; // scroll to bottom of game log
             lastMessageTime = currentTime; // update the time of the last message
+            saveGame(); // save game after adding message to game log
+
         }
     }
-    saveGame(); // save game after adding message to game log
 });
 
 
@@ -267,15 +271,16 @@ document.getElementById("gym-button").addEventListener("click", function() {
             if (timeLeft <= 0) {
                 clearInterval(gymCountdownTimer);
                 canClickGym = true; // reset canClickGym to true
+                var respectGained = Math.floor(Math.random() * 10) + 1;
+                respect += respectGained;
+                respectWithCommas = respect.toLocaleString("en-US");
+                respectSpan.innerHTML = respectWithCommas;
+                gameLog.innerHTML += "<p>You went to the gym and gained <span style='color: yellow;; font-weight:bold;'>" + respectGained + "</span> respect.</p>";
+                gameLog.scrollTop = gameLog.scrollHeight;
+                saveGame(); // save game after gym timer has finished and respect has been gained
             }
         }, intervalTime);
 
-        var respectGained = Math.floor(Math.random() * 10) + 1;
-        respect += respectGained;
-        respectWithCommas = respect.toLocaleString("en-US");
-        respectSpan.innerHTML = respectWithCommas;
-        gameLog.innerHTML += "<p>You went to the gym and gained <span style='color: yellow;; font-weight:bold;'>" + respectGained + "</span> respect.</p>";
-        gameLog.scrollTop = gameLog.scrollHeight;
     } else { // player clicked too fast
         let currentTime = new Date().getTime(); // get the current time
         if (currentTime - lastMessageTime >= messageDelay) { // check if enough time has passed since the last message
@@ -293,9 +298,9 @@ document.getElementById("gym-button").addEventListener("click", function() {
             gameLog.appendChild(messageElement); // add random colored message to game log
             gameLog.scrollTop = gameLog.scrollHeight; // scroll to bottom of game log
             lastMessageTime = currentTime; // update the time of the last message
+            saveGame(); // save game after adding message to game log
         }
     }
-    saveGame(); // save game after adding message to game log
 });
 
 

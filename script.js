@@ -10,6 +10,23 @@ var stocks = JSON.parse(localStorage.getItem("stocks")) || [
     { name: "Bitcoin", price: 1000, originalPrice: 1000 }
 ];
 
+// Get the player name and health bar elements
+const playerNameElement = document.getElementById("player-name");
+const healthBarElement = document.getElementById("health-bar-inner");
+const healthTextElement = document.querySelector(".health-text");
+
+
+
+// Set the initial player name and health
+const playerName = "Player Name";
+let health = 100;
+
+// Update the player name and health bar
+playerNameElement.textContent = playerName;
+healthBarElement.style.width = health + "%";
+healthTextElement.textContent = health;
+
+
 // Format money and respect with commas
 var moneyWithCommas = money.toLocaleString("en-US");
 var respectWithCommas = respect.toLocaleString("en-US");

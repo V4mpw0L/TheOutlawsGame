@@ -24,7 +24,7 @@ body {
 
 #respect1 {
     width: 16px;
-    height: 16px
+    height: 16px;
 }
 
 h1 {
@@ -41,11 +41,11 @@ h1 {
 }
 
 #player-stats p{
-  margin: 4px 0;
+    margin: 4px 0;
 	box-shadow: 0px 2px 5px rgba(0,0,0,0.5); /* Add shadow */
-  text-align: center;
+    text-align: center;
 	padding: 1px;
-	text-shadow: 1px 1px 2px #000; /* Add shadow to the text */
+	  text-shadow: 1px 1px 2px #000; /* Add shadow to the text */
 
 
 }
@@ -57,7 +57,7 @@ h1 {
 	border: 1px solid #000;
 	box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
 	padding: 10px;
-  box-shadow: 0px 2px 5px rgba(0,0,0,0.5); /* Add shadow */
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.5); /* Add shadow */
 
 }
 
@@ -573,3 +573,53 @@ border-radius: 10px;
 
   }
 
+  
+  #player-info {
+    display: flex;
+    align-items: center;
+    text-shadow: 1px 1px 2px #000; /* Add shadow to the text */
+
+  }
+  
+  #player-info img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+    
+  }
+  
+  #player-info h2 {
+    margin: 0;
+    font-size: 20px;
+    
+    
+  }
+  
+  #health-bar {
+    width: 150px; /* Change this value as needed */
+    height: 10px;
+    background-color: #555;
+    border-radius: 10px;
+    margin: 0 auto;
+    overflow: hidden;
+    margin-bottom: 10px;
+    position: relative; /* Add position property */
+
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.5); /* Add shadow */
+  }
+  
+  #health-bar-inner {
+    height: 100%;
+    background-color: green;
+  }
+
+  .health-text {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 10px;
+    text-shadow: 1px 1px 2px #000; /* Add shadow to the text */
+
+  }
+  

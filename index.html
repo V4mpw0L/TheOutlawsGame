@@ -9,12 +9,23 @@
     <link rel="icon" type="image/png" sizes="32x32" href="./img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="./img/ favicon-16x16.png">
 </head>
-	
 <body>
 
 <div id="game-container">
     <h1>The Outlaws</h1>
     <div id="player-stats">
+      <div id="player-info">
+        <img src="./img/profile.gif" alt="Player Image">
+        <div>
+          <h2 id="player-name">Player Name</h2>
+          <div id="health-bar">
+            <div id="health-bar-inner" style="width: 100%">
+              <span class="health-text"></span>
+
+            </div>
+          </div>
+        </div>
+      </div>
         <p>Level: <span id="level">1</span></p>
         <p>Experience: <span id="experience">0</span></p>
 <p><img id="money-sprite" src="./img/money_sprite.png">  $<span id="money">0</span></p>
@@ -101,4 +112,5 @@
       <li><a href="/privacy">Privacy Policy</a></li>
     </ul>
 </footer>
+
 </html>

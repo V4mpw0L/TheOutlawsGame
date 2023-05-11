@@ -10,16 +10,18 @@ body {
 }
 
 #game-container {
-	max-width: 800px;
-	margin: 0 auto;
-	padding: 15px;
-	text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 15px;
+    text-align: center;
 	
 }
+
 
 #money-sprite {
     width: 16px;
     height: 16px;
+	
 }
 
 #respect1 {
@@ -37,7 +39,8 @@ h1 {
     background-color: #222;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
     padding: 10px;  
-	
+	    box-shadow: 0px 2px 5px rgba(0,0,0,0.5); /* Add shadow */
+
 }
 
 #player-stats p{
@@ -50,11 +53,11 @@ h1 {
 
 }
 #player-stats {
-	margin: 0 auto;
+	margin: 6px auto;
+	border-radius: 10px;
 	text-align: center;
 	background-color: #222;
 	display: inline-block;
-	border: 1px solid #000;
 	box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
 	padding: 10px;
     box-shadow: 0px 2px 5px rgba(0,0,0,0.5); /* Add shadow */
@@ -89,6 +92,8 @@ h1 {
 
 #inventory {
     margin-bottom: 20px;
+	    text-align: center;
+
 	
 	
 }
@@ -103,6 +108,9 @@ h1 {
     background-color: #222;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
     padding: 4px;
+	    box-shadow: 0px 2px 5px rgba(0,0,0,0.5); /* Add shadow */
+    margin: 20px;
+
     
 }
 
@@ -115,6 +123,8 @@ h1 {
 	border: 1px solid #000;
 	box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
 	padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.5); /* Add shadow */
 
 }
 
@@ -122,8 +132,8 @@ h1 {
     display: inline-block;
     margin-right: 10px;
   	background-color: #222;
-	  text-shadow: 1px 1px 2px #000; /* Add shadow to the text */
-  font-weight: bold;
+	text-shadow: 1px 1px 2px #000; /* Add shadow to the text */
+    font-weight: bold;
 
     
 }
@@ -163,10 +173,11 @@ h1 {
 	overflow-y: scroll;
 	height: 300px;
     border-radius: 10px;
-    margin-top: 15px;
+    margin: 20px;
     font-size: 14px;
 	box-shadow: 0px 2px 5px rgba(0,0,0,0.5); /* Add shadow */
   text-shadow: 1px 1px 2px #000; /* Add shadow to the text */
+    text-align: center;
 
 
 }
@@ -316,23 +327,27 @@ h1 {
 	box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
 	padding: 5px;
     box-shadow: 0px 2px 5px rgba(0,0,0,0.5); /* Add shadow */
+    border-radius: 10px;
 
 }
 
 #stocks-owned-list {
-    margin: 4px 0;
+  list-style-type: none;
+     margin: 0 auto;
+	text-align: center;
+	background-color: #222;
+	border-radius: 10px;
+	display: inline-block;
    	box-shadow: 0px 2px 5px rgba(0,0,0,0.5); /* Add shadow */
-    text-align: center;
-   	padding: 4px;
-	  text-shadow: 1px 1px 2px #000; /* Add shadow to the text */
-    list-style-type: none;
-    border-radius: 10px;
+	padding: 10px;
+    text-shadow: 1px 1px 2px #000; /* Add shadow to the text */
 
         
 }
 
 #stock-prices {
-    margin-bottom: 20px;
+    margin-bottom: 1px;
+	
 }
 
 #stock-prices h2 {
@@ -345,7 +360,8 @@ h1 {
     background-color: #222;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
     padding: 4px;
-	
+	    box-shadow: 0px 2px 5px rgba(0,0,0,0.5); /* Add shadow */
+
 }
 
 #stock-prices-list {
@@ -353,9 +369,9 @@ h1 {
      margin: 0 auto;
 	text-align: center;
 	background-color: #222;
+	border-radius: 10px;
 	display: inline-block;
-	border: 1px solid #000;
-	box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+   	box-shadow: 0px 2px 5px rgba(0,0,0,0.5); /* Add shadow */
 	padding: 10px;
     text-shadow: 1px 1px 2px #000; /* Add shadow to the text */
 
@@ -398,6 +414,9 @@ h1 {
 footer {
     text-align: center;
 	box-shadow: 0px 2px 5px rgba(0,0,0,0.5); /* Add shadow */
+    margin: 20px;
+	border-radius: 10px;
+    margin-bottom: 50px; /* Change this value as needed */
 
 }
 
@@ -423,7 +442,7 @@ footer li {
 
 #rob-progress-bar-container,
 #gym-progress-bar-container {
-    width: 300px; /* Change this value as needed */
+    width: 350px; /* Change this value as needed */
     height: 10px;
     background-color: #555;
     border-radius: 10px;
@@ -438,6 +457,7 @@ footer li {
     width: 0%;
     height: 100%;
     background-color: #008DB9;
+	
 }
 
 #gym-progress-bar {
@@ -453,18 +473,18 @@ footer li {
   flex-direction: column; /* Change this line */
   align-items: center; /* Change this line */
   flex-wrap: wrap;
-  margin-bottom: 20px;
-  margin-top: 20px;
   justify-content: center;
 	box-shadow: 0px 2px 5px rgba(0,0,0,0.5); /* Add shadow */
 border-radius: 10px;
+	    margin: 15px;
+
 }
 
 #rob-button,
 #gym-button {
   border: none;
 	color: #e7dcdc;
-	padding: 4px 10px;
+	padding: 4px 35px;
 	text-align: center;
 	text-decoration: none;
 	display: inline-block;
@@ -595,31 +615,81 @@ border-radius: 10px;
     
   }
   
-  #health-bar {
-    width: 150px; /* Change this value as needed */
-    height: 10px;
-    background-color: #555;
-    border-radius: 10px;
-    margin: 0 auto;
-    overflow: hidden;
-    margin-bottom: 10px;
-    position: relative; /* Add position property */
+#health-bar {
+  width: 150px; /* Change this value as needed */
+  height: 10px;
+  background-color: #555;
+  border-radius: 10px;
+  margin: 0 auto;
+  overflow: hidden;
+  margin-bottom: 10px;
+  position: relative; /* Add position property */
+  box-shadow: 0px 2px 5px rgba(0,0,0,0.5); /* Add shadow */
+}
 
+#health-bar-inner {
+  height: 100%;
+  background-color: green;
+}
+
+.health-text {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  color: white;
+  font-size: 10px;
+  text-align: center;
+  text-shadow: 1px 1px 2px #000; /* Add shadow to the text */
+}
+
+
+#menu {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #222;
+    display: flex;
+    justify-content: center;
+    padding: 1px;
+    width: 70%; /* Adjust the width */
+    margin: 0 auto; /* Center the menu bar */
+    z-index: 9999;
+    border-radius: 10px; /* Add rounded corners */
     box-shadow: 0px 2px 5px rgba(0,0,0,0.5); /* Add shadow */
-  }
-  
-  #health-bar-inner {
-    height: 100%;
-    background-color: green;
-  }
+}
 
-  .health-text {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    color: white;
-    font-size: 10px;
-    text-shadow: 1px 1px 2px #000; /* Add shadow to the text */
+#menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+	    display: flex;
 
-  }
-  
+}
+
+#menu li {
+    display: inline-block;
+	
+	
+}
+
+#menu a {
+    border: none;
+    color: #e7dcdc;
+    padding: 8px 8px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 4px 10px;
+    cursor: pointer;
+    border-radius: 10px; /* Add rounded corners to buttons */
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.5); /* Add shadow */
+}
+
+#menu a:hover {
+    background-color: #111;
+	
+}

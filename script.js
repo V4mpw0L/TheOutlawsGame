@@ -19,7 +19,7 @@ const healthTextElement = document.querySelector(".health-text");
 
 // Set the initial player name and health
 const playerName = "Player Name";
-let health = 100;
+let health = parseInt(localStorage.getItem("health")) || 100;
 
 // Update the player name and health bar
 playerNameElement.textContent = playerName;
@@ -116,7 +116,7 @@ document.getElementById("rob-button").addEventListener("click", function() {
     if (canClickRob) {
         canClickRob = false;
         lastMessageTime = new Date().getTime(); // set the initial value of lastMessageTime to the current time
-        let timeLeft = Math.floor(Math.random() * (6000 - 1000) + 1000);
+        let timeLeft = Math.floor(Math.random() * (1000 - 1000) + 1000);
         let robProgressBar = document.getElementById("rob-progress-bar");
         robProgressBar.style.width = "0%";
         let totalTime = timeLeft;
@@ -129,7 +129,7 @@ document.getElementById("rob-button").addEventListener("click", function() {
                 clearInterval(robCountdownTimer);
                 canClickRob = true; // reset canClickRob to true
                 var successChance = Math.random() - (respect * 0.0001); // subtract respect divided by 10 from the success chance
-                if (successChance < 0.5) {
+                if (successChance < 10.5) {
                     var moneyGained = Math.floor(Math.random() * 85) + 1;
                     money += moneyGained;
                     moneyWithCommas = money.toLocaleString("en-US");
@@ -152,17 +152,29 @@ document.getElementById("rob-button").addEventListener("click", function() {
                     // Check if player has leveled up
                     let experienceNeeded = 50 * level;
                     if (experience >= experienceNeeded) {
-                    level += 1;
-                    experience -= experienceNeeded;
-                    
+                        level += 1;
+                        experience -= experienceNeeded;
+    
+                    // Add 5 health to the player's health bar
+                    health += 5;
+
+                   // Save the new value of health to local storage
+                      localStorage.setItem('health', health);
+    
                     // Update game log
                     var newLogEntry = document.createElement("li");
-                    newLogEntry.innerHTML = "You leveled up! You are now level <span style='color:#FF69B4; font-weight:bold;'>" + level + "</span>.";
-                    gameLog.appendChild(newLogEntry);
-            }
+                    newLogEntry.innerHTML = "You leveled up! You are now level <span style='color:#FF69B4; font-weight:bold;'>" + level + "</span>. You gained <span style='color:#FF69B4; font-weight:bold;'>5 health</span>.";
+                     gameLog.appendChild(newLogEntry);
+                     }
+
                     // Update HTML elements
                     document.getElementById("level").innerHTML = level;
                     document.getElementById("experience").innerHTML = experience;
+
+                    // Update the player's health bar
+                    healthBarElement.style.width = health + "%";
+                    healthTextElement.textContent = health;
+
                 } else {
                     var moneyLost = Math.floor(Math.random() * 50) + 1;
                     if (moneyLost <= money) {
@@ -504,8 +516,8 @@ function saveGame() {
     localStorage.setItem("respect", respect);
     localStorage.setItem("inventory", JSON.stringify(inventory));
     localStorage.setItem("stocks", JSON.stringify(stocks)); // Save the stocks array to localStorage
+    localStorage.setItem("health", health); // Save the health value to localStorage
 }
-
 
 // Load game state from local storage
 function loadGame() {
@@ -519,6 +531,7 @@ function loadGame() {
         { name: "Ethereum", price: 500, originalPrice: 500 },
         { name: "Bitcoin", price: 1000, originalPrice: 1000 }
     ];
+    health = parseInt(localStorage.getItem("health")) || 100; // Load the health value from localStorage
     document.getElementById("level").innerHTML = level;
     document.getElementById("experience").innerHTML = experience;
     moneySpan.innerHTML = money;
@@ -528,6 +541,7 @@ function loadGame() {
 
 // Reset game state
 function resetGame() {
+    health = 100;
     level = 1;
     experience = 0;
     money = 0;
@@ -540,13 +554,12 @@ function resetGame() {
     ];
     saveGame();
     loadGame();
-// clear the logs
+    // clear the logs
     gameLog.innerHTML = "";
-
- // set the welcome message
-  let messageElement = document.createElement('p');
-  messageElement.innerHTML = "Welcome to The Outlaws!";
-  messageElement.style.color = "white";
-  messageElement.style.fontWeight = "bold";
-  gameLog.appendChild(messageElement);
+    // set the welcome message
+    let messageElement = document.createElement('p');
+    messageElement.innerHTML = "Welcome to The Outlaws!";
+    messageElement.style.color = "white";
+    messageElement.style.fontWeight = "bold";
+    gameLog.appendChild(messageElement);
 }

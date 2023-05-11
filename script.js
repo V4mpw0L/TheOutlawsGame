@@ -116,7 +116,7 @@ document.getElementById("rob-button").addEventListener("click", function() {
     if (canClickRob) {
         canClickRob = false;
         lastMessageTime = new Date().getTime(); // set the initial value of lastMessageTime to the current time
-        let timeLeft = Math.floor(Math.random() * (1000 - 1000) + 1000);
+        let timeLeft = Math.floor(Math.random() * (6000 - 1000) + 1000);
         let robProgressBar = document.getElementById("rob-progress-bar");
         robProgressBar.style.width = "0%";
         let totalTime = timeLeft;
@@ -129,7 +129,7 @@ document.getElementById("rob-button").addEventListener("click", function() {
                 clearInterval(robCountdownTimer);
                 canClickRob = true; // reset canClickRob to true
                 var successChance = Math.random() - (respect * 0.0001); // subtract respect divided by 10 from the success chance
-                if (successChance < 10.5) {
+                if (successChance < 0.5) {
                     var moneyGained = Math.floor(Math.random() * 85) + 1;
                     money += moneyGained;
                     moneyWithCommas = money.toLocaleString("en-US");

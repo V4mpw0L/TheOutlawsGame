@@ -1,113 +1,129 @@
 <!DOCTYPE html>
-<html lang=en>
+<html lang="en">
 <head>
-<title>The Outlaws</title>
-<meta charset=utf-8>
-<meta name=viewport content="width=device-width, initial-scale=1.0">
-<link rel=stylesheet type=text/css href=style.css>
-<link rel=apple-touch-icon sizes=180x180 href=./img/apple-touch-icon.png>
-<link rel=icon type=image/png sizes=32x32 href=./img/favicon-32x32.png>
-<link rel=icon type=image/png sizes=16x16 href="./img/ favicon-16x16.png">
+	<title>The Outlaws</title>
+	  <meta charset="utf-8">
+	  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	  <link rel="stylesheet" type="text/css" href="style.css">
+	  <link rel="apple-touch-icon" sizes="180x180" href="./img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./img/ favicon-16x16.png">
 </head>
 <body>
-<div id=notification></div>
-<div id=game-container>
-<h1>The Outlaws</h1>
-<div id=player-stats-container>
-<div id=player-stats>
-<div id=player-info>
-<img src=./img/profile.gif alt="Player Image">
-<div>
-<h2 id=player-name>Player Name</h2>
-<div id=health-bar>
-<div id=health-bar-inner style=width:100%>
-<span class=health-text></span>
+  
+<div id="notification"></div>
+
+<div id="game-container">
+    <h1>The Outlaws</h1>
+    <div id="player-stats-container">
+        <div id="player-stats">
+            <div id="player-info">
+                <img src="./img/profile.gif" alt="Player Image">
+                <div>
+                    <h2 id="player-name">Player Name</h2>
+                    <div id="health-bar">
+                        <div id="health-bar-inner" style="width: 100%">
+                            <span class="health-text"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p>Level: <span id="level">1</span></p>
+            <p>Experience: <span id="experience">0</span></p>
+            <p><img id="money-sprite" src="./img/money_sprite.png"> $<span id="money">0</span></p>
+            <p><img id="respect1" src="./img/respect1.png"> :<span id="respect">0</span></p>
+        </div>
+
+    <div id="stock-prices">
+        <h2>Stock Prices:</h2>
+        <ul id="stock-prices-list"></ul>
+		    <div id="stocks-owned">
+            <h3>Stocks Owned:</h3>
+            <ul id="stocks-owned-list"></ul>
+        </div>
+    </div>
+    </div>
 </div>
+	
+  <div id="rob-container">
+    <button id="rob-button">Rob a Store</button>
+      <div id="rob-progress-bar-container">
+        <div id="rob-progress-bar"></div>
+  </div>
+  </div>
+
+  <div id="gym-container">
+    <button id="gym-button">Go to the Gym</button>
+      <div id="gym-progress-bar-container">
+        <div id="gym-progress-bar"></div>
+  </div>
+  </div> 
+		
+  <div id="inventory">
+    <h2>Inventory:</h2>
+      <ul id="inventory-list"></ul>
+  </div>
+        
+        
+  <div id="game-menu">
+  </div>
+		
+  <div id="game-log">
+	  <p style="color: white; font-weight: bold;">Welcome to The Outlaws!</p>
+	</div>
+  </div>
+
+  <div id="menu-bar">
+    <div class="dropdown">
+      <button id="button-1" class="dropbtn">Drug Store</button>
+      <div class="dropdown-content">
+        <button id="buy-drugs-button">Buy Drugs</button>
+        <button id="sell-drugs-button">Sell Drugs</button>
+      </div>
+    </div>
+    <div class="dropdown">
+      <button id="button-2" class="dropbtn">Cassino</button>
+      <div class="dropdown-content">
+        <button id="gamble-button">Gamble</button>
+      </div>
+    </div>
+    <div class="dropdown">
+      <button id="button-3" class="dropbtn">Stock Market</button>
+      <div class="dropdown-content">
+        <button id="buy-stock-button">Buy Stock</button>
+        <button id="sell-stock-button">Sell Stock</button>
+      </div>
+    </div>
+  </div>	
+
+	<div id="menu">
+    <ul>
+	    <li><a href="index.html">Home</a></li>
+        <li><a href="index.html">Page 1</a></li>
+        <li><a href="index.html">Page 2</a></li>
+        <li><a href="index.html">Page 3</a></li>
+    </ul>
 </div>
+
+<div id="save-load-reset-menu" class="buttons-hidden">
+    <button id="save-button">Save Game</button>
+    <button id="load-button">Load Game</button>
+    <button id="reset-button">Reset Game</button>
+    <button id="toggle-buttons">Hide/Show</button>
 </div>
-</div>
-<p>Level: <span id=level>1</span></p>
-<p>Experience: <span id=experience>0</span></p>
-<p><img id=money-sprite src=./img/money_sprite.png> $<span id=money>0</span></p>
-<p><img id=respect1 src=./img/respect1.png> :<span id=respect>0</span></p>
-</div>
-<div id=stock-prices>
-<h2>Stock Prices:</h2>
-<ul id=stock-prices-list></ul>
-<div id=stocks-owned>
-<h3>Stocks Owned:</h3>
-<ul id=stocks-owned-list></ul>
-</div>
-</div>
-</div>
-</div>
-<div id=rob-container>
-<button id=rob-button>Rob a Store</button>
-<div id=rob-progress-bar-container>
-<div id=rob-progress-bar></div>
-</div>
-</div>
-<div id=gym-container>
-<button id=gym-button>Go to the Gym</button>
-<div id=gym-progress-bar-container>
-<div id=gym-progress-bar></div>
-</div>
-</div>
-<div id=inventory>
-<h2>Inventory:</h2>
-<ul id=inventory-list></ul>
-</div>
-<div id=game-menu>
-</div>
-<div id=game-log>
-<p style=color:white;font-weight:bold>Welcome to The Outlaws!</p>
-</div>
-</div>
-<div id=menu-bar>
-<div class=dropdown>
-<button id=button-1 class=dropbtn>Drug Store</button>
-<div class=dropdown-content>
-<button id=buy-drugs-button>Buy Drugs</button>
-<button id=sell-drugs-button>Sell Drugs</button>
-</div>
-</div>
-<div class=dropdown>
-<button id=button-2 class=dropbtn>Cassino</button>
-<div class=dropdown-content>
-<button id=gamble-button>Gamble</button>
-</div>
-</div>
-<div class=dropdown>
-<button id=button-3 class=dropbtn>Stock Market</button>
-<div class=dropdown-content>
-<button id=buy-stock-button>Buy Stock</button>
-<button id=sell-stock-button>Sell Stock</button>
-</div>
-</div>
-</div>
-<div id=menu>
-<ul>
-<li><a href=index.html>Home</a></li>
-<li><a href=index.html>Page 1</a></li>
-<li><a href=index.html>Page 2</a></li>
-<li><a href=index.html>Page 3</a></li>
-</ul>
-</div>
-<div id=save-load-reset-menu class=buttons-hidden>
-<button id=save-button>Save Game</button>
-<button id=load-button>Load Game</button>
-<button id=reset-button>Reset Game</button>
-<button id=toggle-buttons>Hide/Show</button>
-</div>
-</div>
-<script src=script.js></script>
+  </div>
+  
+	<script src="script.js"></script>
+	
 </body>
+
 <footer>
-<p>Copyright © 2023 Tiago Cardoso</p>
-<ul>
-<li><a href=index.html>About Us</a></li>
-<li><a href=index.html>Contact Us</a></li>
-<li><a href=index.html>Privacy Policy</a></li>
-</ul>
+  <p>Copyright © 2023 Tiago Cardoso</p>
+    <ul>
+      <li><a href="index.html">About Us</a></li>
+      <li><a href="index.html">Contact Us</a></li>
+      <li><a href="index.html">Privacy Policy</a></li>
+    </ul>
 </footer>
+
 </html>

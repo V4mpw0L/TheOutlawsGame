@@ -117,7 +117,7 @@ document.getElementById("rob-button").addEventListener("click", function() {
         canClickRob = false;
       document.getElementById("rob-button").style.backgroundColor = "gray";
         lastMessageTime = new Date().getTime(); // set the initial value of lastMessageTime to the current time
-        let timeLeft = Math.floor(Math.random() * (6000 - 1000) + 1000);
+        let timeLeft = Math.floor(Math.random() * (7000 - 1000) + 1000);
         let robProgressBar = document.getElementById("rob-progress-bar");
         robProgressBar.style.width = "0%";
         let totalTime = timeLeft;
@@ -156,7 +156,7 @@ document.getElementById("rob-button").addEventListener("click", function() {
                     if (experience >= experienceNeeded) {
                         level += 1;
                         experience -= experienceNeeded;
-    
+  
                     // Add 5 health to the player's health bar
                     health += 5;
 
@@ -291,7 +291,7 @@ document.getElementById("gym-button").addEventListener("click", function() {
         canClickGym = false;
         document.getElementById("gym-button").style.backgroundColor = "gray";
         lastMessageTime = new Date().getTime(); // set the initial value of lastMessageTime to the current time
-        let timeLeft = Math.floor(Math.random() * (6000 - 1000) + 1000);
+        let timeLeft = Math.floor(Math.random() * (7000 - 1000) + 1000);
         let gymProgressBar = document.getElementById("gym-progress-bar");
         gymProgressBar.style.width = "0%";
         let totalTime = timeLeft;

@@ -115,6 +115,7 @@ let messageDelay = 2000; // delay between messages in milliseconds
 document.getElementById("rob-button").addEventListener("click", function() {
     if (canClickRob) {
         canClickRob = false;
+      document.getElementById("rob-button").style.backgroundColor = "gray";
         lastMessageTime = new Date().getTime(); // set the initial value of lastMessageTime to the current time
         let timeLeft = Math.floor(Math.random() * (6000 - 1000) + 1000);
         let robProgressBar = document.getElementById("rob-progress-bar");
@@ -128,6 +129,7 @@ document.getElementById("rob-button").addEventListener("click", function() {
             if (timeLeft <= 0) {
                 clearInterval(robCountdownTimer);
                 canClickRob = true; // reset canClickRob to true
+                document.getElementById("rob-button").style.backgroundColor = "#008DB9";
                 var successChance = Math.random() - (respect * 0.0001); // subtract respect divided by 10 from the success chance
                 if (successChance < 0.5) {
                     var moneyGained = Math.floor(Math.random() * 85) + 1;
@@ -287,6 +289,7 @@ let gymCountdownTimer;
 document.getElementById("gym-button").addEventListener("click", function() {
     if (canClickGym) {
         canClickGym = false;
+        document.getElementById("gym-button").style.backgroundColor = "gray";
         lastMessageTime = new Date().getTime(); // set the initial value of lastMessageTime to the current time
         let timeLeft = Math.floor(Math.random() * (6000 - 1000) + 1000);
         let gymProgressBar = document.getElementById("gym-progress-bar");
@@ -300,6 +303,7 @@ document.getElementById("gym-button").addEventListener("click", function() {
             if (timeLeft <= 0) {
                 clearInterval(gymCountdownTimer);
                 canClickGym = true; // reset canClickGym to true
+                document.getElementById("gym-button").style.backgroundColor = "#B29600";
                 var respectGained = Math.floor(Math.random() * 10) + 1;
                 respect += respectGained;
                 respectWithCommas = respect.toLocaleString("en-US");
@@ -322,7 +326,7 @@ document.getElementById("gym-button").addEventListener("click", function() {
             ];
             let message = messages[Math.floor(Math.random() * messages.length)];
             let messageElement = document.createElement("p");
-            messageElement.innerHTML = message;
+            messageElement.innerHTML = message.bold();
             messageElement.style.color = "red"; // set the color of the message to red
             gameLog.appendChild(messageElement); // add random colored message to game log
             gameLog.scrollTop = gameLog.scrollHeight; // scroll to bottom of game log

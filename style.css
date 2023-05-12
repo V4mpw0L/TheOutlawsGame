@@ -467,6 +467,8 @@ footer li {
 	
 }
 
+
+
 #rob-container,
 #gym-container {
   display: flex;
@@ -625,7 +627,7 @@ border-radius: 10px;
   margin-bottom: 10px;
   position: relative; /* Add position property */
   box-shadow: 0px 2px 5px rgba(0,0,0,0.5); /* Add shadow */
-  margin: 4px 10px;
+     margin: 4px 10px;
 }
 
 #health-bar-inner {

@@ -253,7 +253,7 @@ document.getElementById("rob-button").addEventListener("click", function() {
         canClickRob = false;
       document.getElementById("rob-button").style.backgroundColor = "gray";
         lastMessageTime = new Date().getTime(); // set the initial value of lastMessageTime to the current time
-        let timeLeft = Math.floor(Math.random() * (700 - 1000) + 1000);
+        let timeLeft = Math.floor(Math.random() * (7000 - 1000) + 1000);
         let robProgressBar = document.getElementById("rob-progress-bar");
         robProgressBar.style.width = "0%";
         let totalTime = timeLeft;

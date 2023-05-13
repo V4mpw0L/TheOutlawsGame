@@ -1,6 +1,8 @@
 // Get values from local storage or set default values
 var level = parseInt(localStorage.getItem("level")) || 1;
 var experience = parseInt(localStorage.getItem("experience")) || 0;
+var experienceBar = document.getElementById("experience-bar");
+experienceBar.style.width = experience + "%";
 var money = parseInt(localStorage.getItem("money")) || 0;
 var respect = parseInt(localStorage.getItem("respect")) || 0;
 var health = parseInt(localStorage.getItem("health")) || 100;
@@ -62,6 +64,8 @@ if (!playerName) {
 // Update the player name and health bar
 healthBarElement.style.width = health + "%";
 healthTextElement.textContent = health;
+
+
 // Format money and respect with commas
 var moneyWithCommas = money.toLocaleString("en-US");
 var respectWithCommas = respect.toLocaleString("en-US");
@@ -72,6 +76,7 @@ var gameLog = document.getElementById("game-log");
 var inventoryList = document.getElementById("inventory-list");
 updateInventoryList();
 updateStockPricesList();
+updateExperienceBar();
 document.getElementById("level").innerHTML = level;
 document.getElementById("experience").innerHTML = experience;
 document.getElementById("money").innerHTML = moneyWithCommas;
@@ -80,55 +85,165 @@ document.getElementById("respect").innerHTML = respectWithCommas;
 addButtonEventListener(1);
 addButtonEventListener(2);
 addButtonEventListener(3);
-function addButtonEventListener(buttonId) {
-    document.querySelector(`#button-${buttonId}`).addEventListener('click', function() {
-        var dropdownContent = document.querySelector(`#button-${buttonId} + .dropdown-content`);
-        if (dropdownContent.style.display === 'block') {
-            dropdownContent.style.display = 'none';
-        } else {
-            dropdownContent.style.display = 'block';
-        }
+
+// Add event listener to body
+document.body.addEventListener('click', function(event) {
+  // Check if the clicked element is outside the menu
+  if (!event.target.closest('.dropdown')) {
+    // Hide all dropdowns
+    var dropdownContents = document.querySelectorAll('.dropdown-content');
+    dropdownContents.forEach(function(dropdownContent) {
+      dropdownContent.style.display = 'none';
     });
+  }
+});
+
+function addButtonEventListener(buttonId) {
+  document.querySelector(`#button-${buttonId}`).addEventListener('click', function() {
+    var dropdownContent = document.querySelector(`#button-${buttonId} + .dropdown-content`);
+    if (dropdownContent.style.display === 'block') {
+      dropdownContent.style.display = 'none';
+    } else {
+      dropdownContent.style.display = 'block';
+    }
+  });
 }
+
+function updateExperienceBar() {
+  var experience = parseInt(localStorage.getItem("experience")) || 0;
+  var level = parseInt(localStorage.getItem("level")) || 1;
+  var experienceNeeded = 50 * level;
+  var experiencePercentage = Math.min((experience / experienceNeeded) * 100, 100); // Make sure the percentage is at most 100
+  var experienceBar = document.getElementById("experience-bar");
+  experienceBar.style.width = experiencePercentage + "%";
+    
+}
+
+function showNotification(message) {
+  // Create a new div element for the notification
+  var notification = document.createElement("div");
+  notification.innerHTML = message;
+  notification.classList.add("notification");
+
+  // Add a click event listener to the notification to remove it from the page when clicked
+  notification.addEventListener("click", function() {
+    document.body.removeChild(notification);
+  });
+
+  // Add the notification to the page
+  document.body.appendChild(notification);
+
+  // Animate the notification to move up and fade out
+  setTimeout(function() {
+    if (document.body.contains(notification)) {
+      notification.style.opacity = 0;
+      notification.style.transform = "translateY(-50px)";
+      setTimeout(function() {
+        if (document.body.contains(notification)) {
+          document.body.removeChild(notification);
+        }
+      }, 1000);
+    }
+  }, 3000);
+}
+
+
+
+// Define the Item class
+class Item {
+  constructor(name, quantity, type) {
+    this.name = name;
+    this.quantity = quantity;
+    this.type = type;
+  }
+
+  use() {
+    if (this.type === "potion") {
+      // Use the potion
+      console.log(`Using ${this.name}`);
+      // Decrease the quantity of the potion in the inventory
+      this.quantity--;
+    } else {
+      console.log(`Cannot use ${this.name}`);
+    }
+  }
+}
+
 // Update the inventory list
 function updateInventoryList() {
-    // Clear the current contents of the inventory list
-    inventoryList.innerHTML = '';
-    // Group the inventory items by name and sum their quantities
-    var groupedInventory = {};
-    for (var i = 0; i < inventory.length; i++) {
-        var item = inventory[i];
-        if (groupedInventory[item.name]) {
-            groupedInventory[item.name] += item.quantity;
-        } else {
-            groupedInventory[item.name] = item.quantity;
-        }
+  // Clear the current contents of the inventory list
+  inventoryList.innerHTML = '';
+
+  // Group the inventory items by name and sum their quantities
+  var groupedInventory = {};
+  for (var i = 0; i < inventory.length; i++) {
+    var item = inventory[i];
+    if (groupedInventory[item.name]) {
+      groupedInventory[item.name] += item.quantity;
+    } else {
+      groupedInventory[item.name] = item.quantity;
     }
-    // Add each item in the grouped inventory to the list
-    for (var itemName in groupedInventory) {
-        var item = document.createElement('li');
-        item.textContent = itemName + ' (' + groupedInventory[itemName] + ')';
-        inventoryList.appendChild(item);
-    }
+  }
+
+  // Add each item in the grouped inventory to the list
+  for (var itemName in groupedInventory) {
+    var item = document.createElement('li');
+    item.textContent = itemName + ' (' + groupedInventory[itemName] + ')';
+    inventoryList.appendChild(item);
+  }
 }
+
 // Update the list of owned stocks
 function updateStocksOwnedList() {
-    var stocksOwnedList = document.getElementById("stocks-owned-list");
-    stocksOwnedList.innerHTML = "";
-    for (var i = 0; i < inventory.length; i++) {
-        var item = inventory[i];
-        var stock = stocks.find(function(stock) {
-            return stock.name === item.name;
-        });
-        if (stock) {
-            var stockOwnedItem = document.createElement("li");
-            stockOwnedItem.textContent = stock.name + ": " + item.quantity + " shares";
-            stocksOwnedList.appendChild(stockOwnedItem);
-        }
+  var stocksOwnedList = document.getElementById("stocks-owned-list");
+  stocksOwnedList.innerHTML = "";
+
+  for (var i = 0; i < inventory.length; i++) {
+    var item = inventory[i];
+
+    // Find the stock that matches the name of the inventory item
+    var stock = stocks.find(function(stock) {
+      return stock.name === item.name;
+    });
+
+    if (stock) {
+      var stockOwnedItem = document.createElement("li");
+      stockOwnedItem.textContent = stock.name + ": " + item.quantity + " shares";
+      stocksOwnedList.appendChild(stockOwnedItem);
     }
+  }
 }
+
+// Handle clicking on an item in the inventory list
+function handleInventoryItemClick(itemName) {
+  // Find the item in the inventory
+  var item = inventory.find(function(item) {
+    return item.name === itemName;
+  });
+
+  // Use the item if it is a potion
+  if (item && item.type === "potion") {
+    item.use();
+    updateInventoryList();
+  } else {
+    console.log(`Cannot use ${itemName}`);
+  }
+}
+
+
+// Set up event listeners for inventory item clicks
+var inventoryList = document.getElementById("inventory-list");
+inventoryList.addEventListener("click", function(event) {
+  var itemName = event.target.textContent.split(" (")[0];
+  handleInventoryItemClick(itemName);
+});
+
+// Update the lists
+updateInventoryList();
 updateStocksOwnedList();
 setInterval(updateStocksOwnedList, 1000);
+updateExperienceBar();
+
 let canClickRob = true;
 let robCountdownTimer;
 let lastMessageTime; // variable to keep track of the time of the last message
@@ -138,7 +253,7 @@ document.getElementById("rob-button").addEventListener("click", function() {
         canClickRob = false;
       document.getElementById("rob-button").style.backgroundColor = "gray";
         lastMessageTime = new Date().getTime(); // set the initial value of lastMessageTime to the current time
-        let timeLeft = Math.floor(Math.random() * (7000 - 1000) + 1000);
+        let timeLeft = Math.floor(Math.random() * (700 - 1000) + 1000);
         let robProgressBar = document.getElementById("rob-progress-bar");
         robProgressBar.style.width = "0%";
         let totalTime = timeLeft;
@@ -153,15 +268,24 @@ document.getElementById("rob-button").addEventListener("click", function() {
                 document.getElementById("rob-button").style.backgroundColor = "#5046e6";
                 var successChance = Math.random() - (respect * 0.0001); // subtract respect divided by 10 from the success chance
                 if (successChance < 0.5) {
-                    var moneyGained = Math.floor(Math.random() * 85) + 1;
+                    var moneyGained = Math.floor(Math.random() * (10 * level) + 1);
                     money += moneyGained;
+                    
                     moneyWithCommas = money.toLocaleString("en-US");
                     moneySpan.innerHTML = moneyWithCommas;
                      saveGame(); // save game after gym timer has finished and respect has been gained
                     // Increment experience by a random amount
                     var experienceGained = Math.floor(Math.random() * 10) + 1;
                     experience += experienceGained;
-                   // Update local storage
+                    if (moneyGained > 0 && experienceGained > 0) {
+                     showNotification("You gained <span style='color:#00A300'>$" + moneyGained + "</span> and <span style='color:#7d76e1'>" + experienceGained + " experience</span>!");
+} else if (moneyGained > 0) {
+  showNotification("You gained <span style='color:#00A300'>$" + moneyGained + "</span>!");
+} else if (experienceGained > 0) {
+  showNotification("You gained <span style='color:#7d76e1'>" + experienceGained + " experience</span>!");
+}
+
+                    // Update local storage
                    localStorage.setItem('level', level);
                    localStorage.setItem('experience', experience);
                    // Update game log
@@ -174,6 +298,8 @@ document.getElementById("rob-button").addEventListener("click", function() {
                         experience -= experienceNeeded;
                     // Add 5 health to the player's health bar
                     health += 5;
+                    showNotification("Level up! You are now level <span style='color:#FF69B4'>" + level + "</span>. You gained <span style='color:#FF69B4'>5 health points</span>!");
+
                    // Save the new value of health to local storage
                       localStorage.setItem('health', health);
                     // Update game log
@@ -190,9 +316,12 @@ document.getElementById("rob-button").addEventListener("click", function() {
                     // Update the player's health bar
                     healthBarElement.style.width = health + "%";
                     healthTextElement.textContent = health;
-                   saveGame();
+                    updateInventoryList();
+                    updateStocksOwnedList();
+                    updateExperienceBar();
+                    saveGame();
                 } else {
-                    var moneyLost = Math.floor(Math.random() * 50) + 1;
+                    var moneyLost = Math.floor(Math.random() * (5 * level) + 1);
                     if (moneyLost <= money) {
                         money -= moneyLost;
                         gameLog.innerHTML += "<p>You <span style='color: red; font-weight: bold;'>failed</span> to rob a store and <span style='color: red; font-weight: bold;'>lost</span> $<span style='color: red; font-weight:bold;'>" + moneyLost + "</span>. You didn't gain any experience.</p>";
@@ -200,6 +329,14 @@ document.getElementById("rob-button").addEventListener("click", function() {
                         money = 0;
                         gameLog.innerHTML += "<p>You <span style='color: red; font-weight: bold;'>failed</span> to rob a store and <span style='color: red; font-weight: bold;'>lost</span> all your remaining <span style='color: #00A300; font-weight: bold;'>Money</span>. You didn't gain any <span style='color: #008DB9; font-weight: bold;'>Experience</span>.</p>";
                     }
+                    if (moneyLost <= money) {
+  money -= moneyLost;
+  showNotification("You lost <span style='color: red;'> $" + moneyLost + ".</span>");
+} else {
+  money = 0;
+  showNotification("<span style='color: red;'>You lost all your money.</span>");
+}
+
                     moneyWithCommas = money.toLocaleString("en-US");
                     moneySpan.innerHTML = moneyWithCommas;
                     gameLog.scrollTop = gameLog.scrollHeight;
@@ -223,7 +360,7 @@ document.getElementById("rob-button").addEventListener("click", function() {
             let message = messages[Math.floor(Math.random() * messages.length)];
             let messageElement = document.createElement("p");
             messageElement.innerHTML = message;
-            messageElement.style.color = "red"; // set the color of the message to red
+            messageElement.style.color = "cyan"; // set the color of the message to red
             gameLog.appendChild(messageElement); // add random colored message to game log
             gameLog.scrollTop = gameLog.scrollHeight; // scroll to bottom of game log
             lastMessageTime = currentTime; // update the time of the last message
@@ -231,6 +368,8 @@ document.getElementById("rob-button").addEventListener("click", function() {
         }
     }
 });
+let canClickGym = true;
+let gymCountdownTimer;
 document.getElementById("gym-button").addEventListener("click", function() {
     if (canClickGym) {
         canClickGym = false;
@@ -251,6 +390,9 @@ document.getElementById("gym-button").addEventListener("click", function() {
                 document.getElementById("gym-button").style.backgroundColor = "#d97707";
                 var respectGained = Math.floor(Math.random() * 10) + 1;
                 respect += respectGained;
+                if (respectGained > 0) {
+                 showNotification("You gained <span style='color:#d97707'>" + respectGained + " respect</span>!");
+}
                 respectWithCommas = respect.toLocaleString("en-US");
                 respectSpan.innerHTML = respectWithCommas;
                 gameLog.innerHTML += "<p>You went to the gym and gained <span style='color: #d97707;; font-weight:bold;'>" + respectGained + "</span> respect.</p>";
@@ -275,7 +417,7 @@ document.getElementById("gym-button").addEventListener("click", function() {
             let message = messages[Math.floor(Math.random() * messages.length)];
             let messageElement = document.createElement("p");
             messageElement.innerHTML = message.bold();
-            messageElement.style.color = "red"; // set the color of the message to red
+            messageElement.style.color = "cyan"; // set the color of the message to red
             gameLog.appendChild(messageElement); // add random colored message to game log
             gameLog.scrollTop = gameLog.scrollHeight; // scroll to bottom of game log
             lastMessageTime = currentTime; // update the time of the last message
@@ -339,8 +481,6 @@ document.getElementById("buy-drugs-button").addEventListener("click", function()
     }
     saveGame();
 });
-let canClickGym = true;
-let gymCountdownTimer;
 document.getElementById("gamble-button").addEventListener("click", function() {
     this.disabled = true;
     setTimeout(() => {
@@ -534,6 +674,8 @@ function resetGame() {
     health = 100;
     level = 1;
     experience = 0;
+        experienceBar.value = 0;
+
     money = 0;
     respect = 0;
     inventory = [];
@@ -556,6 +698,7 @@ function resetGame() {
     // Call the saveGame() and loadGame() functions to update the UI
     saveGame();
     loadGame();
+    // Reset the experience bar to 0
     // clear the logs
     gameLog.innerHTML = "";
     // set the welcome message

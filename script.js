@@ -144,7 +144,7 @@ function showNotification(message) {
         }
       }, 1000);
     }
-  }, 3000);
+  }, 2000);
 }
 
 
@@ -279,12 +279,10 @@ document.getElementById("rob-button").addEventListener("click", function() {
                     experience += experienceGained;
                     if (moneyGained > 0 && experienceGained > 0) {
                      showNotification("You gained <span style='color:#00A300'>$" + moneyGained + "</span> and <span style='color:#7d76e1'>" + experienceGained + " experience</span>!");
-} else if (moneyGained > 0) {
-  showNotification("You gained <span style='color:#00A300'>$" + moneyGained + "</span>!");
-} else if (experienceGained > 0) {
-  showNotification("You gained <span style='color:#7d76e1'>" + experienceGained + " experience</span>!");
-}
-
+                       } else if (moneyGained > 0) {
+                     showNotification("You gained <span style='color:#00A300'>$" + moneyGained + "</span>!");
+                        } else if (experienceGained > 0) {
+                     showNotification("You gained <span style='color:#7d76e1'>" + experienceGained + " experience</span>!");}
                     // Update local storage
                    localStorage.setItem('level', level);
                    localStorage.setItem('experience', experience);

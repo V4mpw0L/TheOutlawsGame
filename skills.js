@@ -68,7 +68,7 @@ function gainExperience(skill) {
   buttonElement.disabled = true;
   buttonElement.style.backgroundColor = 'grey';
 
-  let timeRemaining = Math.floor(Math.random() * (7000 - 1000 + 1)) + 1000;
+  let timeRemaining = Math.floor(Math.random() * (6000 - 1000 + 1)) + 1000;
   const totalTime = timeRemaining;
 
   const timer = setInterval(() => {

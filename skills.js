@@ -14,6 +14,11 @@ let skills = {
     experience: 0,
     experienceToNextLevel: 100
   },
+  hunting: {
+    level: 1,
+    experience: 0,
+    experienceToNextLevel: 100
+  },
   woodcutting: {
     level: 1,
     experience: 0,
@@ -25,8 +30,10 @@ const skillColors = {
   mining: 'mining-color',
   fishing: 'fishing-color',
   cooking: 'cooking-color',
-  woodcutting: 'woodcutting-color'
+  woodcutting: 'woodcutting-color',
+  hunting: 'hunting-color'
 };
+
 
 const savedSkills = localStorage.getItem('skills');
 if (savedSkills) {
@@ -42,7 +49,7 @@ updateSkill('mining');
 updateSkill('fishing');
 updateSkill('cooking');
 updateSkill('woodcutting');
-
+updateSkill('hunting');
 
 function updateSkill(skill) {
   const skillElement = document.querySelector(`#${skill}-container`);
@@ -127,8 +134,55 @@ document.querySelector('#mining-button').addEventListener('click', () => gainExp
 document.querySelector('#fishing-button').addEventListener('click', () => gainExperience('fishing'));
 document.querySelector('#cooking-button').addEventListener('click', () => gainExperience('cooking'));
 document.querySelector('#woodcutting-button').addEventListener('click', () => gainExperience('woodcutting'));
+document.querySelector('#hunting-button').addEventListener('click', () => gainExperience('hunting'));
 
-updateSkill('mining');
-updateSkill('fishing');
-updateSkill('cooking');
-updateSkill('woodcutting');
+
+// Adicione um evento de clique ao botão de salvar
+document.querySelector('#save-button').addEventListener('click', () => {
+  // Salvar os dados aqui
+  saveState();
+});
+
+// Add event listener to reset button
+document.querySelector('#reset-button').addEventListener('click', () => {
+  // Reset skills to default values
+  skills = {
+    mining: {
+      level: 1,
+      experience: 0,
+      experienceToNextLevel: 100
+    },
+    fishing: {
+      level: 1,
+      experience: 0,
+      experienceToNextLevel: 100
+    },
+    cooking: {
+      level: 1,
+      experience: 0,
+      experienceToNextLevel: 100
+    },
+    hunting: {
+      level: 1,
+      experience: 0,
+      experienceToNextLevel: 100
+    },
+    woodcutting: {
+      level: 1,
+      experience: 0,
+      experienceToNextLevel: 100
+    }
+  };
+
+  // Save reset state to local storage
+  saveState();
+
+  // Update UI with reset values
+  updateSkill('mining');
+  updateSkill('fishing');
+  updateSkill('cooking');
+  updateSkill('woodcutting');
+  updateSkill('hunting');
+});
+
+

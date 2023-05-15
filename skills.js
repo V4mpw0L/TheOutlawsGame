@@ -1,159 +1,134 @@
-let miningLevel = 1;
-let miningXP = 0;
-
-let fishingLevel = 1;
-let fishingXP = 0;
-
-let woodcuttingLevel = 1;
-let woodcuttingXP = 0;
-
-let cookingLevel = 1;
-let cookingXP = 0;
-
-let skills = [];
-
-// Define the function to get the player's skills
-function getPlayerSkills() {
-    return skills;
+let skills = {
+  mining: {
+    level: 1,
+    experience: 0,
+    experienceToNextLevel: 100
+  },
+  fishing: {
+    level: 1,
+    experience: 0,
+    experienceToNextLevel: 100
+  },
+  cooking: {
+    level: 1,
+    experience: 0,
+    experienceToNextLevel: 100
+  },
+  woodcutting: {
+    level: 1,
+    experience: 0,
+    experienceToNextLevel: 100
   }
+};
 
-// Load player data from local storage
-let playerData = JSON.parse(localStorage.getItem('playerData')) || {};
+const skillColors = {
+  mining: 'mining-color',
+  fishing: 'fishing-color',
+  cooking: 'cooking-color',
+  woodcutting: 'woodcutting-color'
+};
 
-// Set initial values or use saved values
-miningLevel = playerData.miningLevel || miningLevel;
-miningXP = playerData.miningXP || miningXP;
-fishingLevel = playerData.fishingLevel || fishingLevel;
-fishingXP = playerData.fishingXP || fishingXP;
-cookingLevel = playerData.cookingLevel || cookingLevel;
-cookingXP = playerData.cookingXP || cookingXP;
-woodcuttingLevel = playerData.woodcuttingLevel || woodcuttingLevel;
-woodcuttingXP = playerData.woodcuttingXP || woodcuttingXP;
-skills = playerData.skills || skills;
-
-// Define the function to get the player's skills
-function getPlayerSkills() {
-  return skills;
+const savedSkills = localStorage.getItem('skills');
+if (savedSkills) {
+  skills = JSON.parse(savedSkills);
 }
 
-// Call the function to get the player's skills
-skills = getPlayerSkills();
-
-// Loop through the skills and add them to the list
-skills.forEach(skill => {
-  const listItem = document.createElement('li');
-  listItem.textContent = skill;
-  document.getElementById('skills-list').appendChild(listItem);
-});
-
-// Get fishing and mining button elements
-const fishingBtn = document.getElementById('fishing-button');
-const miningBtn = document.getElementById('mining-button');
-const cookingBtn = document.getElementById('cooking-button');
-const woodcuttingBtn = document.getElementById('woodcutting-button');
-
-// Get progress bar elements
-const fishingProgressBar = document.getElementById('fishing-progress-bar');
-const miningProgressBar = document.getElementById('mining-progress-bar');
-const cookingProgressBar = document.getElementById('cooking-progress-bar');
-const woodcuttingProgressBar = document.getElementById('woodcutting-progress-bar');
-
-// Add event listeners to buttons
-fishingBtn.addEventListener('click', startFishing);
-miningBtn.addEventListener('click', startMining);
-cookingBtn.addEventListener('click', startCooking);
-woodcuttingBtn.addEventListener('click', startWoodcutting);
-
-// Function to handle fishing button click
-function startFishing() {
-  // TODO: Implement fishing logic
-  fishingXP += 10; // increase fishing experience by 10 points
-    
-  // check if player has enough experience to level up
-  if (fishingXP >= fishingLevel * 100) {
-    fishingLevel++; // increase fishing level
-    fishingXP = 0; // reset fishing experience
-    alert("You've leveled up in fishing to level " + fishingLevel + "!");
-  }
-
-  // Save player data to local storage
-  playerData.fishingLevel = fishingLevel;
-  playerData.fishingXP = fishingXP;
-  localStorage.setItem('playerData', JSON.stringify(playerData));
-  
-  startProgressBar(fishingProgressBar);
+function saveState() {
+  localStorage.setItem('skills', JSON.stringify(skills));
 }
 
-// Function to handle mining button click
-function startMining() {
-  // TODO: Implement mining logic
-  miningXP += 10; // increase mining experience by 10 points
-    
-  // check if player has enough experience to level up
-  if (miningXP >= miningLevel * 100) {
-    miningLevel++; // increase mining level
-    miningXP = 0; // reset mining experience
-    alert("You've leveled up in mining to level " + miningLevel + "!");
-  }
 
-  // Save player data to local storage
-  playerData.miningLevel = miningLevel;
-  playerData.miningXP = miningXP;
-  localStorage.setItem('playerData', JSON.stringify(playerData));
-  
-  startProgressBar(miningProgressBar);
+updateSkill('mining');
+updateSkill('fishing');
+updateSkill('cooking');
+updateSkill('woodcutting');
+
+
+function updateSkill(skill) {
+  const skillElement = document.querySelector(`#${skill}-container`);
+  const levelElement = skillElement.querySelector(`#${skill}-level`);
+  const experienceElement = skillElement.querySelector(`#${skill}-experience`);
+  const progressBarElement = skillElement.querySelector(`#${skill}-progress-bar`);
+
+  levelElement.textContent = skills[skill].level;
+  experienceElement.textContent = skills[skill].experience;
+
+  const progress = skills[skill].experience / skills[skill].experienceToNextLevel;
+  progressBarElement.style.width = `${progress * 100}%`;
+
 }
 
-// Function to handle mining button click
-function startCooking() {
-  // TODO: Implement mining logic
-  cookingXP += 10; // increase mining experience by 10 points
-    
-  // check if player has enough experience to level up
-  if (cookingXP >= cookingLevel * 100) {
-    cookingLevel++; // increase cooking level
-    cookingXP = 0; // reset cooking experience
-    alert("You've leveled up in cooking to level " + cookingLevel + "!");
-  }
+let isButtonClicked = false;
 
-  // Save player data to local storage
-  playerData.cookingLevel = cookingLevel;
-  playerData.cookingXP = cookingXP;
-  localStorage.setItem('playerData', JSON.stringify(playerData));
-  
-  startProgressBar(cookingProgressBar);
-}
+function gainExperience(skill) {
+  const skillElement = document.querySelector(`#${skill}-container`);
+  const buttonElement = skillElement.querySelector(`#${skill}-button`);
+  const timerBarElement = skillElement.querySelector(`#${skill}-timer-bar`);
 
-// Function to handle mining button click
-function startWoodcutting() {
-  // TODO: Implement mining logic
-  woodcuttingXP += 10; // increase mining experience by 10 points
-    
-  // check if player has enough experience to level up
-  if (woodcuttingXP >= woodcuttingLevel * 100) {
-    woodcuttingLevel++; // increase woodcutting level
-    woodcuttingXP = 0; // reset woodcutting experience
-    alert("You've leveled up in woodcutting to level " + woodcuttingLevel + "!");
-  }
+  buttonElement.disabled = true;
+  buttonElement.style.backgroundColor = 'grey';
 
-  // Save player data to local storage
-  playerData.woodcuttingLevel = woodcuttingLevel;
-  playerData.woodcuttingXP = woodcuttingXP;
-  localStorage.setItem('playerData', JSON.stringify(playerData));
-  
-  startProgressBar(woodcuttingProgressBar);
-}
+  let timeRemaining = Math.floor(Math.random() * (7000 - 1000 + 1)) + 1000;
+  const totalTime = timeRemaining;
 
-// Function to start progress bar animation
-function startProgressBar(progressBar) {
-  progressBar.style.width = '0%';
-  let width = 0;
-  const interval = setInterval(() => {
-    if (width >= 100) {
-      clearInterval(interval);
-    } else {
-      width++;
-      progressBar.style.width = `${width}%`;
+  const timer = setInterval(() => {
+    timeRemaining -= 100;
+    timerBarElement.style.width = `${(timeRemaining / totalTime) * 100}%`;
+
+    if (timeRemaining <= 0) {
+      clearInterval(timer);
+      buttonElement.disabled = false;
+      buttonElement.style.backgroundColor = '';
+      timerBarElement.style.width = '0%';
+      saveState();
     }
-  }, 10);
+  }, 100);
+
+  const previousLevel = skills[skill].level; // remember previous level to check for level up
+  const previousExperience = skills[skill].experience; // remember previous experience to calculate experience gain
+  skills[skill].experience += Math.floor(Math.random() * 10) + 1;
+
+  if (skills[skill].experience >= skills[skill].experienceToNextLevel) {
+    skills[skill].level++;
+    skills[skill].experience -= skills[skill].experienceToNextLevel;
+    skills[skill].experienceToNextLevel *= 2;
+  }
+
+  updateSkill(skill);
+
+  if (skills[skill].level > previousLevel) {
+    // show level up notification
+    createNotification(`Congratulations! Your <span class="${skillColors[skill]}">${skill}</span> skill has leveled up to level <span class="${skillColors[skill]}">${skills[skill].level}</span>!`);
+  } else {
+    // show experience gain notification
+    createNotification(`You have gained ${skills[skill].experience - previousExperience} experience in <span class="${skillColors[skill]}">${skill}</span>!`);
+  }
 }
+
+function createNotification(text) {
+  const notificationElement = document.createElement('div');
+  notificationElement.classList.add('notification');
+  notificationElement.innerHTML = text; // use innerHTML instead of textContent to parse HTML tags
+
+  notificationElement.addEventListener('click', () => {
+    notificationElement.remove();
+  });
+
+  document.body.appendChild(notificationElement);
+
+  setTimeout(() => {
+    notificationElement.remove();
+  }, 2000); // remove notification after 4 seconds
+}
+
+
+
+document.querySelector('#mining-button').addEventListener('click', () => gainExperience('mining'));
+document.querySelector('#fishing-button').addEventListener('click', () => gainExperience('fishing'));
+document.querySelector('#cooking-button').addEventListener('click', () => gainExperience('cooking'));
+document.querySelector('#woodcutting-button').addEventListener('click', () => gainExperience('woodcutting'));
+
+updateSkill('mining');
+updateSkill('fishing');
+updateSkill('cooking');
+updateSkill('woodcutting');

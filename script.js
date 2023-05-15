@@ -672,8 +672,7 @@ function resetGame() {
     health = 100;
     level = 1;
     experience = 0;
-        experienceBar.value = 0;
-
+    experienceBar.value = 0;
     money = 0;
     respect = 0;
     inventory = [];

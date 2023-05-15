@@ -26,6 +26,7 @@ box-shadow: 0px 2px 5px rgba(0,0,0,0.5); /* Add shadow */
   justify-content: center; /* Center the child elements horizontally */
   align-items: center; /* Center the child elements vertically */
   flex-wrap: wrap; /* Wrap child elements to the next line */
+  
 }
 
 
@@ -37,7 +38,9 @@ box-shadow: 0px 2px 5px rgba(0,0,0,0.5); /* Add shadow */
   justify-content: center;
 box-shadow: 0px 2px 5px rgba(0,0,0,0.5); /* Add shadow */
   border-radius: 10px;
-  margin: 15px;
+  margin: 25px;
+  margin-left: 75px;
+  margin-right: 75px;
   }
 
 #fishing-container {
@@ -48,7 +51,9 @@ box-shadow: 0px 2px 5px rgba(0,0,0,0.5); /* Add shadow */
   justify-content: center;
 box-shadow: 0px 2px 5px rgba(0,0,0,0.5); /* Add shadow */
   border-radius: 10px;
-  margin: 15px;
+  margin: 25px;
+  margin-left: 75px;
+  margin-right: 75px;
   }
 
 #cooking-container {
@@ -59,7 +64,9 @@ box-shadow: 0px 2px 5px rgba(0,0,0,0.5); /* Add shadow */
   justify-content: center;
 box-shadow: 0px 2px 5px rgba(0,0,0,0.5); /* Add shadow */
   border-radius: 10px;
-  margin: 15px;
+  margin: 25px;
+  margin-left: 75px;
+  margin-right: 75px;
   }
 #woodcutting-container {
   display: flex;
@@ -69,7 +76,9 @@ box-shadow: 0px 2px 5px rgba(0,0,0,0.5); /* Add shadow */
   justify-content: center;
 box-shadow: 0px 2px 5px rgba(0,0,0,0.5); /* Add shadow */
   border-radius: 10px;
-  margin: 15px;
+  margin: 25px;
+  margin-left: 75px;
+  margin-right: 75px;
   }
 
   #mining-button {
@@ -93,7 +102,7 @@ box-shadow: 0px 2px 5px rgba(0,0,0,0.5); /* Add shadow */
     font-family: Consolas, monospace;
 	text-shadow: 1px 1px 2px #000; /* Add shadow to the text */
 	      padding-left: 40px;
-  background-image: url("./img/mining.png");
+  background-image: url("./img/Mining.png");
   background-repeat: no-repeat;
   background-position: 3px center;
 	background-size: 28px 28px;
@@ -120,7 +129,7 @@ box-shadow: 0px 2px 5px rgba(0,0,0,0.5); /* Add shadow */
     font-family: Consolas, monospace;
 	text-shadow: 1px 1px 2px #000; /* Add shadow to the text */
 	      padding-left: 40px;
-  background-image: url("./img/fishing.png");
+  background-image: url("./img/Fishing.png");
   background-repeat: no-repeat;
   background-position: 3px center;
 	background-size: 28px 28px;
@@ -147,7 +156,7 @@ box-shadow: 0px 2px 5px rgba(0,0,0,0.5); /* Add shadow */
     font-family: Consolas, monospace;
 	text-shadow: 1px 1px 2px #000; /* Add shadow to the text */
 	      padding-left: 40px;
-  background-image: url("./img/cooking.png");
+  background-image: url("./img/Cooking.png");
   background-repeat: no-repeat;
   background-position: 3px center;
 	background-size: 28px 28px;
@@ -174,7 +183,7 @@ box-shadow: 0px 2px 5px rgba(0,0,0,0.5); /* Add shadow */
     font-family: Consolas, monospace;
 	text-shadow: 1px 1px 2px #000; /* Add shadow to the text */
 	    padding-left: 40px;
-  background-image: url("./img/woodcutting.png");
+  background-image: url("./img/Woodcutting.png");
   background-repeat: no-repeat;
   background-position: 3px center;
 	background-size: 28px 28px;
@@ -184,30 +193,35 @@ box-shadow: 0px 2px 5px rgba(0,0,0,0.5); /* Add shadow */
   #fishing-progress-bar-container {
     width: 100%;
     height: 10px;
-    background-color: #ddd;
+    background-color: #555;
     border-radius: 5px;
     margin-top: 10px;
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.5); /* Add shadow */
+    
   }
   #mining-progress-bar-container {
     width: 100%;
     height: 10px;
-    background-color: #ddd;
+    background-color: #555;
     border-radius: 5px;
     margin-top: 10px;
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.5); /* Add shadow */
   }
   #cooking-progress-bar-container {
     width: 100%;
     height: 10px;
-    background-color: #ddd;
+    background-color: #555;
     border-radius: 5px;
     margin-top: 10px;
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.5); /* Add shadow */
   }
   #woodcutting-progress-bar-container {
     width: 100%;
     height: 10px;
-    background-color: #ddd;
+    background-color: #555;
     border-radius: 5px;
     margin-top: 10px;
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.5); /* Add shadow */
   }
   
   #fishing-progress-bar {
@@ -215,24 +229,28 @@ box-shadow: 0px 2px 5px rgba(0,0,0,0.5); /* Add shadow */
     height: 100%;
     background-color: #5046e6;
     border-radius: 5px;
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.5); /* Add shadow */
   }
   #mining-progress-bar {
     width: 0%;
     height: 100%;
     background-color: #A52a2a;
     border-radius: 5px;
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.5); /* Add shadow */
   }
   #cooking-progress-bar {
     width: 0%;
     height: 100%;
     background-color: #d97707;
     border-radius: 5px;
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.5); /* Add shadow */
   }
   #woodcutting-progress-bar {
     width: 0%;
     height: 100%;
     background-color: #00A300;
     border-radius: 5px;
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.5); /* Add shadow */
   }
   
   #menu {
@@ -288,6 +306,8 @@ footer {
     margin: 20px;
 	border-radius: 10px;
     margin-bottom: 50px; /* Change this value as needed */
+    margin-top: 100px;
+    
 }
 footer ul {
    background-image: linear-gradient(to bottom, #FFD700, white, black);
@@ -298,9 +318,143 @@ footer ul {
     background-color: #222;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
     padding: 10px;    ; /* Add shadow */
+    
 }
 footer li {
     display: inline-block;
     margin: 0 10px;
 	box-shadow: 0px 2px 5px rgba(0,0,0,0.5); /* Add shadow */
+}
+
+#experience-bar-container {
+  width: 200px;
+  height: 10px;
+  border: 1px solid black;
+  position: relative;
+  margin: 10px auto;
+  border-radius: 10px;
+   box-shadow: 0px 2px 5px rgba(0,0,0,0.5); /* Add shadow */
+	
+}
+
+#experience-bar {
+  width: 50%;
+  height: 100%;
+  background-color: #7d76e1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: width 0.5s ease-in-out;
+  border-radius: 10px;
+  box-shadow: 0px 2px 5px rgba(0,0,0,0.5); /* Add shadow */
+	
+}
+
+#mining-timer-bar-container,
+#fishing-timer-bar-container,
+#cooking-timer-bar-container,
+#woodcutting-timer-bar-container {
+  width: 100%;
+  width: 50%;
+  margin: 0 auto;
+  height: 10px;
+  background-color: #555;
+  border-radius: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+      box-shadow: 0px 2px 5px rgba(0,0,0,0.5); /* Add shadow */
+
+
+}
+
+#mining-timer-bar,
+#fishing-timer-bar,
+#cooking-timer-bar,
+#woodcutting-timer-bar {
+  width: 0%;
+  height: 100%;
+  background-color: #7d76e1;
+  border-radius: 5px;
+  box-shadow: 0px 2px 5px rgba(0,0,0,0.5); /* Add shadow */
+}
+
+
+.notification {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgb(69 67 67 / 90%);
+  padding: 8px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  font-size: 16px;
+  text-align: center;
+  z-index: 9999;
+  transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+  text-shadow: 1px 1px 2px #000; /* Add shadow to the text */
+	box-shadow: 0px 2px 5px rgba(0,0,0,0.5); /* Add shadow */
+    font-weight: bold;
+    border: 2px solid #586a76; /* Add semi-transparent golden border */
+    animation: fadeOut 3s forwards; /* add fadeOut animation */
+    animation-delay: 2s; /* start fading out after 4 seconds */
+}
+
+@keyframes fadeOut {
+    from { opacity:1; }
+    to { opacity:0; }
+}
+
+.mining-color {
+  color: #A52a2a;
+}
+
+.fishing-color {
+  color: #5046e6;
+  
+}
+
+.cooking-color {
+  color: #d97707;
+}
+
+.woodcutting-color {
+  color: #00A300;
+  
+}
+
+#mining-level {
+  color: #FF69B4;
+  text-shadow: 1px 1px 2px #000; /* Add shadow to the text */
+}
+#mining-experience {
+  color: #a39fdd;
+  text-shadow: 1px 1px 2px #000; /* Add shadow to the text */
+}
+
+#fishing-level {
+  color: #FF69B4;
+  text-shadow: 1px 1px 2px #000; /* Add shadow to the text */
+}
+#fishing-experience {
+  color: #a39fdd;
+  text-shadow: 1px 1px 2px #000; /* Add shadow to the text */
+}
+
+#cooking-level {
+  color: #FF69B4;
+  text-shadow: 1px 1px 2px #000; /* Add shadow to the text */
+}
+#cooking-experience {
+  color: #a39fdd;
+  text-shadow: 1px 1px 2px #000; /* Add shadow to the text */
+}
+#woodcutting-level {
+  color: #FF69B4;
+  text-shadow: 1px 1px 2px #000; /* Add shadow to the text */
+}
+#woodcutting-experience {
+  color: #a39fdd;
+  text-shadow: 1px 1px 2px #000; /* Add shadow to the text */
+  
 }

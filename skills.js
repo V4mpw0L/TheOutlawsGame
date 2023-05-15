@@ -49,7 +49,7 @@ updateSkill('mining');
 updateSkill('fishing');
 updateSkill('cooking');
 updateSkill('woodcutting');
-
+updateSkill('hunting');
 
 function updateSkill(skill) {
   const skillElement = document.querySelector(`#${skill}-container`);

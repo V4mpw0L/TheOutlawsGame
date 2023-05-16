@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	  <meta charset="utf-8">
+	  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	  <link rel="apple-touch-icon" sizes="180x180" href="./img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./img/ favicon-16x16.png">
+    <link rel="stylesheet" type="text/css" href="inventory.css">
+    <title>Inventory</title>
+</head>
+<body>
+    <h1>Inventory</h1>
+    <div class="inventory"></div>
+    <div class="buttons">
+        <button id="previous">Previous</button> 
+        <button id="next">Next</button>
+        <button id="spawn-item">Spawn Item</button>
+    </div>
+    <div id="notification" class="hidden">
+        <div class="item-info">
+            <img id="item-image" src="" alt="">
+            <h3 id="item-name"></h3>
+        </div>
+        <button id="close-button" class="close-button">X</button>
+    </div>
+    	<div id="menu">
+    <ul>
+	    <li><a href="index.html">Home</a></li>
+        <li><a href="skills.html">Skills?</a></li>
+        <li><a href="inventory.html">Inventory?</a></li>
+        <li><a href="index.html">Page 3</a></li>
+    </ul>
+</div>
+    <script type="module" src="inventory.js"></script>
+</body>
+  <footer>
+  <p>Copyright © 2023 Tiago Cardoso</p>
+    <ul>
+      <li><a href="index.html">About Us</a></li>
+      <li><a href="index.html">Contact Us</a></li>
+      <li><a href="index.html">Privacy Policy</a></li>
+    </ul>
+</footer>
+</html>

@@ -41,7 +41,6 @@ h1 {
 
 #player-stats p{
     margin: 4px 0;
-	box-shadow: 0px 2px 5px rgba(0,0,0,0.5); /* Add shadow */
     text-align: center;
 	padding: 1px;
 	text-shadow: 1px 1px 2px #000; /* Add shadow to the text */
@@ -135,7 +134,7 @@ h1 {
 }
 #game-log {
 	background-color: #222;
-	padding: 20px;
+	padding: 10px;
 	overflow-y: scroll;
 	height: 300px;
     border-radius: 10px;
@@ -411,12 +410,11 @@ footer li {
     display: flex;
     justify-content: center;
     padding: 1px;
-    width: 70%; /* Adjust the width */
     margin: 0 auto; /* Center the menu bar */
     z-index: 9999;
     border-radius: 10px; /* Add rounded corners */
     box-shadow: 0px 2px 5px rgba(0,0,0,0.5); /* Add shadow */
-    border: 2px solid #36454F; /* Add semi-transparent golden border */
+    border: 1px solid #36454F; /* Add semi-transparent golden border */
     box-shadow: 0px 0px 5px 2px #36454F; /* Add glowing effect to border with reduced size */
 }
 #menu-bar button {
@@ -532,7 +530,6 @@ footer li {
     display: flex;
     justify-content: center;
     padding: 1px;
-    width: 70%; /* Adjust the width */
     margin: 0 auto; /* Center the menu bar */
     z-index: 9999;
     border-radius: 10px; /* Add rounded corners */
@@ -588,7 +585,6 @@ footer li {
 #experience-bar-container {
   width: 200px;
   height: 10px;
-  border: 1px solid black;
   position: relative;
   margin: 10px auto;
   border-radius: 10px;
@@ -599,7 +595,7 @@ footer li {
 #experience-bar {
   width: 50%;
   height: 100%;
-  background-color: #7d76e1;
+  background-color: #7067e7;
   position: absolute;
   top: 0;
   left: 0;

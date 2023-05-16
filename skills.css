@@ -320,7 +320,6 @@ box-shadow: 0px 2px 5px rgba(0,0,0,0.5); /* Add shadow */
     display: flex;
     justify-content: center;
     padding: 1px;
-    width: 70%; /* Adjust the width */
     margin: 0 auto; /* Center the menu bar */
     z-index: 9999;
     border-radius: 10px; /* Add rounded corners */
@@ -426,20 +425,46 @@ footer li {
 
 }
 
-#hunting-timer-bar,
-#mining-timer-bar,
-#fishing-timer-bar,
-#cooking-timer-bar,
+
 #woodcutting-timer-bar {
   width: 0%;
   height: 100%;
-  background-color: #7d76e1;
+  background-color: #047504;
+  border-radius: 5px;
+  box-shadow: 0px 2px 5px rgba(0,0,0,0.5); /* Add shadow */
+}
+#hunting-timer-bar{
+  width: 0%;
+  height: 100%;
+  background-color: #644d25;
+  border-radius: 5px;
+  box-shadow: 0px 2px 5px rgba(0,0,0,0.5); /* Add shadow */
+}
+#mining-timer-bar{
+  width: 0%;
+  height: 100%;
+  background-color: #7e2020;
+  border-radius: 5px;
+  box-shadow: 0px 2px 5px rgba(0,0,0,0.5); /* Add shadow */
+}
+#fishing-timer-bar{
+  width: 0%;
+  height: 100%;
+  background-color: #3a33a5;
+  border-radius: 5px;
+  box-shadow: 0px 2px 5px rgba(0,0,0,0.5); /* Add shadow */
+}
+#cooking-timer-bar{
+  width: 0%;
+  height: 100%;
+  background-color: #915006;
   border-radius: 5px;
   box-shadow: 0px 2px 5px rgba(0,0,0,0.5); /* Add shadow */
 }
 
 
 .notification {
+  display: fixed;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -536,8 +561,8 @@ footer li {
 
 #reset-button {
   position: absolute;
-    bottom: 5%;
-    left: 50%;
+    bottom: -10%;
+    left: 70%;
     transform: translate(-50%, -50%);
 border: none;
     color: #e7dcdc;
@@ -555,7 +580,7 @@ border: none;
 
 #save-button {
   position: absolute;
-  bottom: 5%;
+  bottom: -10%;
   right: calc(50% + 10px);
   transform: translate(-50%, -50%);
   border: none;
@@ -570,4 +595,9 @@ border: none;
   cursor: pointer;
   border-radius: 10px;
   box-shadow: 0px 2px 5px rgba(0,0,0,0.5);
+}
+
+.disabled {
+  background-color: grey;
+  cursor: not-allowed;
 }

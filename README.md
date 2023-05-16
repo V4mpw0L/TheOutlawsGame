@@ -14,10 +14,15 @@
  * Save Game / Load Game / Reset Game options 
  * Buy and Sell "Drugs"
  * Health bar
+ * Skills System
  * Gamble option 
  * Buy and Sell Stocks
  * Stock Market system with prices changing Up and Down automatically.
-  
+
+ **In Progress:**
+ * Creating Items for the game. 
+
+
  **TO DO:** 
  * Store
  * Combat system 

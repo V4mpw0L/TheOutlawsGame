@@ -82,9 +82,11 @@ function updateInventory() {
           `;
           const itemImage = notification.querySelector('#item-image');
 const itemName = notification.querySelector('#item-name');
+itemName.textContent = item.name;
+itemName.classList.add(`rarity-${item.rarity.toLowerCase()}`);
+
 const itemDescription = notification.querySelector('#item-description');
 const itemAttributes = notification.querySelector('#item-attributes');
-
 const itemRarity = notification.querySelector('#item-rarity');
 itemRarity.textContent = item.rarity;
 itemRarity.classList.add(`rarity-${item.rarity.toLowerCase()}`);

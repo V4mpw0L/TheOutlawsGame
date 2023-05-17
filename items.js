@@ -13,7 +13,7 @@ const items = [
         value: 'Heal'
       }
     ],
-    sprite: './img/hpotion.png',
+    sprite: './img/lifepotion.png',
     rarity: 'common' // lowercase rarity value
   },
   {
@@ -29,7 +29,7 @@ const items = [
         value: 5
       }
     ],
-    sprite: './img/Attack.png',
+    sprite: './img/sword1.png',
     rarity: 'uncommon' // lowercase rarity value
   },
   {
@@ -45,7 +45,7 @@ const items = [
         value: 5
       }
     ],
-    sprite: './img/shield.png',
+    sprite: './img/shield1.png',
     rarity: 'rare' // lowercase rarity value
   },
   {

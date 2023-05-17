@@ -1,4 +1,5 @@
 import items from './items.js';
+const notification = document.querySelector('#notification');
 
 const inventory = document.querySelector('.inventory');
 const previousButton = document.querySelector('#previous');
@@ -9,6 +10,9 @@ const maxSlots = 50;
 let selectedItem = null;
 const spawnItemButton = document.querySelector('#spawn-item');
 const inventoryItems = [];
+
+
+
 
 spawnItemButton.addEventListener('click', () => {
   const itemId = prompt('Enter the ID of the item you want to spawn:');
@@ -30,6 +34,8 @@ spawnItemButton.addEventListener('click', () => {
     alert('Item not found.');
   }
 });
+
+
 
 function updateInventory() {
   inventory.innerHTML = '';
@@ -69,6 +75,7 @@ function updateInventory() {
           notification.innerHTML = `
             <div class="item-info">
               <img id="item-image" src="${item.sprite}" alt="${item.name}">
+              <p id="item-quantity">Qty: ${inventoryItem.count}</p>
               <h3 id="item-name">${item.name}</h3>
               <p id="item-description">${item.description}</p>
               <ul id="item-attributes">
@@ -97,20 +104,43 @@ const equipButton = notification.querySelector('#equip-button');
 const closeButton = notification.querySelector('#close-button');
 
 
-          // Set the position of the notification relative to the clicked item
-          const rect = event.target.getBoundingClientRect();
-          const offsetX = rect.width / 2;
-          const offsetY = -notification.offsetHeight;
-          const x = rect.left + offsetX;
-          const y = rect.top + offsetY;
+ // Set the position of the notification at the center of the screen
+const screenWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+const screenHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+const centerX = screenWidth / 2;
+const centerY = screenHeight / 2;
 
-          notification.style.top = `${y}px`;
-          notification.style.left = `${x}px`;
-          notification.classList.remove('hidden');
+notification.style.top = `${centerY}px`;
+notification.style.left = `${centerX}px`;
+notification.classList.remove('hidden');
 
-          sellButton.addEventListener('click', () => {
-            // handle sell action here
-          });
+
+    sellButton.addEventListener('click', () => {
+      const quantity = parseInt(prompt('Enter the quantity to sell:'));
+      if (isNaN(quantity) || quantity <= 0) {
+        alert('Invalid quantity.');
+        return;
+      }
+    
+      if (selectedItem.count >= quantity) {
+        selectedItem.count -= quantity;
+        if (selectedItem.count === 0) {
+          // Remove the item from the inventory
+          const itemIndex = inventoryItems.findIndex(item => item.id === selectedItem.id);
+          inventoryItems.splice(itemIndex, 1);
+          selectedItem.slot.classList.remove('selected');
+          selectedItem = null;
+          document.querySelector('#notification').classList.add('hidden');
+        }
+    
+        updateInventory();
+        console.log(`Sold ${quantity} item(s)`);
+      } else {
+        alert('Insufficient quantity.');
+      }
+    });
+    
+    
 
           equipButton.addEventListener('click', () => {
             // handle equip action here
@@ -131,6 +161,8 @@ const closeButton = notification.querySelector('#close-button');
 }
 
 updateInventory();
+
+
 
 previousButton.addEventListener('click', () => {
   if (currentPage > 0) {
@@ -161,4 +193,3 @@ function checkButtonStates() {
     nextButton.disabled = false;
   }
 }
-

@@ -87,6 +87,15 @@
     </ul>
 </div>
     <script src="skills.js"></script>
+    <script>
+      // Impedir o zoom na página
+      document.addEventListener('touchstart', function(event) {
+        if (event.touches.length > 1) {
+          event.preventDefault();
+        }
+      }, { passive: false });
+    </script>
+    
   </body>
   <footer>
   <p>Copyright © 2023 Tiago Cardoso</p>

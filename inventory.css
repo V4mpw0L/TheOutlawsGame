@@ -77,24 +77,30 @@ height: 100%;
 
 .buttons {
     display: flex;
-    margin-top: 10px;
+    margin-top: 13px;
+    
 }
 
 button {
-    margin-right: 10px;
+    margin-right: 5px;
+    margin-bottom: 6px;
+    height: 25px;
 }
 
 #notification {
-  position: fixed;
-  top: 0;
-  right: 15;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-70%, -110%);
+  z-index: 9999;
   background-color: rgb(68, 67, 67);
   border: 2px solid #000;
-  padding: 10px;
-box-shadow: 0px 2px 5px rgba(0,0,0,0.5); /* Add shadow */
-border-radius: 10px;
-
+  padding: 0 5px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  
 }
+
 
 .close-button {
   position: absolute;
@@ -118,9 +124,24 @@ border-radius: 10px;
   justify-content: center;
  color: white;
  padding: 0 20px;
+ margin-top: 5px;
+
 
 
 }
+#item-type {
+  color: white;
+}
+
+#item-quantity {
+  font-weight: bold;
+    font-size: 12px;
+  margin: 3px 0;
+  text-shadow: 1px 1px 2px #000; /* Add shadow to the text */
+
+}
+
+
 
 #item-name {
   font-size: 20px;

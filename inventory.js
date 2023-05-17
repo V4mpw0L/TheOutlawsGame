@@ -84,9 +84,14 @@ function updateInventory() {
 const itemName = notification.querySelector('#item-name');
 const itemDescription = notification.querySelector('#item-description');
 const itemAttributes = notification.querySelector('#item-attributes');
+String.prototype.capitalize = function() {
+  return this.charAt(0).toUpperCase() + this.slice(1);
+};
+
 const itemRarity = notification.querySelector('#item-rarity');
 itemRarity.textContent = item.rarity;
 itemRarity.classList.add(`rarity-${item.rarity.toLowerCase()}`);
+
 
 const sellButton = notification.querySelector('#sell-button');
 const equipButton = notification.querySelector('#equip-button');

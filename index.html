@@ -10,7 +10,8 @@
 	<title>The Outlaws</title>
 </head>
 <body>
-<div id="notification"></div>
+<div id="notification" onclick="moveNotificationToCenter()">Click Me</div>
+
 <div id="game-container">
     <h1>The Outlaws</h1>
     <div id="player-stats-container">
@@ -31,7 +32,7 @@
 			   <div id="experience-bar-container">
             <div id="experience-bar"></div>
             </div>
-            <p><img id="money-sprite" src="./img/coin_05D.png" alt="Money logo"> $<span id="money">0</span></p>
+            <p><img id="money-sprite" src="./img/coin_05d.png" alt="Money logo"> $<span id="money">0</span></p>
             <p><img id="respect1" src="./img/Strength.png" alt="Respect logo"> :<span id="respect">0</span></p>
         </div>
 
@@ -108,6 +109,15 @@
 </div>
   </div>
 	<script src="script.js"></script>
+  <script>
+    // Impedir o zoom na página
+    document.addEventListener('touchstart', function(event) {
+      if (event.touches.length > 1) {
+        event.preventDefault();
+      }
+    }, { passive: false });
+  </script>
+  
 </body>
 <footer>
   <p>Copyright © 2023 Tiago Cardoso</p>

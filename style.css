@@ -5,7 +5,9 @@ body {
 	color: #beb7b7;
     font-family: Consolas, monospace;
     padding-top: 20px;
+  
 }
+
 #game-container {
     max-width: 800px;
     margin: 0 auto;
@@ -351,7 +353,7 @@ footer li {
 }
 #rob-progress-bar-container,
 #gym-progress-bar-container {
-    width: 350px; 
+    width: 200px; 
     height: 10px;
     background-color: #555;
     border-radius: 10px;
@@ -569,9 +571,9 @@ footer li {
 #notification {
     display: none;
     position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
     padding: 10px;
     background-color: #222;
     border: 1px solid #000;

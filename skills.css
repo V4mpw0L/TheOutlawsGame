@@ -5,6 +5,7 @@ body {
 	color: #beb7b7;
     font-family: Consolas, monospace;
     padding-top: 20px;
+    
 }
 
 h1 {
@@ -560,40 +561,27 @@ footer li {
 }
 
 #reset-button {
-  position: absolute;
-    bottom: -10%;
-    left: 70%;
-    transform: translate(-50%, -50%);
-border: none;
-    color: #e7dcdc;
-    background-color: #A30000;
-    padding: 4px 4px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 12px;
-    margin: 4px 4px;
-    cursor: pointer;
-    border-radius: 10px;
-	box-shadow: 0px 2px 5px rgba(0,0,0,0.5); /* Add shadow */
+  color: #e7dcdc;
+  background-color: red;
+  bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+	margin-top: 10px;
+  box-shadow: 0px 2px 5px rgba(0,0,0,0.5);
 }
 
 #save-button {
-  position: absolute;
-  bottom: -10%;
-  right: calc(50% + 10px);
-  transform: translate(-50%, -50%);
-  border: none;
+  
   color: #e7dcdc;
   background-color: #00A300;
-  padding: 4px 4px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 12px;
-  margin: 4px 4px;
-  cursor: pointer;
-  border-radius: 10px;
+  bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+	margin-top: 10px;
   box-shadow: 0px 2px 5px rgba(0,0,0,0.5);
 }
 

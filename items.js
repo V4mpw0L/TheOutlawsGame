@@ -14,7 +14,7 @@ const items = [
       }
     ],
     sprite: './img/hpotion.png',
-    rarity: 'Common' // add rarity property
+    rarity: 'common' // lowercase rarity value
   },
   {
     id: 2,
@@ -27,10 +27,10 @@ const items = [
       {
         name: 'Attack',
         value: 5
-      },
+      }
     ],
     sprite: './img/Attack.png',
-    rarity: 'Uncommon' // add rarity property
+    rarity: 'uncommon' // lowercase rarity value
   },
   {
     id: 3,
@@ -46,7 +46,41 @@ const items = [
       }
     ],
     sprite: './img/shield.png',
-    rarity: 'Rare' // add rarity property
+    rarity: 'rare' // lowercase rarity value
+  },
+  {
+    id: 4,
+    name: 'Apple',
+    type: 'food',
+    level: 1,
+    status: 'heal',
+    value: 10,
+    description: 'This is an Apple that restores 10 HP.',
+    attributes: [
+      {
+        name: 'Status',
+        value: 'Heal'
+      }
+    ],
+    sprite: './img/apple.png',
+    rarity: 'celestial' // lowercase rarity value
+  },
+  {
+    id: 5,
+    name: 'Banana',
+    type: 'food',
+    level: 1,
+    status: 'heal',
+    value: 10,
+    description: 'This is an Banana that restores 10 HP.',
+    attributes: [
+      {
+        name: 'Status',
+        value: 'Heal'
+      }
+    ],
+    sprite: './img/banana.png',
+    rarity: 'legendary' // lowercase rarity value
   }
 ];
 

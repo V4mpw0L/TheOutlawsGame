@@ -134,10 +134,12 @@ border-radius: 10px;
   flex-direction: column;
   align-items: center;
   list-style-type: none;
-  padding: 0;
-  font-size: 13px;
+  padding: 5px;
+  font-size: 14px;
   margin: 7px 0;
   text-shadow: 1px 1px 2px #000; /* Add shadow to the text */
+  border: 2px solid black;
+  box-shadow: 0px 2px 5px rgba(0,0,0,0.5);
 
 }
 
@@ -174,12 +176,16 @@ font-size: 15px;
   border-radius: 5px;
   cursor: pointer;
   box-shadow: 0px 2px 5px rgba(0,0,0,0.5);
+    text-shadow: 0px 0px 1px #000; /* Add shadow to the text */
+
 }
 
 #notification button:hover {
   background-color: rgb(66, 64, 64);
   color: #FFD700;
   box-shadow: 0px 2px 10px rgba(0,0,0,0.5);
+  text-shadow: 0px 0px 1px #000; /* Add shadow to the text */
+
 }
 
 #previous {
@@ -296,29 +302,97 @@ footer li {
 	box-shadow: 0px 2px 5px rgba(0,0,0,0.5); /* Add shadow */
 }
 
+
+
+
 .rarity-common {
   color: rgb(102, 206, 102);
   font-size: 18px;
   text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
   font-weight: bold;
+}
+.rarity-common {
+  font-size: 18px;
+  color: rgb(102, 206, 102);
+  text-transform: capitalize;
+  text-shadow: 1px 1px 2px black, 0 0 0 rgb(102, 206, 102);
 
 }
+
+
+
 
 .rarity-uncommon {
   color: rgb(142, 142, 212);
   font-size: 18px;
 font-weight: bold;
 text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-
+}
+.rarity-uncommon {
+  font-size: 18px;
+  color: rgb(142, 142, 212);
+  text-transform: capitalize;
+  text-shadow: 1px 1px 2px black, 0 0 0 rgb(142, 142, 212);
 
 }
 
+
+
+
 .rarity-rare {
-  color: rgb(231, 49, 49);
+  color: rgb(219, 75, 32);
   font-size: 18px;
   text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
   font-weight: bold;
 }
+.rarity-rare {
+  font-size: 18px;
+  color: rgb(219, 85, 44);
+  text-transform: capitalize;
+  text-shadow: 1px 1px 2px black, 0 0 0 rgb(219, 85, 44);
+
+}
+
+
+
+
+.legendary-rare {
+  color: rgb(231, 49, 201);
+  font-size: 18px;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+  font-weight: bold;
+}
+.rarity-legendary {
+  font-size: 18px;
+  color: rgb(231, 49, 201);
+  text-transform: capitalize;
+  text-shadow: 1px 1px 2px black, 0 0 0 rgb(231, 49, 201);
+  font-weight: bold;
+
+}
+
+
+
+.celestial-rare {
+  color: #00FFFF;
+  font-size: 18px;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+  font-weight: bold;
+  
+}
+.rarity-celestial {
+  font-size: 18px;
+  color: cyan;
+  text-transform: capitalize;
+  text-shadow: 1px 1px 2px black, 0 0 0 cyan;
+  font-weight: bold;
+
+}
+
+
+
+
+
 
 .rarity-default {
   color: black;

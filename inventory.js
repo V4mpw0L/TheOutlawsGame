@@ -36,10 +36,10 @@ spawnItemButton.addEventListener('click', () => {
       inventoryItems.push({...item, count: quantity});
     }
     updateInventory();
+localStorage.setItem('inventoryItems', JSON.stringify(inventoryItems));
   } else {
     alert('Item not found.');
   }
-localStorage.setItem('inventoryItems', JSON.stringify(inventoryItems));
 });
 
 
@@ -50,10 +50,25 @@ function updateInventory() {
     slot.classList.add('slot');
     const inventoryItem = inventoryItems[i];
     if (inventoryItem) {
-      const img = document.createElement('img');
-      img.src = inventoryItem.sprite;
-      img.alt = inventoryItem.name;
-      slot.appendChild(img);
+      const item = items.find(item => item.id === inventoryItem.id);
+      const imgContainer = document.createElement('div');
+      imgContainer.classList.add('img-container');
+      
+
+const img = document.createElement('img');
+img.src = inventoryItem.sprite;
+img.alt = inventoryItem.name;
+
+const rarityBorder = document.createElement('div');
+rarityBorder.classList.add(`rarity-border-${inventoryItem.rarity.toLowerCase()}`);
+
+
+imgContainer.appendChild(img);
+imgContainer.appendChild(rarityBorder);
+
+slot.appendChild(imgContainer);
+
+
       const span = document.createElement('span');
       span.textContent = inventoryItem.count;
       slot.appendChild(span);
@@ -93,13 +108,20 @@ function updateInventory() {
             <button id="close-button" class="close-button">X</button>
           `;
           const itemImage = notification.querySelector('#item-image');
+itemImage.src = item.sprite;
+itemImage.alt = item.name;
+itemImage.classList.add(`img-${inventoryItem.rarity.toLowerCase()}`);
+
+ // Add this line
+
           const itemName = notification.querySelector('#item-name');
            itemName.textContent = item.name;
             itemName.classList.add(`rarity-${item.rarity.toLowerCase()}`);
           const itemDescription = notification.querySelector('#item-description');
           const itemAttributes = notification.querySelector('#item-attributes');
           const itemRarity = notification.querySelector('#item-rarity');
-          itemRarity.textContent = item.rarity;
+itemRarity.textContent = `${item.rarity.charAt(0).toUpperCase()}${item.rarity.slice(1).toLowerCase()}`;
+
           itemRarity.classList.add(`rarity-${item.rarity.toLowerCase()}`);
 
          const sellButton = notification.querySelector('#sell-button');

@@ -88,6 +88,26 @@ const items = [
     sprite: './img/banana.png',
     rarity: 'legendary', // lowercase rarity value
   },
+  
+  {
+    id: 6,
+    name: 'Great Sword of the Gods',
+    type: 'weapon',
+    level: 1,
+    status: {
+      name: 'Attack',
+      value: '15 hp',
+    },
+    description: 'This is a Banana that restores 10 HP.',
+    attributes: [
+      {
+        name: 'Attack',
+        value: '15',
+      },
+    ],
+    sprite: './img/sword.png',
+    rarity: 'celestial', // lowercase rarity value
+  }
 ];
 
 export default items;

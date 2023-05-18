@@ -331,13 +331,15 @@ footer li {
   font-size: 18px;
   text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
   font-weight: bold;
+  border-color: green;
+}
 }
 .rarity-common {
   font-size: 18px;
   color: rgb(102, 206, 102);
   text-transform: capitalize;
   text-shadow: 1px 1px 2px black, 0 0 0 rgb(102, 206, 102);
-
+border-color: green;
 }
 
 
@@ -422,3 +424,97 @@ font-weight: bold;
     text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
 
 }
+
+.slot .img-common {
+  border-color: gray;
+}
+
+.slot .img-uncommon {
+  border-color: green;
+}
+
+.slot .img-rare {
+  border-color: blue;
+}
+
+.slot .img-epic {
+  border-color: purple;
+}
+
+.slot .img-legendary {
+  border-color: orange;
+}
+
+.img-container {
+  position: relative;
+}
+
+.rarity-border-common {
+  position: absolute;
+  top: -2px; /* Adjust the top value to match the slot */
+  left: -2px; /* Adjust the left value to match the slot */
+  width: calc(100% + 4px); /* Adjust the width to match the slot */
+  height: calc(100% + 4px); /* Adjust the height to match the slot */
+  border: 1px solid rgb(102, 206, 102);; /* Common rarity color */
+  box-sizing: border-box; /* Include border in the width and height calculations */
+  box-shadow: 0 0 10px 2px rgb(102, 206, 102); /* Glomming effect with transparency */
+        border-radius: 5px;
+
+}
+
+.rarity-border-uncommon {
+  position: absolute;
+  top: -2px; /* Adjust the top value to match the slot */
+  left: -2px; /* Adjust the left value to match the slot */
+  width: calc(100% + 4px); /* Adjust the width to match the slot */
+  height: calc(100% + 4px); /* Adjust the height to match the slot */
+  border: 1px solid rgb(142, 142, 212);; /* Uncommon rarity color */
+  box-sizing: border-box; /* Include border in the width and height calculations */
+  box-shadow: 0 0 10px 2px rgb(142, 142, 212);/* Glomming effect with transparency */
+        border-radius: 5px;
+
+}
+
+.rarity-border-rare {
+  position: absolute;
+  top: -2px; /* Adjust the top value to match the slot */
+  left: -2px; /* Adjust the left value to match the slot */
+  width: calc(100% + 4px); /* Adjust the width to match the slot */
+  height: calc(100% + 4px); /* Adjust the height to match the slot */
+  border: 1px solid rgb(219, 85, 44);; /* Rare rarity color */
+  box-sizing: border-box; /* Include border in the width and height calculations */
+  box-shadow: 0 0 10px 2px rgb(219, 85, 44); /* Glomming effect with transparency */
+        border-radius: 5px;
+
+}
+
+.rarity-border-celestial {
+  position: absolute;
+  top: -2px; /* Adjust the top value to match the slot */
+  left: -2px; /* Adjust the left value to match the slot */
+  width: calc(100% + 4px); /* Adjust the width to match the slot */
+  height: calc(100% + 4px); /* Adjust the height to match the slot */
+  border: 1px solid cyan; /* Celestial rarity color */
+  box-sizing: border-box; /* Include border in the width and height calculations */
+  box-shadow: 0 0 10px 2px cyan; /* Glomming effect with transparency */
+        border-radius: 5px;
+
+}
+
+.rarity-border-legendary {
+  position: absolute;
+  top: -2px; /* Adjust the top value to match the slot */
+  left: -2px; /* Adjust the left value to match the slot */
+  width: calc(100% + 4px); /* Adjust the width to match the slot */
+  height: calc(100% + 4px); /* Adjust the height to match the slot */
+  border: 1px solid rgb(231, 49, 201);; /* Legendary rarity color */
+  box-sizing: border-box; /* Include border in the width and height calculations */
+  box-shadow: 0 0 10px 2px rgb(231, 49, 201); /* Glomming effect with transparency */
+      border-radius: 5px;
+
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+

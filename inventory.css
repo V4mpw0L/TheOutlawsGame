@@ -91,14 +91,15 @@ button {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-70%, -110%);
+  transform: translate(-50%, -50%);
   z-index: 9999;
   background-color: rgb(68, 67, 67);
   border: 2px solid #000;
-  padding: 0 5px;
+  padding: 10px;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
   border-radius: 10px;
-  
+  text-align: center; /* Add this line */
+  overflow: hidden;
 }
 
 
@@ -124,10 +125,11 @@ button {
   justify-content: center;
  color: white;
  padding: 0 20px;
- margin-top: 5px;
+ margin-top: 4px;
+}
 
 .status-value {
-  color: red; /* Change the color to your desired color */
+  color: red; 
 }
 
 
@@ -145,13 +147,15 @@ button {
 }
 
 
-
 #item-name {
-  font-size: 20px;
-  margin: 10px 0;
-  text-shadow: 1px 1px 2px #000; /* Add shadow to the text */
-
+  font-size: 16px;
+  text-shadow: 1px 1px 2px #000;
+  max-width: 400px; /* Adjust the width as needed */
+  word-break: keep-all; /* Prevent line breaks within words */
+  overflow: hidden; /* Hide any overflowing text */
+  text-overflow: ellipsis; /* Add an ellipsis (...) to indicate truncated text */
 }
+
 
 #item-description {
   display: flex;
@@ -162,10 +166,12 @@ button {
   font-size: 14px;
   margin: 7px 0;
   text-shadow: 1px 1px 2px #000; /* Add shadow to the text */
-  border: 2px solid black;
-  box-shadow: 0px 2px 5px rgba(0,0,0,0.5);
-
+  border: 1px solid black;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+  width: 100%; /* Set the width to 100% */
+  overflow-wrap: break-word; /* Allow long words to break and wrap */
 }
+
 
 #item-attributes {
   display: flex;
@@ -173,10 +179,24 @@ button {
   align-items: center;
   list-style-type: none;
   padding: 0;
-  margin: 10px 0;
+  margin: 4px 0;
 text-shadow: 1px 1px 2px #000; /* Add shadow to the text */
-    font-weight: bold;
 font-size: 15px;
+margin-top: 4px;
+
+}
+
+#item-status {
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  list-style-type: none;
+  padding: 0;
+  margin: 4px 0;
+text-shadow: 1px 1px 2px #000; /* Add shadow to the text */
+font-size: 15px;
+margin-top: 4px;
 }
 
 #item-rarity {
@@ -185,8 +205,8 @@ font-size: 15px;
   align-items: center;
   list-style-type: none;
   padding: 1px;
-  margin: 5px 0;
-  font-size: 17px;
+  margin: 1px 0;
+  font-size: 16px;
 
 }
 

@@ -4,17 +4,19 @@ const items = [
     name: 'Potion',
     type: 'potion',
     level: 1,
-    status: 'heal',
-    value: 10,
+    status: {
+      name: 'Heal',
+      value: '10 hp',
+    },
     description: 'This is a health potion that restores 10 HP.',
     attributes: [
       {
         name: 'Status',
-        value: 'Heal'
-      }
+        value: 'Heal',
+      },
     ],
     sprite: './img/lifepotion.png',
-    rarity: 'common' // lowercase rarity value
+    rarity: 'common', // lowercase rarity value
   },
   {
     id: 2,
@@ -26,11 +28,11 @@ const items = [
     attributes: [
       {
         name: 'Attack',
-        value: 5
-      }
+        value: 5,
+      },
     ],
     sprite: './img/sword1.png',
-    rarity: 'uncommon' // lowercase rarity value
+    rarity: 'uncommon', // lowercase rarity value
   },
   {
     id: 3,
@@ -42,46 +44,50 @@ const items = [
     attributes: [
       {
         name: 'Defense',
-        value: 5
-      }
+        value: 5,
+      },
     ],
     sprite: './img/shield1.png',
-    rarity: 'rare' // lowercase rarity value
+    rarity: 'rare', // lowercase rarity value
   },
   {
     id: 4,
     name: 'Apple',
     type: 'food',
     level: 1,
-    status: 'heal',
-    value: 10,
+    status: {
+      name: 'Heal',
+      value: '5 hp',
+    },
     description: 'This is an Apple that restores 10 HP.',
     attributes: [
       {
         name: 'Status',
-        value: 'Heal'
-      }
+        value: 'Heal',
+      },
     ],
     sprite: './img/apple.png',
-    rarity: 'celestial' // lowercase rarity value
+    rarity: 'celestial', // lowercase rarity value
   },
   {
     id: 5,
     name: 'Banana',
     type: 'food',
     level: 1,
-    status: 'heal',
-    value: 10,
-    description: 'This is an Banana that restores 10 HP.',
+    status: {
+      name: 'Heal',
+      value: '10 hp',
+    },
+    description: 'This is a Banana that restores 10 HP.',
     attributes: [
       {
         name: 'Status',
-        value: 'Heal'
-      }
+        value: 'Heal',
+      },
     ],
     sprite: './img/banana.png',
-    rarity: 'legendary' // lowercase rarity value
-  }
+    rarity: 'legendary', // lowercase rarity value
+  },
 ];
 
 export default items;

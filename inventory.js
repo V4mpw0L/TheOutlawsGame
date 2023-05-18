@@ -1,6 +1,6 @@
 import items from './items.js';
-const notification = document.querySelector('#notification');
 
+const notification = document.querySelector('#notification');
 const inventory = document.querySelector('.inventory');
 const previousButton = document.querySelector('#previous');
 const nextButton = document.querySelector('#next');
@@ -11,8 +11,14 @@ let selectedItem = null;
 const spawnItemButton = document.querySelector('#spawn-item');
 const inventoryItems = [];
 
-
-
+// Load inventory items from localStorage on page load
+window.addEventListener('DOMContentLoaded', () => {
+  const storedInventoryItems = localStorage.getItem('inventoryItems');
+  if (storedInventoryItems) {
+    inventoryItems.push(...JSON.parse(storedInventoryItems));
+    updateInventory();
+  }
+});
 
 spawnItemButton.addEventListener('click', () => {
   const itemId = prompt('Enter the ID of the item you want to spawn:');
@@ -33,8 +39,8 @@ spawnItemButton.addEventListener('click', () => {
   } else {
     alert('Item not found.');
   }
+localStorage.setItem('inventoryItems', JSON.stringify(inventoryItems));
 });
-
 
 
 function updateInventory() {
@@ -66,7 +72,6 @@ function updateInventory() {
             selectedItem = null;
             notification.classList.add('hidden');
           }
-
           // Display the notification for the clicked item
           selectedItem = inventoryItem;
           selectedItem.slot = slot;
@@ -88,31 +93,29 @@ function updateInventory() {
             <button id="close-button" class="close-button">X</button>
           `;
           const itemImage = notification.querySelector('#item-image');
-const itemName = notification.querySelector('#item-name');
-itemName.textContent = item.name;
-itemName.classList.add(`rarity-${item.rarity.toLowerCase()}`);
+          const itemName = notification.querySelector('#item-name');
+           itemName.textContent = item.name;
+            itemName.classList.add(`rarity-${item.rarity.toLowerCase()}`);
+          const itemDescription = notification.querySelector('#item-description');
+          const itemAttributes = notification.querySelector('#item-attributes');
+          const itemRarity = notification.querySelector('#item-rarity');
+          itemRarity.textContent = item.rarity;
+          itemRarity.classList.add(`rarity-${item.rarity.toLowerCase()}`);
 
-const itemDescription = notification.querySelector('#item-description');
-const itemAttributes = notification.querySelector('#item-attributes');
-const itemRarity = notification.querySelector('#item-rarity');
-itemRarity.textContent = item.rarity;
-itemRarity.classList.add(`rarity-${item.rarity.toLowerCase()}`);
-
-
-const sellButton = notification.querySelector('#sell-button');
-const equipButton = notification.querySelector('#equip-button');
-const closeButton = notification.querySelector('#close-button');
+         const sellButton = notification.querySelector('#sell-button');
+         const equipButton = notification.querySelector('#equip-button');
+         const closeButton = notification.querySelector('#close-button');
 
 
- // Set the position of the notification at the center of the screen
-const screenWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
-const screenHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
-const centerX = screenWidth / 2;
-const centerY = screenHeight / 2;
+         // Set the position of the notification at the center of the screen
+         const screenWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+         const screenHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+         const centerX = screenWidth / 2;
+         const centerY = screenHeight / 2;
 
-notification.style.top = `${centerY}px`;
-notification.style.left = `${centerX}px`;
-notification.classList.remove('hidden');
+          notification.style.top = `${centerY}px`;
+          notification.style.left = `${centerX}px`;
+          notification.classList.remove('hidden');
 
 
     sellButton.addEventListener('click', () => {
@@ -139,8 +142,6 @@ notification.classList.remove('hidden');
         alert('Insufficient quantity.');
       }
     });
-    
-    
 
           equipButton.addEventListener('click', () => {
             // handle equip action here
@@ -159,10 +160,7 @@ notification.classList.remove('hidden');
     inventory.appendChild(slot);
   }
 }
-
 updateInventory();
-
-
 
 previousButton.addEventListener('click', () => {
   if (currentPage > 0) {
@@ -179,6 +177,8 @@ nextButton.addEventListener('click', () => {
   }
   checkButtonStates();
 });
+
+
 
 function checkButtonStates() {
   if (currentPage === 0) {

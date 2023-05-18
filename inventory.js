@@ -36,7 +36,7 @@ spawnItemButton.addEventListener('click', () => {
       inventoryItems.push({...item, count: quantity});
     }
     updateInventory();
-localStorage.setItem('inventoryItems', JSON.stringify(inventoryItems));
+    localStorage.setItem('inventoryItems', JSON.stringify(inventoryItems));
   } else {
     alert('Item not found.');
   }
@@ -53,6 +53,7 @@ function updateInventory() {
       const item = items.find(item => item.id === inventoryItem.id);
       const imgContainer = document.createElement('div');
       imgContainer.classList.add('img-container');
+      
       
 
 const img = document.createElement('img');
@@ -93,20 +94,26 @@ slot.appendChild(imgContainer);
           slot.classList.add('selected');
 
           notification.innerHTML = `
-            <div class="item-info">
-              <img id="item-image" src="${item.sprite}" alt="${item.name}">
-              <p id="item-quantity">Qty: ${inventoryItem.count}</p>
-              <h3 id="item-name">${item.name}</h3>
-              <p id="item-description">${item.description}</p>
-              <ul id="item-attributes">
-                ${item.attributes.map(attribute => `<li>${attribute.name}: ${attribute.value}</li>`).join('')}
-              </ul>
-              <span id="item-rarity">Rarity: ${item.rarity}</span>
-            </div>
-            <button id="sell-button">Sell</button>
-            <button id="equip-button">Equip</button>
-            <button id="close-button" class="close-button">X</button>
-          `;
+  <div class="item-info">
+    <img id="item-image" src="${item.sprite}" alt="${item.name}">
+    <p id="item-quantity">Qty: ${inventoryItem.count}</p>
+    <h3 id="item-name">${item.name}</h3>
+    <p id="item-description">${item.description}</p>
+    <ul id="item-attributes">
+      ${item.attributes
+        .filter(attribute => attribute.name !== 'Status')
+        .map(attribute => `<li>${attribute.name}: ${attribute.value}</li>`)
+        .join('')}
+    </ul>
+    ${item.status ? `<p id="item-status">Status: ${item.status.name}: ${item.status.value}</p>` : ''}
+    <span id="item-rarity">Rarity: ${item.rarity}</span>
+  </div>
+  <button id="sell-button">Sell</button>
+  <button id="equip-button">Equip</button>
+  <button id="close-button" class="close-button">X</button>
+`;
+
+
           const itemImage = notification.querySelector('#item-image');
 itemImage.src = item.sprite;
 itemImage.alt = item.name;

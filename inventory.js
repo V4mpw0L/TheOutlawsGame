@@ -20,6 +20,8 @@ window.addEventListener('DOMContentLoaded', () => {
   }
 });
 
+
+
 spawnItemButton.addEventListener('click', () => {
   const itemId = prompt('Enter the ID of the item you want to spawn:');
   const item = items.find(item => item.id === parseInt(itemId));
@@ -53,21 +55,14 @@ function updateInventory() {
       const item = items.find(item => item.id === inventoryItem.id);
       const imgContainer = document.createElement('div');
       imgContainer.classList.add('img-container');
-      
-      
-
-const img = document.createElement('img');
-img.src = inventoryItem.sprite;
-img.alt = inventoryItem.name;
-
-const rarityBorder = document.createElement('div');
-rarityBorder.classList.add(`rarity-border-${inventoryItem.rarity.toLowerCase()}`);
-
-
-imgContainer.appendChild(img);
-imgContainer.appendChild(rarityBorder);
-
-slot.appendChild(imgContainer);
+      const img = document.createElement('img');
+      img.src = inventoryItem.sprite;
+      img.alt = inventoryItem.name;
+      const rarityBorder = document.createElement('div');
+      rarityBorder.classList.add(`rarity-border-${inventoryItem.rarity.toLowerCase()}`);
+      imgContainer.appendChild(img);
+      imgContainer.appendChild(rarityBorder);
+      slot.appendChild(imgContainer);
 
 
       const span = document.createElement('span');
@@ -101,23 +96,20 @@ slot.appendChild(imgContainer);
     <p id="item-description">${item.description}</p>
     <ul id="item-attributes">
       ${item.attributes
-        .filter(attribute => attribute.name !== 'Status')
         .map(attribute => `<li>${attribute.name}: ${attribute.value}</li>`)
         .join('')}
     </ul>
-    ${item.status ? `<p id="item-status">Status: ${item.status.name}: ${item.status.value}</p>` : ''}
-    <span id="item-rarity">Rarity: ${item.rarity}</span>
+    <span id="item-rarity">Rarity:${item.rarity}</span>
   </div>
   <button id="sell-button">Sell</button>
   <button id="equip-button">Equip</button>
   <button id="close-button" class="close-button">X</button>
 `;
 
-
           const itemImage = notification.querySelector('#item-image');
-itemImage.src = item.sprite;
-itemImage.alt = item.name;
-itemImage.classList.add(`img-${inventoryItem.rarity.toLowerCase()}`);
+          itemImage.src = item.sprite;
+          itemImage.alt = item.name;
+          itemImage.classList.add(`img-${inventoryItem.rarity.toLowerCase()}`);
 
  // Add this line
 
@@ -127,7 +119,7 @@ itemImage.classList.add(`img-${inventoryItem.rarity.toLowerCase()}`);
           const itemDescription = notification.querySelector('#item-description');
           const itemAttributes = notification.querySelector('#item-attributes');
           const itemRarity = notification.querySelector('#item-rarity');
-itemRarity.textContent = `${item.rarity.charAt(0).toUpperCase()}${item.rarity.slice(1).toLowerCase()}`;
+           itemRarity.textContent = `${item.rarity.charAt(0).toUpperCase()}${item.rarity.slice(1).toLowerCase()}`;
 
           itemRarity.classList.add(`rarity-${item.rarity.toLowerCase()}`);
 
@@ -171,7 +163,7 @@ itemRarity.textContent = `${item.rarity.charAt(0).toUpperCase()}${item.rarity.sl
         alert('Insufficient quantity.');
       }
     });
-
+    
           equipButton.addEventListener('click', () => {
             // handle equip action here
           });

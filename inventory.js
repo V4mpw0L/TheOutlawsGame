@@ -166,7 +166,8 @@ const slotCountDisplay = document.querySelector('#slot-count');
       } else {
         alert('Insufficient quantity.');
       }
-    });
+        localStorage.setItem('inventoryItems', JSON.stringify(inventoryItems));
+      });
     
           equipButton.addEventListener('click', () => {
             // handle equip action here

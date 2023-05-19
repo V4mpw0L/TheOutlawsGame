@@ -57,13 +57,10 @@ function updateSkill(skill) {
   const experienceElement = skillElement.querySelector(`#${skill}-experience`);
   const progressBarElement = skillElement.querySelector(`#${skill}-progress-bar`);
   const buttonElement = skillElement.querySelector(`#${skill}-button`);
-
   levelElement.textContent = skills[skill].level;
   experienceElement.textContent = skills[skill].experience;
-
   const progress = skills[skill].experience / skills[skill].experienceToNextLevel;
   progressBarElement.style.width = `${progress * 100}%`;
-
   if (buttonElement.disabled) {
     buttonElement.style.backgroundColor = 'grey';
   } else {
@@ -71,30 +68,28 @@ function updateSkill(skill) {
   }
 }
 
-
 let isButtonClicked = false;
 function gainExperience(skill) {
   if (isButtonClicked) {
-    return; // Retorna se um botão de habilidade já foi clicado
+    return;
   }
   isButtonClicked = true;
-
   const skillElement = document.querySelector(`#${skill}-container`);
   const buttonElement = skillElement.querySelector(`#${skill}-button`);
   const timerBarElement = skillElement.querySelector(`#${skill}-timer-bar`);
-
   const skillButtons = document.querySelectorAll('.skill-container button');
   skillButtons.forEach((button) => {
     if (button.id !== `${skill}-button`) {
       button.disabled = true;
-      button.classList.add('disabled'); // Adiciona a classe .disabled
+      button.style.backgroundColor = 'grey'; // Set button color to grey
     }
   });
 
-  buttonElement.classList.add('disabled'); // Adiciona a classe .disabled
+  buttonElement.disabled = true;
+  buttonElement.style.backgroundColor = 'grey'; // Set clicked button color to grey
 
-
-
+  
+  
   let timeRemaining = Math.floor(Math.random() * (6000 - 1000 + 1)) + 1000;
   const totalTime = timeRemaining;
 
@@ -103,23 +98,20 @@ function gainExperience(skill) {
     timerBarElement.style.width = `${(timeRemaining / totalTime) * 100}%`;
 
     if (timeRemaining <= 0) {
-      clearInterval(timer);
-      buttonElement.disabled = false;
-      buttonElement.style.backgroundColor = ''; // Restore button color to original
-      timerBarElement.style.width = '0%';
+  clearInterval(timer);
+  buttonElement.disabled = false;
+  buttonElement.style.backgroundColor = ''; // Restore button color to original
 
-      // Enable all other skill buttons
-      skillButtons.forEach((button) => {
-        if (button.id !== `${skill}-button`) {
-          button.disabled = false;
-          button.style.backgroundColor = ''; // Restore button color to original
-        }
-      });
-
-      isButtonClicked = false; // Reset flag
-
-      saveState();
+  // Enable all other skill buttons
+  skillButtons.forEach((button) => {
+    if (button.id !== `${skill}-button`) {
+      button.disabled = false;
+      button.style.backgroundColor = ''; // Restore button color to original
     }
+  });
+  isButtonClicked = false; // Reset flag
+  saveState();
+}
   }, 100);
 
   const previousLevel = skills[skill].level; // remember previous level to check for level up
@@ -216,4 +208,3 @@ document.querySelector('#reset-button').addEventListener('click', () => {
   updateSkill('woodcutting');
   updateSkill('hunting');
 });
-

@@ -6,7 +6,7 @@ const items = [
     level: 1,
     status: {
       name: 'Heal',
-      value: '10 hp',
+      value: '10',
     },
     description: 'This is a health potion that restores 10 HP.',
     attributes: [
@@ -18,6 +18,7 @@ const items = [
     sprite: './img/lifepotion.png',
     rarity: 'common', // lowercase rarity value
   },
+  
   {
     id: 2,
     name: 'Sword',
@@ -34,6 +35,7 @@ const items = [
     sprite: './img/sword1.png',
     rarity: 'uncommon', // lowercase rarity value
   },
+  
   {
     id: 3,
     name: 'Shield',
@@ -50,6 +52,7 @@ const items = [
     sprite: './img/shield1.png',
     rarity: 'rare', // lowercase rarity value
   },
+  
   {
     id: 4,
     name: 'Apple',
@@ -57,7 +60,7 @@ const items = [
     level: 1,
     status: {
       name: 'Heal',
-      value: '5 hp',
+      value: '5',
     },
     description: 'This is an Apple that restores 10 HP.',
     attributes: [
@@ -69,6 +72,7 @@ const items = [
     sprite: './img/apple.png',
     rarity: 'celestial', // lowercase rarity value
   },
+  
   {
     id: 5,
     name: 'Banana',
@@ -76,7 +80,7 @@ const items = [
     level: 1,
     status: {
       name: 'Heal',
-      value: '10 hp',
+      value: '10',
     },
     description: 'This is a Banana that restores 10 HP.',
     attributes: [
@@ -98,7 +102,7 @@ const items = [
       name: 'Attack',
       value: '15 hp',
     },
-    description: 'This is a Banana that restores 10 HP.',
+    description: 'This is a Great Sword of the Gods!.',
     attributes: [
       {
         name: 'Attack',
@@ -107,7 +111,50 @@ const items = [
     ],
     sprite: './img/sword.png',
     rarity: 'celestial', // lowercase rarity value
-  }
+  },
+  
+{
+  id: 7,
+  name: 'Ring of Fire',
+  type: 'accessory',
+  level: 3,
+  attributes: [
+    {
+      name: 'Fire Resistance',
+      value: 10,
+    },
+    {
+      name: 'Strength',
+      value: 5,
+    },
+  ],
+  description: 'A ring that grants resistance to fire and enhances strength.',
+  sprite: './img/ring.png',
+  rarity: 'rare', // lowercase rarity value
+},
+
+
+{
+  id: 8,
+  name: 'Robe of the Archmage',
+  type: 'armor',
+  level: 5,
+  defense: 15,
+  attributes: [
+    {
+      name: 'Intelligence',
+      value: 10,
+    },
+    {
+      name: 'Magic Resistance',
+      value: 8,
+    },
+  ],
+  description: 'A powerful robe worn by legendary archmages, providing exceptional defense and magical attributes.',
+  sprite: './img/robe.png',
+  rarity: 'legendary', // lowercase rarity value
+}
+
 ];
 
 export default items;

@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="apple-touch-icon" sizes="180x180" href="./img/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="./img/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="./img/favicon-16x16.png">
-    <link rel="stylesheet" type="text/css" href="skills.css"> 
-    <title>The Outlaws - Skills Page</title>
-  </head>
-  <body>
-    <h1>The Outlaws - Skills</h1>
-    <ul id="skills-list">
-    </ul>
-    <div id="notification"></div>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="./img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./img/favicon-16x16.png">
+  <link rel="stylesheet" type="text/css" href="skills.css"> 
+  <title>The Outlaws - Skills Page</title>
+</head>
+<body>
+  <h1>The Outlaws - Skills</h1>
+  <ul id="skills-list">
+  </ul>
+  <div id="notification"></div>
     <div id="mining-container">
       <button id="mining-button">Go Mining!</button>
       <div>Level: <span id="mining-level"></span></div>
@@ -78,31 +78,23 @@
   <button id="save-button">Save Game</button>
 	<button id="reset-button">Reset to Default</button>
 
-	<div id="menu">
+<div id="menu">
     <ul>
-	    <li><a href="index.html">Home</a></li>
-        <li><a href="skills.html">Skills?</a></li>
-        <li><a href="inventory.html">Inventory?</a></li>
-        <li><a href="index.html">Page 3</a></li>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="skills.html">Skills?</a></li>
+      <li><a href="inventory.html">Inventory?</a></li>
+      <li><a href="index.html">Page 3</a></li>
     </ul>
-</div>
-    <script src="skills.js"></script>
-    <script>
-      // Impedir o zoom na página
-      document.addEventListener('touchstart', function(event) {
-        if (event.touches.length > 1) {
-          event.preventDefault();
-        }
-      }, { passive: false });
-    </script>
-    
-  </body>
-  <footer>
-  <p>Copyright © 2023 Tiago Cardoso</p>
-    <ul>
-      <li><a href="index.html">About Us</a></li>
-      <li><a href="index.html">Contact Us</a></li>
-      <li><a href="index.html">Privacy Policy</a></li>
-    </ul>
-</footer>
+  </div>
+
+  <script src="skills.js"></script>
+  <script>
+    // Impedir o zoom na página
+    document.addEventListener('touchstart', function(event) {
+      if (event.touches.length > 1) {
+        event.preventDefault();
+      }
+    }, { passive: false });
+  </script>
+</body>
 </html>

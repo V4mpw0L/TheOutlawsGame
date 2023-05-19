@@ -81,15 +81,13 @@ function gainExperience(skill) {
   skillButtons.forEach((button) => {
     if (button.id !== `${skill}-button`) {
       button.disabled = true;
-      button.style.backgroundColor = 'grey'; // Set button color to grey
+      button.style.backgroundColor = 'grey';
     }
   });
 
   buttonElement.disabled = true;
-  buttonElement.style.backgroundColor = 'grey'; // Set clicked button color to grey
+  buttonElement.style.backgroundColor = 'grey';
 
-  
-  
   let timeRemaining = Math.floor(Math.random() * (6000 - 1000 + 1)) + 1000;
   const totalTime = timeRemaining;
 
@@ -97,25 +95,28 @@ function gainExperience(skill) {
     timeRemaining -= 100;
     timerBarElement.style.width = `${(timeRemaining / totalTime) * 100}%`;
 
-    if (timeRemaining <= 0) {
-  clearInterval(timer);
-  buttonElement.disabled = false;
-  buttonElement.style.backgroundColor = ''; // Restore button color to original
+    // Calculate remaining seconds
+    const remainingSeconds = Math.ceil(timeRemaining / 1000);
+timerBarElement.innerHTML = `<span class="timer-bar__text">${remainingSeconds}s</span>`;
 
-  // Enable all other skill buttons
-  skillButtons.forEach((button) => {
-    if (button.id !== `${skill}-button`) {
-      button.disabled = false;
-      button.style.backgroundColor = ''; // Restore button color to original
+    if (timeRemaining <= 0) {
+      clearInterval(timer);
+      buttonElement.disabled = false;
+      buttonElement.style.backgroundColor = '';
+
+      skillButtons.forEach((button) => {
+        if (button.id !== `${skill}-button`) {
+          button.disabled = false;
+          button.style.backgroundColor = '';
+        }
+      });
+      isButtonClicked = false;
+      saveState();
     }
-  });
-  isButtonClicked = false; // Reset flag
-  saveState();
-}
   }, 100);
 
-  const previousLevel = skills[skill].level; // remember previous level to check for level up
-  const previousExperience = skills[skill].experience; // remember previous experience to calculate experience gain
+  const previousLevel = skills[skill].level;
+  const previousExperience = skills[skill].experience;
   skills[skill].experience += Math.floor(Math.random() * 10) + 1;
 
   if (skills[skill].experience >= skills[skill].experienceToNextLevel) {
@@ -127,13 +128,12 @@ function gainExperience(skill) {
   updateSkill(skill);
 
   if (skills[skill].level > previousLevel) {
-    // show level up notification
     createNotification(`Congratulations! Your <span class="${skillColors[skill]}">${skill}</span> skill has leveled up to level <span class="${skillColors[skill]}">${skills[skill].level}</span>!`);
   } else {
-    // show experience gain notification
     createNotification(`You have gained ${skills[skill].experience - previousExperience} experience in <span class="${skillColors[skill]}">${skill}</span>!`);
   }
 }
+
 
 function createNotification(text) {
   const notificationElement = document.createElement('div');
@@ -208,3 +208,5 @@ document.querySelector('#reset-button').addEventListener('click', () => {
   updateSkill('woodcutting');
   updateSkill('hunting');
 });
+
+

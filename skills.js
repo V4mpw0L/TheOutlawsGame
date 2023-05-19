@@ -217,4 +217,3 @@ document.querySelector('#reset-button').addEventListener('click', () => {
   updateSkill('hunting');
 });
 
-

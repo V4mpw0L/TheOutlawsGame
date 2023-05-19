@@ -136,21 +136,17 @@ const items = [
 
 {
   id: 8,
-  name: 'Robe of the Archmage',
+  name: 'Armor of the Archmage',
   type: 'armor',
   level: 5,
   defense: 15,
   attributes: [
     {
-      name: 'Intelligence',
-      value: 10,
-    },
-    {
-      name: 'Magic Resistance',
-      value: 8,
+      name: 'Defense',
+      value: 15,
     },
   ],
-  description: 'A powerful robe worn by legendary archmages, providing exceptional defense and magical attributes.',
+  description: 'A powerful armor worn by legendary archmages, providing exceptional defense.',
   sprite: './img/robe.png',
   rarity: 'legendary', // lowercase rarity value
 }

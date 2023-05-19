@@ -7,9 +7,22 @@ body {
 
 }
 
-h1 {
+h1{
     text-align: center;
-    background-image: linear-gradient(to bottom, #FFD700, white, black);
+    background-image: linear-gradient(to bottom, #FFD700, white, black); /* Modify the gradient direction */
+    border-radius: 10px;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-color: #222;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    padding: 10px;  
+	box-shadow: 0px 2px 5px rgba(0,0,0,0.5); /* Add shadow */
+}
+
+h2 {
+text-align: center;
+    background-image: linear-gradient(to bottom, #FFD700, white, grey);
     border-radius: 10px;
     -webkit-background-clip: text;
     background-clip: text;
@@ -60,7 +73,7 @@ height: 100%;
 .slot span {
     position: absolute;
     top: -10px;
-    left: 50%;
+    left: 15%;
     transform: translateX(-50%);
     font-size: 10px;
     font-weight: bold;
@@ -74,18 +87,46 @@ height: 100%;
 
 
 
-
 .buttons {
-    display: flex;
-    margin-top: 13px;
-    
+  display: flex;
+  margin-top: 10px;
 }
 
 button {
-    margin-right: 5px;
-    margin-bottom: 6px;
-    height: 25px;
+  margin-right: 5px;
+  margin-bottom: 6px;
+  height: 25px;
+  background-color: gold;
+  color: black;
+  border: none;
+  padding: 5px 10px;
+  font-size: 14px;
+  font-weight: bold;
 }
+
+button:disabled {
+  background-color: grey;
+  cursor: not-allowed;
+}
+
+
+
+#slot-count {
+font-family: MedievalSharp, fantasy; /* Replace "Your RPG Font" with the name of your desired RPG-style font */
+  
+  position: absolute;
+  top: 95px; /* Adjust the top value to position it vertically */
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%);
+  font-size: 13px;
+  font-weight: bold;
+  color: #D1B000;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 1px 2px;
+  border-radius: 10%;
+}
+
 
 #notification {
   position: absolute;
@@ -126,6 +167,7 @@ button {
  color: white;
  padding: 0 20px;
  margin-top: 4px;
+ 
 }
 
 .status-value {
@@ -143,6 +185,7 @@ button {
   font-size: 12px;
   margin: 3px 0;
   text-shadow: 1px 1px 2px #000; /* Add shadow to the text */
+  margin-top: 4px;
 
 }
 
@@ -300,7 +343,7 @@ margin-top: 4px;
 }
 #menu a {
     border: none;
-    color: #e7dcdc;
+    color: white;
     padding: 8px 8px;
     text-align: center;
     text-decoration: none;
@@ -474,68 +517,95 @@ font-weight: bold;
 
 .rarity-border-common {
   position: absolute;
-  top: -2px; /* Adjust the top value to match the slot */
-  left: -2px; /* Adjust the left value to match the slot */
-  width: calc(100% + 4px); /* Adjust the width to match the slot */
-  height: calc(100% + 4px); /* Adjust the height to match the slot */
-  border: 1px solid rgb(102, 206, 102);; /* Common rarity color */
-  box-sizing: border-box; /* Include border in the width and height calculations */
-  box-shadow: 0 0 10px 2px rgb(102, 206, 102); /* Glomming effect with transparency */
-        border-radius: 5px;
+  top: -2px;
+  left: -2px;
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  border: 1px  rgb(102, 206, 102);
+  box-sizing: border-box;
+  box-shadow: 0 0 10px 2px rgb(102, 206, 102);
+  border-radius: 5px;
+  transition: border-color 0.5s, box-shadow 0.5s;
+}
 
+.rarity-border-common:hover {
+  border-color: rgba(102, 206, 102, 0.5);
+  box-shadow: 0 0 10px 2px rgba(102, 206, 102, 0.5);
 }
 
 .rarity-border-uncommon {
   position: absolute;
-  top: -2px; /* Adjust the top value to match the slot */
-  left: -2px; /* Adjust the left value to match the slot */
-  width: calc(100% + 4px); /* Adjust the width to match the slot */
-  height: calc(100% + 4px); /* Adjust the height to match the slot */
-  border: 1px solid rgb(142, 142, 212);; /* Uncommon rarity color */
-  box-sizing: border-box; /* Include border in the width and height calculations */
-  box-shadow: 0 0 10px 2px rgb(142, 142, 212);/* Glomming effect with transparency */
-        border-radius: 5px;
+  top: -2px;
+  left: -2px;
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  border: 1px  rgb(142, 142, 212);
+  box-sizing: border-box;
+  box-shadow: 0 0 10px 2px rgb(142, 142, 212);
+  border-radius: 5px;
+  transition: border-color 0.5s, box-shadow 0.5s;
+}
 
+.rarity-border-uncommon:hover {
+  border-color: rgba(142, 142, 212, 0.5);
+  box-shadow: 0 0 10px 2px rgba(142, 142, 212, 0.5);
 }
 
 .rarity-border-rare {
   position: absolute;
-  top: -2px; /* Adjust the top value to match the slot */
-  left: -2px; /* Adjust the left value to match the slot */
-  width: calc(100% + 4px); /* Adjust the width to match the slot */
-  height: calc(100% + 4px); /* Adjust the height to match the slot */
-  border: 1px solid rgb(219, 85, 44);; /* Rare rarity color */
-  box-sizing: border-box; /* Include border in the width and height calculations */
-  box-shadow: 0 0 10px 2px rgb(219, 85, 44); /* Glomming effect with transparency */
-        border-radius: 5px;
+  top: -2px;
+  left: -2px;
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  border: 1px  rgb(219, 85, 44);
+  box-sizing: border-box;
+  box-shadow: 0 0 10px 2px rgb(219, 85, 44);
+  border-radius: 5px;
+  transition: border-color 0.5s, box-shadow 0.5s;
+}
 
+.rarity-border-rare:hover {
+  border-color: rgba(219, 85, 44, 0.5);
+  box-shadow: 0 0 10px 2px rgba(219, 85, 44, 0.5);
 }
 
 .rarity-border-celestial {
   position: absolute;
-  top: -2px; /* Adjust the top value to match the slot */
-  left: -2px; /* Adjust the left value to match the slot */
-  width: calc(100% + 4px); /* Adjust the width to match the slot */
-  height: calc(100% + 4px); /* Adjust the height to match the slot */
-  border: 1px solid cyan; /* Celestial rarity color */
-  box-sizing: border-box; /* Include border in the width and height calculations */
-  box-shadow: 0 0 10px 2px cyan; /* Glomming effect with transparency */
-        border-radius: 5px;
-
+  top: -2px;
+  left: -2px;
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  border: 1px  cyan;
+  box-sizing: border-box;
+  box-shadow: 0 0 10px 2px cyan;
+  border-radius: 5px;
+  transition: border-color 0.5s, box-shadow 0.5s;
 }
+
+.rarity-border-celestial:hover {
+  border-color: rgba(0, 255, 255, 0.5);
+  box-shadow: 0 0 10px 2px rgba(0, 255, 255, 0.5);
+}
+
 
 .rarity-border-legendary {
   position: absolute;
-  top: -2px; /* Adjust the top value to match the slot */
-  left: -2px; /* Adjust the left value to match the slot */
-  width: calc(100% + 4px); /* Adjust the width to match the slot */
-  height: calc(100% + 4px); /* Adjust the height to match the slot */
-  border: 1px solid rgb(231, 49, 201);; /* Legendary rarity color */
-  box-sizing: border-box; /* Include border in the width and height calculations */
-  box-shadow: 0 0 10px 2px rgb(231, 49, 201); /* Glomming effect with transparency */
-      border-radius: 5px;
-
+  top: -2px;
+  left: -2px;
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  border: 1px  rgb(231, 49, 201);
+  box-sizing: border-box;
+  box-shadow: 0 0 10px 2px rgb(231, 49, 201);
+  border-radius: 5px;
+  transition: border-color 0.5s, box-shadow 0.5s;
 }
+
+.rarity-border-legendary:hover {
+  border-color: rgba(231, 49, 201, 0.5); /* Faded border color on hover */
+  box-shadow: 0 0 10px 2px rgba(231, 49, 201, 0.5); /* Faded box shadow on hover */
+}
+
 
 .uppercase {
   text-transform: uppercase;

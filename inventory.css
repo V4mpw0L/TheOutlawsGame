@@ -112,13 +112,12 @@ button:disabled {
 
 
 #slot-count {
-font-family: MedievalSharp, fantasy; /* Replace "Your RPG Font" with the name of your desired RPG-style font */
-  
+  font-family: Consolas, monospace;
   position: absolute;
   top: 95px; /* Adjust the top value to position it vertically */
   left: 50%; /* Center horizontally */
   transform: translateX(-50%);
-  font-size: 13px;
+  font-size: 10px;
   font-weight: bold;
   color: #D1B000;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
@@ -301,20 +300,7 @@ margin-top: 4px;
   border-radius: 10px; /* Add rounded corners to buttons */
   box-shadow: 0px 2px 5px rgba(0,0,0,0.5); /* Add shadow */
 }
-#spawn-item{
-  border: none;
-    color: #000000;
-    padding: 8px 8px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 12px;
-    margin: 4px 10px;
-    cursor: pointer;
-    border-radius: 10px; /* Add rounded corners to buttons */
-    box-shadow: 0px 2px 5px rgba(0,0,0,0.5); /* Add shadow */
 
-}
   #menu {
     position: fixed;
     bottom: 0;
@@ -331,6 +317,37 @@ margin-top: 4px;
     border: 2px solid #36454F; /* Add semi-transparent golden border */
     box-shadow: 0px 0px 5px 2px #36454F; /* Add glowing effect to border with reduced size */
 }
+
+#spawn-item{
+  border: none;
+    color: #000000;
+    padding: 8px 8px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 4px 10px;
+    cursor: pointer;
+    border-radius: 10px; /* Add rounded corners to buttons */
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.5); /* Add shadow */
+
+}
+
+#cleanButton{
+  border: none;
+    color: #000000;
+    padding: 8px 8px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 4px 10px;
+    cursor: pointer;
+    border-radius: 10px; /* Add rounded corners to buttons */
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.5); /* Add shadow */
+
+}
+
 #menu ul {
     list-style-type: none;
     margin: 0;
@@ -360,35 +377,6 @@ margin-top: 4px;
 #menu a:hover {
     background-color: #111;
 }
-
-footer {
-
-    text-align: center;
- color: white;
-	box-shadow: 0px 2px 5px rgba(0,0,0,0.5); /* Add shadow */
-    margin: 20px;
-	border-radius: 10px;
-    margin-bottom: 10px; /* Change this value as needed */
-    margin-top: 500px;
-    
-}
-footer ul {
-   background-image: linear-gradient(to bottom, #FFD700, white, black);
-    border-radius: 10px;
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-color: #222;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-    padding: 10px;    ; /* Add shadow */
-    
-}
-footer li {
-    display: inline-block;
-    margin: 0 10px;
-	box-shadow: 0px 2px 5px rgba(0,0,0,0.5); /* Add shadow */
-}
-
 
 
 

@@ -47,6 +47,9 @@ spawnItemButton.addEventListener('click', () => {
 
 function updateInventory() {
   inventory.innerHTML = '';
+const slotCountDisplay = document.querySelector('#slot-count');
+  slotCountDisplay.textContent = `${inventoryItems.length}/${maxSlots}`;
+
   for (let i = currentPage * slotsPerPage; i < (currentPage + 1) * slotsPerPage && i < maxSlots; i++) {
     const slot = document.createElement('div');
     slot.classList.add('slot');
@@ -95,9 +98,9 @@ function updateInventory() {
     <h3 id="item-name">${item.name}</h3>
     <p id="item-description">${item.description}</p>
     <ul id="item-attributes">
-      ${item.attributes
-        .map(attribute => `<li>${attribute.name}: ${attribute.value}</li>`)
-        .join('')}
+      ${item.status
+        ? `<li>${item.status.name}: ${item.status.value}</li>`
+        : item.attributes.map(attribute => `<li>${attribute.name}: ${attribute.value}</li>`).join('')}
     </ul>
     <span id="item-rarity">Rarity:${item.rarity}</span>
   </div>
@@ -105,6 +108,7 @@ function updateInventory() {
   <button id="equip-button">Equip</button>
   <button id="close-button" class="close-button">X</button>
 `;
+
 
           const itemImage = notification.querySelector('#item-image');
           itemImage.src = item.sprite;
@@ -214,3 +218,15 @@ function checkButtonStates() {
     nextButton.disabled = false;
   }
 }
+
+// Add an event listener to the clean up button
+    document.getElementById('cleanButton').addEventListener('click', function() {
+      // Clear the inventoryItems array
+      inventoryItems.length = 0;
+
+      // Clear the inventory display
+      updateInventory();
+
+      // Remove stored inventory items from localStorage
+      localStorage.removeItem('inventoryItems');
+    });

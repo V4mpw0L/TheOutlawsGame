@@ -219,6 +219,7 @@ function checkButtonStates() {
   }
 }
 
+
 // Add an event listener to the clean up button
     document.getElementById('cleanButton').addEventListener('click', function() {
       // Clear the inventoryItems array

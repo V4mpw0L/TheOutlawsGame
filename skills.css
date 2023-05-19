@@ -312,6 +312,17 @@ box-shadow: 0px 2px 5px rgba(0,0,0,0.5); /* Add shadow */
     box-shadow: 0px 2px 5px rgba(0,0,0,0.5); /* Add shadow */
   }
   
+.timer-bar__text {
+  font-weight: bold;
+  font-size: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Adjust the shadow values as desired */
+}
+
+
+  
   #menu {
     position: fixed;
     bottom: 0;
@@ -358,31 +369,6 @@ box-shadow: 0px 2px 5px rgba(0,0,0,0.5); /* Add shadow */
     background-color: #111;
 }
 
-footer {
-    text-align: center;
-	box-shadow: 0px 2px 5px rgba(0,0,0,0.5); /* Add shadow */
-    margin: 20px;
-	border-radius: 10px;
-    margin-bottom: 50px; /* Change this value as needed */
-    margin-top: 100px;
-    
-}
-footer ul {
-   background-image: linear-gradient(to bottom, #FFD700, white, black);
-    border-radius: 10px;
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-color: #222;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-    padding: 10px;    ; /* Add shadow */
-    
-}
-footer li {
-    display: inline-block;
-    margin: 0 10px;
-	box-shadow: 0px 2px 5px rgba(0,0,0,0.5); /* Add shadow */
-}
 
 #experience-bar-container {
   width: 200px;

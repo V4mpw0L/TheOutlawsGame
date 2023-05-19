@@ -153,4 +153,10 @@ const items = [
 
 ];
 
+// Define the order of rarities
+const rarityOrder = ['common', 'uncommon', 'rare', 'legendary', 'celestial'];
+
+// Sort the items array based on rarity order
+items.sort((a, b) => rarityOrder.indexOf(a.rarity) - rarityOrder.indexOf(b.rarity));
+
 export default items;

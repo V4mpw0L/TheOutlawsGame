@@ -244,6 +244,7 @@ updateStocksOwnedList();
 setInterval(updateStocksOwnedList, 1000);
 updateExperienceBar();
 
+
 let canClickRob = true;
 let robCountdownTimer;
 let lastMessageTime; // variable to keep track of the time of the last message
@@ -366,6 +367,8 @@ document.getElementById("rob-button").addEventListener("click", function() {
         }
     }
 });
+
+
 let canClickGym = true;
 let gymCountdownTimer;
 document.getElementById("gym-button").addEventListener("click", function() {
@@ -423,6 +426,8 @@ document.getElementById("gym-button").addEventListener("click", function() {
         }
     }
 });
+
+
 document.getElementById("sell-drugs-button").addEventListener("click", function() {
     var drugsToSell = prompt("How many drugs would you like to sell?", "0");
     // Make sure that the number of drugs being sold is less than or equal to the number of drugs in the inventory
@@ -452,6 +457,8 @@ document.getElementById("sell-drugs-button").addEventListener("click", function(
     }
     saveGame();
 });
+
+
 document.getElementById("buy-drugs-button").addEventListener("click", function() {
     var drugsToBuy = prompt("How many drugs would you like to buy?", "0");
     if (drugsToBuy > 0) {
@@ -479,6 +486,8 @@ document.getElementById("buy-drugs-button").addEventListener("click", function()
     }
     saveGame();
 });
+
+
 document.getElementById("gamble-button").addEventListener("click", function() {
     this.disabled = true;
     setTimeout(() => {
@@ -507,6 +516,8 @@ document.getElementById("gamble-button").addEventListener("click", function() {
         gameLog.scrollTop = gameLog.scrollHeight;
     }
 });
+
+
 function updateStockPrices() {
     for (var i = 0; i < stocks.length; i++) {
         var stock = stocks[i];
@@ -519,6 +530,8 @@ function updateStockPrices() {
     }
     localStorage.setItem("stocks", JSON.stringify(stocks)); // Save the updated stocks array to localStorage
 }
+
+
 function buyStock(stockName, quantity) {
     var stock = stocks.find(function(stock) {
         return stock.name === stockName;
@@ -549,6 +562,8 @@ function buyStock(stockName, quantity) {
         gameLog.scrollTop = gameLog.scrollHeight;
       }
     }
+    
+    
     function sellStock(stockName, quantity) {
         var stock = stocks.find(function(stock) {
           return stock.name === stockName;
@@ -579,6 +594,8 @@ function buyStock(stockName, quantity) {
           gameLog.scrollTop = gameLog.scrollHeight;
         }
       }
+      
+      
 document.getElementById("buy-stock-button").addEventListener("click", function() {
     var stockName = prompt("Which stock would you like to buy?", "");
     if (stockName !== null) {
@@ -594,6 +611,8 @@ document.getElementById("buy-stock-button").addEventListener("click", function()
         gameLog.scrollTop = gameLog.scrollHeight;
     }
 });
+
+
 document.getElementById("sell-stock-button").addEventListener("click", function() {
     var stockName = prompt("Which stock would you like to sell?", "");
     if (stockName !== null) {
@@ -609,6 +628,8 @@ document.getElementById("sell-stock-button").addEventListener("click", function(
         gameLog.scrollTop = gameLog.scrollHeight;
     }
 });
+
+
 function updateStockPricesList() {
     var stockPricesList = document.getElementById("stock-prices-list");
     stockPricesList.innerHTML = "";
@@ -619,23 +640,35 @@ function updateStockPricesList() {
         stockPricesList.appendChild(stockPriceItem);
     }
 }
+
+
 setInterval(updateStockPricesList, 1000);
-setInterval(updateStockPrices, 5000);
+setInterval(updateStockPrices, 5000)
+
+
 document.getElementById("toggle-buttons").addEventListener("click", function() {
     var buttonsContainer = document.getElementById("save-load-reset-menu");
     buttonsContainer.classList.toggle("buttons-hidden");
 });
+
+
 document.getElementById("save-button").addEventListener("click", function() {
     saveGame();
     gameLog.innerHTML += "<p><span style='color: green; font-weight: bold;'>Game saved successfully.</span></p>";
     gameLog.scrollTop = gameLog.scrollHeight;
 });
+
+
 document.getElementById("load-button").addEventListener("click", function() {
     loadGame();
 });
+
+
 document.getElementById("reset-button").addEventListener("click", function() {
     resetGame();
 }); 
+
+
 // Save game state to local storage
 function saveGame() {
     localStorage.setItem("level", level);
@@ -647,6 +680,8 @@ function saveGame() {
     localStorage.setItem("health", health); // Save the health value to localStorage
     localStorage.setItem("playerName", playerName); // Save the playerName value to localStorage
 }
+
+
 // Load game state from local storage
 function loadGame() {
     level = parseInt(localStorage.getItem("level")) || 1;
@@ -667,6 +702,8 @@ function loadGame() {
     respectSpan.innerHTML = respect;
     updateInventoryList();
 }
+
+
 function resetGame() {
     // Reset all the variables
     health = 100;

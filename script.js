@@ -276,7 +276,7 @@ document.getElementById("rob-button").addEventListener("click", function() {
                     moneySpan.innerHTML = moneyWithCommas;
                      saveGame(); // save game after gym timer has finished and respect has been gained
                     // Increment experience by a random amount
-                    var experienceGained = Math.floor(Math.random() * 10) + 1;
+                    var experienceGained = Math.floor(Math.random() * (5 * level - level + 1)) + level;
                     experience += experienceGained;
                     if (moneyGained > 0 && experienceGained > 0) {
                      showNotification("You gained <span style='color:#00A300'>$" + moneyGained + "</span> and <span style='color:#7d76e1'>" + experienceGained + " experience</span>!");

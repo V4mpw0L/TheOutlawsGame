@@ -10,7 +10,7 @@
  **Key Features:** 
  * Level UP, Money and Respect system
  * Player name and Avatar picture
- * Inventory system 
+ * Basic Inventory system 
  * Save Game / Load Game / Reset Game options 
  * Buy and Sell "Drugs"
  * Health bar

@@ -61,6 +61,9 @@ if (!playerName) {
     // If there is a playerName value saved in localStorage, update the player name element
     playerNameElement.textContent = playerName;
 }
+
+
+
 // Update the player name and health bar
 healthBarElement.style.width = health + "%";
 healthTextElement.textContent = health;
@@ -147,28 +150,6 @@ function showNotification(message) {
   }, 2000);
 }
 
-
-
-// Define the Item class
-class Item {
-  constructor(name, quantity, type) {
-    this.name = name;
-    this.quantity = quantity;
-    this.type = type;
-  }
-
-  use() {
-    if (this.type === "potion") {
-      // Use the potion
-      console.log(`Using ${this.name}`);
-      // Decrease the quantity of the potion in the inventory
-      this.quantity--;
-    } else {
-      console.log(`Cannot use ${this.name}`);
-    }
-  }
-}
-
 // Update the inventory list
 function updateInventoryList() {
   // Clear the current contents of the inventory list
@@ -214,22 +195,6 @@ function updateStocksOwnedList() {
   }
 }
 
-// Handle clicking on an item in the inventory list
-function handleInventoryItemClick(itemName) {
-  // Find the item in the inventory
-  var item = inventory.find(function(item) {
-    return item.name === itemName;
-  });
-
-  // Use the item if it is a potion
-  if (item && item.type === "potion") {
-    item.use();
-    updateInventoryList();
-  } else {
-    console.log(`Cannot use ${itemName}`);
-  }
-}
-
 
 // Set up event listeners for inventory item clicks
 var inventoryList = document.getElementById("inventory-list");
@@ -269,7 +234,7 @@ document.getElementById("rob-button").addEventListener("click", function() {
                 document.getElementById("rob-button").style.backgroundColor = "#5046e6";
                 var successChance = Math.random() - (respect * 0.0001); // subtract respect divided by 10 from the success chance
                 if (successChance < 0.5) {
-                    var moneyGained = Math.floor(Math.random() * (10 * level) + 1);
+                    var moneyGained = Math.floor(Math.random() * (2 * level) + 1);
                     money += moneyGained;
                     
                     moneyWithCommas = money.toLocaleString("en-US");
@@ -278,6 +243,7 @@ document.getElementById("rob-button").addEventListener("click", function() {
                     // Increment experience by a random amount
                     var experienceGained = Math.floor(Math.random() * (5 * level - level + 1)) + level;
                     experience += experienceGained;
+                    
                     if (moneyGained > 0 && experienceGained > 0) {
                      showNotification("You gained <span style='color:#00A300'>$" + moneyGained + "</span> and <span style='color:#7d76e1'>" + experienceGained + " experience</span>!");
                        } else if (moneyGained > 0) {

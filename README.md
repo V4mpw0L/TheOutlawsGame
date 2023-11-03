@@ -3,7 +3,7 @@
   
  #### By V4mpw0L 
  
-  * Project that i started for learning, also with the help of ChatGPT. I have no much time lately to focous on it so any help will be appreciatated! 
+  * Project that i started for learning, also with the help of ChatGPT. I do not have much time lately to focous on it so any help will be appreciatated! 
 
     
  ## Description 
@@ -19,7 +19,7 @@
  * Gamble option 
  * Buy and Sell Stocks
  * Stock Market system with prices changing Up and Down automatically.
- * 
+   
  ## Technologies Used 
   
  * HTML/CSS 

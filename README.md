@@ -11,6 +11,7 @@
  **The Outlaws** is an Clicker RPG adventure game built with JavaScript.  
   
  **Key Features:** 
+
  * Level UP, Money and Respect system
  * Player name and Avatar picture
  * Save Game / Load Game / Reset Game options 

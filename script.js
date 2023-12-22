@@ -463,7 +463,7 @@ document.getElementById("gamble-button").addEventListener("click", function() {
     if (betAmount > 0 && betAmount <= money) {
         var winChance = Math.random();
         if (winChance < 0.5) {
-            var moneyGained = betAmount * 2;
+            var moneyGained = betAmount * 3;
             money += moneyGained;
             moneyWithCommas = money.toLocaleString("en-US");
             moneySpan.innerHTML = moneyWithCommas;
